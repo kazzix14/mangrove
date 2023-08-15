@@ -3,6 +3,7 @@
 
 require_relative "mangrove/version"
 
+# Mangrove
 module Mangrove
   extend T::Sig
 
