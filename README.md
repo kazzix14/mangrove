@@ -20,6 +20,15 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 TODO: Write usage instructions here
 
+## Commands
+```
+bundle exec rspec -f d
+bundle exec rubocop -DESP
+bundle exec srb typecheck
+bundle exec ordinare --check
+bundle exec ruboclean
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

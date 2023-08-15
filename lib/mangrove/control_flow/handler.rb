@@ -39,9 +39,9 @@ module Mangrove
             define_method method_name do |*args, &block|
               # FIXME: ↓がResultまたはOptionを返すことを確認する
               original_method.bind(self).call(*args, &block)
-            rescue Mangrove::ControlFlow::Signal => signal
+            rescue Mangrove::ControlFlow::Signal => e
               # FIXME: need type
-              signal.inner_value
+              e.inner_value
             end
           ensure
             @__inside_mangrove_control_flow = false

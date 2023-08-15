@@ -3,8 +3,7 @@
 
 # frozen_string_literal: true
 
-
-require_relative 'control_flow'
+require_relative "control_flow"
 
 module Mangrove
   # Result is a type that represents either success (`Ok`) or failure (`Err`).
@@ -47,12 +46,18 @@ module Mangrove
         @inner
       end
 
-      sig { override.params(block: T.proc.params(this: OkType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
+      sig do
+        override.params(block: T.proc.params(this: OkType).returns(Result[OkType,
+                                                                          ErrType])).returns(Result[OkType, ErrType])
+      end
       def map_ok(&block)
         block.call(@inner)
       end
 
-      sig { override.params(_block: T.proc.params(this: ErrType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
+      sig do
+        override.params(_block: T.proc.params(this: ErrType).returns(Result[OkType,
+                                                                            ErrType])).returns(Result[OkType, ErrType])
+      end
       def map_err(&_block)
         self
       end
@@ -76,15 +81,22 @@ module Mangrove
 
       sig { override.returns(OkType) }
       def unwrap!
-        raise Mangrove::Result::ControlFlow::Signal, Result::Err.new("called `Result#unwrap!` on an `Err` value: #{self}")
+        raise Mangrove::Result::ControlFlow::Signal,
+              Result::Err.new("called `Result#unwrap!` on an `Err` value: #{self}")
       end
 
-      sig { override.params(_block: T.proc.params(this: OkType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
+      sig do
+        override.params(_block: T.proc.params(this: OkType).returns(Result[OkType,
+                                                                           ErrType])).returns(Result[OkType, ErrType])
+      end
       def map_ok(&_block)
         self
       end
 
-      sig { override.params(block: T.proc.params(this: ErrType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
+      sig do
+        override.params(block: T.proc.params(this: ErrType).returns(Result[OkType,
+                                                                           ErrType])).returns(Result[OkType, ErrType])
+      end
       def map_err(&block)
         block.call(@inner)
       end
@@ -93,11 +105,16 @@ module Mangrove
     sig { abstract.returns(OkType) }
     def unwrap!; end
 
-    sig { abstract.params(block: T.proc.params(this: OkType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
+    sig do
+      abstract.params(block: T.proc.params(this: OkType).returns(Result[OkType,
+                                                                        ErrType])).returns(Result[OkType, ErrType])
+    end
     def map_ok(&block); end
 
-    sig { abstract.params(block: T.proc.params(this: ErrType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
+    sig do
+      abstract.params(block: T.proc.params(this: ErrType).returns(Result[OkType,
+                                                                         ErrType])).returns(Result[OkType, ErrType])
+    end
     def map_err(&block); end
   end
 end
-

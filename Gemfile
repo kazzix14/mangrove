@@ -6,7 +6,6 @@ source "https://rubygems.org"
 gemspec
 
 # Test
-gem "minitest", "~> 5.0"
 gem "rspec"
 
 # Utility
