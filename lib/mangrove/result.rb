@@ -56,6 +56,11 @@ module Mangrove
         @inner
       end
 
+      sig { override.params(_message: String).returns(OkType) }
+      def expect!(_message)
+        @inner
+      end
+
       sig do
         override.params(block: T.proc.params(this: OkType).returns(Result[OkType,
                                                                           ErrType])).returns(Result[OkType, ErrType])
@@ -106,6 +111,11 @@ module Mangrove
         raise Result::ControlSignal, Result::Err.new("called `Result#unwrap!` on an `Err` value: #{self}")
       end
 
+      sig { override.params(message: String).returns(OkType) }
+      def expect!(message)
+        raise Result::ControlSignal, Result::Err.new(message)
+      end
+
       sig do
         override.params(_block: T.proc.params(this: OkType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType])
       end
@@ -126,6 +136,9 @@ module Mangrove
 
     sig { abstract.returns(OkType) }
     def unwrap!; end
+
+    sig { abstract.params(message: String).returns(OkType) }
+    def expect!(message); end
 
     sig do
       abstract.params(block: T.proc.params(this: OkType).returns(Result[OkType,
