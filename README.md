@@ -2,6 +2,16 @@
 
 TODO: Delete this and the text below, and describe your gem
 
+## Features
+features that is not implemented are marked as :warning:
+
+- Option Type (Partially Implemented)
+  - :warning: Auto propagation like Rust's `?` (formerly `try!`)
+- Result Type (Partially Implemented)
+  - :warning: Auto propagation like Rust's `?` (formerly `try!`)
+- :warning: Builder type (Not implemented)
+  - :warning: Auto Implementation
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mangrove`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 ## Installation
