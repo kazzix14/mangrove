@@ -1,6 +1,5 @@
 # Mangrove
-
-TODO: Delete this and the text below, and describe your gem
+Mangrove provides utility types to use with Sorbet
 
 ## Features
 Most features are not implemented.
