@@ -3,14 +3,12 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
 
-Rake::TestTask.new(:test) do |t|
-  t.libs << "test"
-  t.libs << "lib"
-  t.test_files = FileList["test/**/test_*.rb"]
+task :check do
+  system("bundle exec ordinare --check") &&
+    system("bundle exec rubocop -DESP") &&
+    system("bundle exec tapioca check-shims") &&
+    system("bundle exec srb typecheck") &&
+    system("bundle exec rspec -f d")
 end
 
-require "rubocop/rake_task"
-
-RuboCop::RakeTask.new
-
-task default: %i[test rubocop]
+task default: :check

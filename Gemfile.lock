@@ -69,6 +69,7 @@ GEM
       sorbet-static (= 0.5.10962)
     sorbet-runtime (0.5.10962)
     sorbet-static (0.5.10962-universal-darwin-22)
+    sorbet-static (0.5.10962-x86_64-linux)
     sorbet-static-and-runtime (0.5.10962)
       sorbet (= 0.5.10962)
       sorbet-runtime (= 0.5.10962)
@@ -100,6 +101,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   mangrove!
