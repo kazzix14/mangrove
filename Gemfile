@@ -7,6 +7,7 @@ gemspec
 
 # Test
 gem "rspec"
+gem "rspec-sorbet"
 
 # Utility
 gem "ordinare", require: false

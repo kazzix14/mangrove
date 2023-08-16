@@ -4,12 +4,21 @@ AllCops:
   TargetRubyVersion: 3.0
 
 Layout/LineLength:
-  Max: 120
+  Enabled: false
 
 Metrics/AbcSize:
   Enabled: false
 
+Metrics/ClassLength:
+  Enabled: false
+
 Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false
 
 Style/GuardClause:

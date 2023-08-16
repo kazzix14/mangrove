@@ -2,10 +2,8 @@
 # frozen_string_literal: true
 
 module Mangrove
-  # Control Flow
-  module ControlFlow
-    # Signal
-    module Signal
+  module Interfaces
+    module ControlSignal
       extend T::Sig
       extend T::Helpers
 

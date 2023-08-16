@@ -1,6 +1,7 @@
+# typed: strict
 # frozen_string_literal: true
 
-require "mangrove"
+require "spec_helper"
 
 RSpec.describe Mangrove do
   it "has a version number" do

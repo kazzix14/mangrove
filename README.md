@@ -22,6 +22,11 @@ TODO: Write usage instructions here
 
 ## Commands
 ```
+bundle exec tapioca init
+bundle exec tapioca gems
+bundle exec tapioca dsl
+bundle exec tapioca check-shims
+bundle exec tapioca init
 bundle exec rspec -f d
 bundle exec rubocop -DESP
 bundle exec srb typecheck
