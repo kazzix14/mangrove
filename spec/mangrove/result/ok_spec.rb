@@ -21,8 +21,8 @@ RSpec.describe Mangrove::Result::Ok do
 
   context "#map_ok" do
     it "maps inner value with value returned by given block" do
-      expect(Mangrove::Result::Ok.new(1).map_ok{ Mangrove::Result::Ok.new(2) }).to eq Mangrove::Result::Ok.new(2)
-      expect(Mangrove::Result::Ok.new(:my_symbol).map_ok{ Mangrove::Result::Ok.new(:my_new_symbol) }).to eq Mangrove::Result::Ok.new(:my_new_symbol)
+      expect(Mangrove::Result::Ok.new(1).map_ok { Mangrove::Result::Ok.new(2) }).to eq Mangrove::Result::Ok.new(2)
+      expect(Mangrove::Result::Ok.new(:my_symbol).map_ok { Mangrove::Result::Ok.new(:my_new_symbol) }).to eq Mangrove::Result::Ok.new(:my_new_symbol)
     end
   end
 
@@ -33,4 +33,3 @@ RSpec.describe Mangrove::Result::Ok do
     end
   end
 end
-

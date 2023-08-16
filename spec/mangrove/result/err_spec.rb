@@ -31,4 +31,3 @@ RSpec.describe Mangrove::Result::Err do
     end
   end
 end
-
