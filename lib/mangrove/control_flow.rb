@@ -16,14 +16,14 @@ module Mangrove
 
       # Mangrove::ControlFlow::ClassMethods
       module ClassMethods
-        include Kernel
-
         extend T::Sig
         extend T::Helpers
 
         abstract!
 
         def singleton_method_added(method_name)
+          T.bind(self, T.all(ClassMethods, Module))
+
           super
 
           unless @__inside_mangrove_control_flow
@@ -34,6 +34,8 @@ module Mangrove
         end
 
         def method_added(method_name)
+          T.bind(self, T.all(ClassMethods, Module))
+
           super
 
           unless @__inside_mangrove_control_flow
