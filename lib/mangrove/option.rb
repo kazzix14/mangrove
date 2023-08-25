@@ -46,6 +46,16 @@ module Mangrove
         end
       end
 
+      sig { returns(InnerType) }
+      def unwrap
+        @inner
+      end
+
+      sig { override.params(_default: InnerType).returns(InnerType) }
+      def unwrap_or(_default)
+        @inner
+      end
+
       sig { override.returns(InnerType) }
       def unwrap!
         @inner
@@ -55,6 +65,12 @@ module Mangrove
       def expect!(_message)
         @inner
       end
+
+      sig { override.returns(T::Boolean) }
+      def some? = true
+
+      sig { override.returns(T::Boolean) }
+      def none? = false
 
       sig { override.params(block: T.proc.params(inner: InnerType).returns(Option[InnerType])).returns(Option[InnerType]) }
       def map_some(&block)
@@ -95,6 +111,11 @@ module Mangrove
         end
       end
 
+      sig { override.params(default: InnerType).returns(InnerType) }
+      def unwrap_or(default)
+        default
+      end
+
       sig { override.returns(InnerType) }
       def unwrap!
         raise Option::ControlSignal, Result::Err.new("called `Option#unwrap!` on an `None` value: #{self}")
@@ -104,6 +125,12 @@ module Mangrove
       def expect!(message)
         raise Option::ControlSignal, Result::Err.new(message)
       end
+
+      sig { override.returns(T::Boolean) }
+      def some? = false
+
+      sig { override.returns(T::Boolean) }
+      def none? = true
 
       sig { override.params(_block: T.proc.params(inner: InnerType).returns(Option[InnerType])).returns(Option::None[InnerType]) }
       def map_some(&_block)
@@ -119,11 +146,20 @@ module Mangrove
     sig { abstract.params(other: BasicObject).returns(T::Boolean) }
     def ==(other); end
 
+    sig { abstract.params(default: InnerType).returns(InnerType) }
+    def unwrap_or(default); end
+
     sig { abstract.returns(InnerType) }
     def unwrap!; end
 
     sig { abstract.params(message: String).returns(InnerType) }
     def expect!(message); end
+
+    sig { abstract.returns(T::Boolean) }
+    def some?; end
+
+    sig { abstract.returns(T::Boolean) }
+    def none?; end
 
     sig { abstract.params(block: T.proc.params(inner: InnerType).returns(Option[InnerType])).returns(Option[InnerType]) }
     def map_some(&block); end

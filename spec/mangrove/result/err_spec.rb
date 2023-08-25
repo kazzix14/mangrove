@@ -17,6 +17,18 @@ RSpec.describe Mangrove::Result::Err do
     end
   end
 
+  context "#ok?" do
+    it "returns false" do
+      expect(Mangrove::Result::Err.new(:a).ok?).to eq false
+    end
+  end
+
+  context "#err?" do
+    it "returns true" do
+      expect(Mangrove::Result::Err.new(:a).err?).to eq true
+    end
+  end
+
   context "#map_ok" do
     it "does not change inner value" do
       expect(Mangrove::Result::Err.new(:my_error).map_ok { Mangrove::Result::Ok.new(2) }).to eq Mangrove::Result::Err.new(:my_error)
