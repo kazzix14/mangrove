@@ -24,9 +24,3 @@ gem "ruby-lsp"
 gem "sorbet"
 gem "sorbet-runtime"
 gem "tapioca", require: false
-
-gem "parser", "~> 3.2"
-
-gem "method_source", "~> 1.0"
-
-gem "unparser", "~> 0.6.8"

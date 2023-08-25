@@ -2,7 +2,10 @@ PATH
   remote: .
   specs:
     mangrove (0.1.0)
+      method_source (~> 1.0)
+      parser (~> 3.2)
       sorbet-runtime
+      unparser (~> 0.6.8)
 
 GEM
   remote: https://rubygems.org/
@@ -116,9 +119,7 @@ PLATFORMS
 
 DEPENDENCIES
   mangrove!
-  method_source (~> 1.0)
   ordinare
-  parser (~> 3.2)
   rake (~> 13.0)
   rspec
   rspec-sorbet
@@ -130,7 +131,6 @@ DEPENDENCIES
   sorbet
   sorbet-runtime
   tapioca
-  unparser (~> 0.6.8)
 
 BUNDLED WITH
    2.4.18
