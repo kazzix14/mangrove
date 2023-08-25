@@ -3,6 +3,9 @@
 AllCops:
   TargetRubyVersion: 3.2
 
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
 Layout/LineLength:
   Enabled: false
 
@@ -17,6 +20,9 @@ Metrics/MethodLength:
 
 Metrics/ModuleLength:
   Enabled: false
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
 
 Style/Documentation:
   Enabled: false
@@ -34,9 +40,3 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
-
-Naming/VariableNumber:
-  EnforcedStyle: snake_case
-
-Layout/FirstArrayElementIndentation:
-  EnforcedStyle: consistent
