@@ -1,14 +1,14 @@
 # typed: strict
 # frozen_string_literal: true
 
-require "mangrove/interfaces/control_signal"
+require "mangrove/control_flow/control_signal"
 
 module Mangrove
   module Option
     class ControlSignal < StandardError
       extend T::Sig
 
-      include Mangrove::Interfaces::ControlSignal
+      include Mangrove::ControlFlow::ControlSignal
 
       sig { params(inner_value: T.untyped).void }
       def initialize(inner_value)

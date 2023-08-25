@@ -34,3 +34,6 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case

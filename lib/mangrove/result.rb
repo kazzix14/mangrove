@@ -61,18 +61,18 @@ module Mangrove
         @inner
       end
 
-      sig do
-        override.params(block: T.proc.params(this: OkType).returns(Result[OkType,
-                                                                          ErrType])).returns(Result[OkType, ErrType])
-      end
+      sig { override.returns(T::Boolean) }
+      def ok? = true
+
+      sig { override.returns(T::Boolean) }
+      def err? = false
+
+      sig { override.params(block: T.proc.params(this: OkType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
       def map_ok(&block)
         block.call(@inner)
       end
 
-      sig do
-        override.params(_block: T.proc.params(this: ErrType).returns(Result[OkType,
-                                                                            ErrType])).returns(Result[OkType, ErrType])
-      end
+      sig { override.params(_block: T.proc.params(this: ErrType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
       def map_err(&_block)
         self
       end
@@ -116,6 +116,12 @@ module Mangrove
         raise Result::ControlSignal, Result::Err.new(message)
       end
 
+      sig { override.returns(T::Boolean) }
+      def ok? = false
+
+      sig { override.returns(T::Boolean) }
+      def err? = true
+
       sig do
         override.params(_block: T.proc.params(this: OkType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType])
       end
@@ -133,6 +139,12 @@ module Mangrove
 
     sig { abstract.params(other: BasicObject).returns(T::Boolean) }
     def ==(other); end
+
+    sig { abstract.returns(T::Boolean) }
+    def ok?; end
+
+    sig { abstract.returns(T::Boolean) }
+    def err?; end
 
     sig { abstract.returns(OkType) }
     def unwrap!; end
