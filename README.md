@@ -5,9 +5,9 @@ Mangrove provides utility types to use with Sorbet
 Most features are not implemented.
 
 - [x] Option Type (Partially Implemented)
-  - [ ] Auto propagation like Rust's `?` (formerly `try!`)
+  - [x] Auto propagation like Rust's `?` (formerly `try!`)
 - [x] Result Type (Partially Implemented)
-  - [ ] Auto propagation like Rust's `?` (formerly `try!`)
+  - [x] Auto propagation like Rust's `?` (formerly `try!`)
 - [ ] Builder type (Not implemented)
   - [ ] Auto Implementation
 
