@@ -47,7 +47,7 @@ module Mangrove
       end
 
       sig { returns(OkType) }
-      def unwrap
+      def ok_inner
         @inner
       end
 
@@ -104,6 +104,11 @@ module Mangrove
         else
           false
         end
+      end
+
+      sig { returns(ErrType) }
+      def err_inner
+        @inner
       end
 
       sig { override.returns(OkType) }

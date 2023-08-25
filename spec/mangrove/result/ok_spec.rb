@@ -5,6 +5,13 @@ require "spec_helper"
 require "mangrove/result"
 
 RSpec.describe Mangrove::Result::Ok do
+  context "#ok_inner" do
+    it "extracts inner value" do
+      expect(Mangrove::Result::Ok.new(1).unwrap!).to eq 1
+      expect(Mangrove::Result::Ok.new(:my_symbol).unwrap!).to eq :my_symbol
+    end
+  end
+
   context "#unwrap!" do
     it "extracts inner value" do
       expect(Mangrove::Result::Ok.new(1).unwrap!).to eq 1

@@ -5,6 +5,12 @@ require "spec_helper"
 require "mangrove/result"
 
 RSpec.describe Mangrove::Result::Err do
+  context "#err_inner" do
+    it "extracts inner value" do
+      expect(Mangrove::Result::Err.new(:my_error).err_inner).to eq :my_error
+    end
+  end
+
   context "#unwrap!" do
     it "raises ControlSignal" do
       expect { Mangrove::Result::Err.new(:my_error).unwrap! }.to raise_error(Mangrove::Result::ControlSignal)
