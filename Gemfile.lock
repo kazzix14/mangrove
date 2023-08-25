@@ -61,6 +61,16 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
+    rubocop-capybara (2.18.0)
+      rubocop (~> 1.41)
+    rubocop-factory_bot (2.23.1)
+      rubocop (~> 1.33)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
+    rubocop-rspec (2.23.2)
+      rubocop (~> 1.33)
+      rubocop-capybara (~> 2.17)
+      rubocop-factory_bot (~> 2.22)
     ruby-lsp (0.8.0)
       language_server-protocol (~> 3.17.0)
       sorbet-runtime
@@ -114,6 +124,8 @@ DEPENDENCIES
   rspec-sorbet
   ruboclean
   rubocop (~> 1.21)
+  rubocop-rake (~> 0.6.0)
+  rubocop-rspec (~> 2.23)
   ruby-lsp
   sorbet
   sorbet-runtime

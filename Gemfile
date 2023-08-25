@@ -16,6 +16,8 @@ gem "ruboclean", require: false
 
 # Lint
 gem "rubocop", "~> 1.21"
+gem "rubocop-rake", "~> 0.6.0"
+gem "rubocop-rspec", "~> 2.23"
 
 # Type and LSP
 gem "ruby-lsp"

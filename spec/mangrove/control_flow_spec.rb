@@ -36,19 +36,19 @@ RSpec.describe Mangrove::ControlFlow do
 
     it "returns Result" do
       expect(MyClass.my_method([
-                                 Mangrove::Option::Some.new(2),
-                                 Mangrove::Option::Some.new(5),
-                                 Mangrove::Option::Some.new(3)
-                               ])).to eq Mangrove::Result::Ok.new(2 * 2 + 5 * 2 + 3 * 2)
+        Mangrove::Option::Some.new(2),
+        Mangrove::Option::Some.new(5),
+        Mangrove::Option::Some.new(3)
+      ])).to eq Mangrove::Result::Ok.new(2 * 2 + 5 * 2 + 3 * 2)
     end
 
     it "returns Result" do
       expect(MyClass.my_method([
-                                 Mangrove::Option::Some.new(2),
-                                 Mangrove::Option::None.new,
-                                 Mangrove::Option::Some.new(5),
-                                 Mangrove::Option::Some.new(3)
-                               ])).to be_a Mangrove::Result::Err
+        Mangrove::Option::Some.new(2),
+        Mangrove::Option::None.new,
+        Mangrove::Option::Some.new(5),
+        Mangrove::Option::Some.new(3)
+      ])).to be_a Mangrove::Result::Err
     end
   end
 end

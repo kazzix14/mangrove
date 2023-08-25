@@ -1,7 +1,7 @@
 ---
 
 AllCops:
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.2
 
 Layout/LineLength:
   Enabled: false
@@ -37,3 +37,6 @@ Style/StringLiteralsInInterpolation:
 
 Naming/VariableNumber:
   EnforcedStyle: snake_case
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent

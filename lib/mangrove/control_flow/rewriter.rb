@@ -1,11 +1,11 @@
 # typed: true
+# frozen_string_literal: true
 
 require "parser"
 require "parser/current"
 require "unparser"
 require "method_source"
 require "sorbet-runtime"
-
 
 module Mangrove
   module ControlFlow
@@ -53,7 +53,7 @@ module Mangrove
       def rescue_node(body)
         ::Parser::AST::Node.new(:rescue, [
           body,
-          nil,
+          nil
         ])
       end
 
@@ -65,8 +65,7 @@ module Mangrove
         method_body = children[method_body_index]
 
         children[method_body_index] = rescue_node(method_body)
-        updated = parent.updated(nil, children)
-        updated
+        parent.updated(nil, children)
       end
 
       def use_rescue_node(parent)
@@ -78,8 +77,7 @@ module Mangrove
         updated_rescue_node_on_ast = insert_rescue_body_node(rescue_node_on_ast)
         children[rescue_index] = updated_rescue_node_on_ast
 
-        updated = parent.updated(nil, children)
-        updated
+        parent.updated(nil, children)
       end
 
       def insert_rescue_body_node(rescue_node)
@@ -92,8 +90,7 @@ module Mangrove
         end
 
         rescue_node_children.insert(rescue_body_node_index, rescue_body_node)
-        updated = rescue_node.updated(nil, rescue_node_children)
-        updated
+        rescue_node.updated(nil, rescue_node_children)
       end
 
       def use_ensure_node(ensure_node)
@@ -104,23 +101,17 @@ module Mangrove
         rescue_index = ensure_node_children.find_index { _1.respond_to?(:type) && _1.type == :rescue }
 
         if rescue_index.nil?
-          parent = add_rescue_node(ensure_node)
+          ensure_node = add_rescue_node(ensure_node)
         end
 
-        updated_ensure_node = use_rescue_node(ensure_node)
-
-        updated_ensure_node
+        use_rescue_node(ensure_node)
       end
 
       def with_rescue(parent)
         children = parent.children.dup
         ensure_index = children.find_index { _1.respond_to?(:type) && _1.type == :ensure }
 
-        unless ensure_index.nil?
-          updated_ensure_node = use_ensure_node(children[ensure_index])
-          children[ensure_index] = updated_ensure_node
-          parent.updated(nil, children)
-        else
+        if ensure_index.nil?
           rescue_index = children.find_index { _1.respond_to?(:type) && _1.type == :rescue }
 
           if rescue_index.nil?
@@ -128,6 +119,10 @@ module Mangrove
           end
 
           use_rescue_node(parent)
+        else
+          updated_ensure_node = use_ensure_node(children[ensure_index])
+          children[ensure_index] = updated_ensure_node
+          parent.updated(nil, children)
         end
       end
 
@@ -143,13 +138,13 @@ module Mangrove
             ::Parser::AST::Node.new(:const, [
               ::Parser::AST::Node.new(:const, [
                 nil,
-                :Result,
+                :Result
               ]),
-              :Err,
+              :Err
             ]),
             :new,
             ::Parser::AST::Node.new(:lvar, [:exception])
-          ]),
+          ])
         ])
       end
     end
