@@ -41,6 +41,8 @@ bundle exec rubocop -DESP
 bundle exec srb typecheck
 bundle exec ordinare --check
 bundle exec ruboclean
+rake build
+rake release
 ```
 
 ## Development
