@@ -50,7 +50,8 @@ bundle add mangrove
 
 ## Usage
 
-see [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
+Documentation is available [here](https://kazzix14.github.io/mangrove/).
+For more concrete examples, see [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
 
 ```ruby
 Mangrove::Result[OkType, ErrType]
@@ -72,6 +73,7 @@ include Mangrove::ControlFlow::Handler
 
 ## Commands
 ```
+git config core.hooksPath hooks
 bundle exec tapioca init
 bundle exec tapioca gems
 bundle exec tapioca dsl
