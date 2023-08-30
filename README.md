@@ -29,7 +29,7 @@ expect(MyClass.new.divide_arguments_by_3([3, 4, 6])).to eq Mangrove::Result::Err
 expect(MyClass.new.divide_arguments_by_3([3, 6, 9])).to eq Mangrove::Result::Ok.new([1, 2, 3])
 ```
 
-Other examples are available at `spec/**/**_spec.rb`.
+Other examples are available at [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
 
 ## Features
 Most features are not implemented.
@@ -50,7 +50,7 @@ bundle add mangrove
 
 ## Usage
 
-see `spec/**/**_spec.rb`.
+see [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
 
 ```ruby
 Mangrove::Result[OkType, ErrType]
@@ -66,6 +66,7 @@ my_some = Option::Some.new(1234)
 my_none = Option::None.new
 
 # Including this Module into your class appends rescue clause into its methods. Results to `Option#unwrap!` and `Result#unwrap!` propagates to calling method like Ruet's `?` operator.
+# https://doc.rust-lang.org/reference/expressions/operator-expr.html#the-question-mark-operator
 include Mangrove::ControlFlow::Handler
 ```
 
