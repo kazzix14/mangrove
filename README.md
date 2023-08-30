@@ -1,5 +1,35 @@
 # Mangrove
-Mangrove provides utility types to use with Sorbet
+Mangrove provides type utility to use with Sorbet.
+
+You can do something like this using this gem.
+
+```ruby
+class MyClass
+  extend T::Sig
+
+  include Mangrove::ControlFlow::Handler
+
+  sig { params(numbers: T::Enumerable[Integer]).returns(Mangrove::Result[T::Array[Integer], String]) }
+  def divide_arguments_by_3(numbers)
+    divided_nubmers = numbers
+      .map { |number|
+        if number % 3 == 0
+          Mangrove::Result::Ok.new(number / 3)
+        else
+          Mangrove::Result::Err.new("number #{number} is not divisible by 3")
+        end
+      }
+      .map(&:unwrap!)
+
+    Mangrove::Result::Ok.new(divided_nubmers)
+  end
+end
+
+expect(MyClass.new.divide_arguments_by_3([3, 4, 6])).to eq Mangrove::Result::Err.new("number 4 is not divisible by 3")
+expect(MyClass.new.divide_arguments_by_3([3, 6, 9])).to eq Mangrove::Result::Ok.new([1, 2, 3])
+```
+
+Other examples are available at `spec/**/**_spec.rb`.
 
 ## Features
 Most features are not implemented.
@@ -10,6 +40,7 @@ Most features are not implemented.
   - [x] Auto propagation like Rust's `?` (formerly `try!`)
 - [ ] Builder type (Not implemented)
   - [ ] Auto Implementation
+- [ ] TODO
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mangrove`. To experiment with that code, run `bin/console` for an interactive prompt.
 

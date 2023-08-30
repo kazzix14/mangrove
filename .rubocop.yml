@@ -43,3 +43,10 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/BlockDelimiters:
+  EnforcedStyle: always_braces
+  AllowedMethods: ["describe", "context", "it"]
