@@ -19,7 +19,7 @@ RSpec.describe Mangrove::Result::Err do
 
   context "#expect!" do
     it "raises ControlSignal with custom message" do
-      expect { Mangrove::Result::Err.new(:my_error).expect!("my expectation") }.to raise_error(Mangrove::Result::ControlSignal.new(Mangrove::Result::Err.new("my expectation")))
+      expect { Mangrove::Result::Err.new(:my_error).expect!("my expectation") }.to raise_error(Mangrove::Result::ControlSignal.new("my expectation"))
     end
   end
 

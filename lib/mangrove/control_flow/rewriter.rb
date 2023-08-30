@@ -127,7 +127,7 @@ module Mangrove
       end
 
       def rescue_body_node
-        control_flow = StandardError
+        control_flow = Mangrove::ControlFlow::ControlSignal
 
         ::Parser::AST::Node.new(:resbody, [
           ::Parser::AST::Node.new(:array, [
@@ -143,7 +143,10 @@ module Mangrove
               :Err
             ]),
             :new,
-            ::Parser::AST::Node.new(:lvar, [:exception])
+            ::Parser::AST::Node.new(:send, [
+              ::Parser::AST::Node.new(:lvar, [:exception]),
+              :inner_value
+            ])
           ])
         ])
       end

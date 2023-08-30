@@ -113,12 +113,12 @@ module Mangrove
 
       sig { override.returns(OkType) }
       def unwrap!
-        raise Result::ControlSignal, Result::Err.new("called `Result#unwrap!` on an `Err` value: #{self}")
+        raise Result::ControlSignal, @inner
       end
 
       sig { override.params(message: String).returns(OkType) }
       def expect!(message)
-        raise Result::ControlSignal, Result::Err.new(message)
+        raise Result::ControlSignal, message
       end
 
       sig { override.returns(T::Boolean) }
