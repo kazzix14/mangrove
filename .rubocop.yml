@@ -9,6 +9,9 @@ Layout/FirstArrayElementIndentation:
 Layout/LineLength:
   Enabled: false
 
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
 Metrics/AbcSize:
   Enabled: false
 
@@ -27,6 +30,13 @@ Metrics/ModuleLength:
 Naming/VariableNumber:
   EnforcedStyle: snake_case
 
+Style/BlockDelimiters:
+  EnforcedStyle: always_braces
+  AllowedMethods:
+  - describe
+  - context
+  - it
+
 Style/Documentation:
   Enabled: false
 
@@ -43,10 +53,3 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
-
-Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
-
-Style/BlockDelimiters:
-  EnforcedStyle: always_braces
-  AllowedMethods: ["describe", "context", "it"]
