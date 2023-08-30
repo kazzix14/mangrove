@@ -1,7 +1,7 @@
 # Mangrove
 Mangrove provides type utility to use with Sorbet.
 
-You can do something like this using this gem.
+You can do something like this with the gem.
 
 ```ruby
 class MyClass
@@ -42,23 +42,32 @@ Most features are not implemented.
   - [ ] Auto Implementation
 - [ ] TODO
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mangrove`. To experiment with that code, run `bin/console` for an interactive prompt.
-
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
-Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+```
+bundle add mangrove
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+see `spec/**/**_spec.rb`.
+
+```ruby
+Mangrove::Result[OkType, ErrType]
+Mangrove::Result::Ok[OkType, ErrType]
+Mangrove::Result::Err[OkType, ErrType]
+Mangrove::Option[InnerType]
+Mangrove::Option::Some[InnerType]
+Mangrove::Option::None[InnerType]
+
+my_ok = Result::Ok.new("my value")
+my_err = Result::Err.new("my err")
+my_some = Option::Some.new(1234)
+my_none = Option::None.new
+
+# Including this Module into your class appends rescue clause into its methods. Results to `Option#unwrap!` and `Result#unwrap!` propagates to calling method like Ruet's `?` operator.
+include Mangrove::ControlFlow::Handler
+```
 
 ## Commands
 ```
@@ -84,4 +93,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mangrove.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kazzix14/mangrove.
