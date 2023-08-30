@@ -131,6 +131,8 @@ DEPENDENCIES
   sorbet
   sorbet-runtime
   tapioca
+  yard (~> 0.9.34)
+  yard-sorbet (~> 0.8.1)
 
 BUNDLED WITH
    2.4.18

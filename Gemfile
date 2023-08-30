@@ -24,3 +24,7 @@ gem "ruby-lsp"
 gem "sorbet"
 gem "sorbet-runtime"
 gem "tapioca", require: false
+
+# Documentation
+gem "yard", "~> 0.9.34"
+gem "yard-sorbet", "~> 0.8.1"
