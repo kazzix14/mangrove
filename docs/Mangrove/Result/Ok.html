@@ -109,18 +109,7 @@
   
 </div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>Mangrove::Result::Ok</p>
 
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
   
     <h2>
       Constant Summary
@@ -371,6 +360,11 @@
   
   
   
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Mangrove::Result</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Result.html#from_results-class_method" title="Mangrove::Result.from_results (method)">from_results</a></span></p>
+
+  
+  
   
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
@@ -414,12 +408,12 @@
       <pre class="lines">
 
 
-33
-34
-35</pre>
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_inner'>inner</span><span class='rparen'>)</span>
   <span class='ivar'>@inner</span> <span class='op'>=</span> <span class='id identifier rubyid_inner'>inner</span>
@@ -488,19 +482,19 @@
       <pre class="lines">
 
 
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47</pre>
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 79</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
@@ -554,10 +548,10 @@
       <pre class="lines">
 
 
-68</pre>
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 109</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_err?'>err?</span> <span class='op'>=</span> <span class='kw'>false</span></pre>
     </td>
@@ -617,12 +611,12 @@
       <pre class="lines">
 
 
-60
-61
-62</pre>
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expect!'>expect!</span><span class='lparen'>(</span><span class='id identifier rubyid__message'>_message</span><span class='rparen'>)</span>
   <span class='ivar'>@inner</span>
@@ -684,12 +678,12 @@
       <pre class="lines">
 
 
-76
-77
-78</pre>
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 117</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_err'>map_err</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid__block'>_block</span><span class='rparen'>)</span>
   <span class='kw'>self</span>
@@ -751,12 +745,12 @@
       <pre class="lines">
 
 
-71
-72
-73</pre>
+112
+113
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_ok'>map_ok</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@inner</span><span class='rparen'>)</span>
@@ -803,10 +797,10 @@
       <pre class="lines">
 
 
-65</pre>
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ok?'>ok?</span> <span class='op'>=</span> <span class='kw'>true</span></pre>
     </td>
@@ -851,12 +845,12 @@
       <pre class="lines">
 
 
-50
-51
-52</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ok_inner'>ok_inner</span>
   <span class='ivar'>@inner</span>
@@ -903,12 +897,12 @@
       <pre class="lines">
 
 
-55
-56
-57</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap!'>unwrap!</span>
   <span class='ivar'>@inner</span>
@@ -923,7 +917,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Aug 30 11:31:08 2023 by
+  Generated on Thu Aug 31 15:04:25 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>

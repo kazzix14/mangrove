@@ -18,7 +18,48 @@ module Mangrove
     OkType = type_member
     ErrType = type_member
 
-    # Mangrove::Result::Ok
+    sig { abstract.params(other: BasicObject).returns(T::Boolean) }
+    def ==(other); end
+
+    sig { abstract.returns(T::Boolean) }
+    def ok?; end
+
+    sig { abstract.returns(T::Boolean) }
+    def err?; end
+
+    sig { abstract.returns(OkType) }
+    def unwrap!; end
+
+    sig { abstract.params(message: String).returns(OkType) }
+    def expect!(message); end
+
+    sig { abstract.params(block: T.proc.params(this: OkType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
+    def map_ok(&block); end
+
+    sig { abstract.params(block: T.proc.params(this: ErrType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
+    def map_err(&block); end
+
+    class << self
+      extend T::Sig
+      extend T::Generic
+
+      OkType = type_member
+      ErrType = type_member
+
+      sig { params(results: T::Enumerable[Mangrove::Result[OkType, ErrType]]).returns(Result[OkType, ErrType]) }
+      def from_results(results)
+        errs = results.filter(&:err?)
+
+        if errs.empty?
+          # This is safe as errs is empty.
+          Result::Ok.new(results.map { |r| T.cast(r, Result::Ok[OkType, ErrType]).ok_inner })
+        else
+          # This is safe as errs is results where err? is true
+          Result::Err.new(errs.map { |r| T.cast(r, Result::Err[OkType, ErrType]).err_inner })
+        end
+      end
+    end
+
     class Ok
       extend T::Sig
       extend T::Generic
@@ -78,7 +119,6 @@ module Mangrove
       end
     end
 
-    # Mangrove::Result::Err
     class Err
       extend T::Sig
       extend T::Generic
@@ -137,26 +177,5 @@ module Mangrove
         block.call(@inner)
       end
     end
-
-    sig { abstract.params(other: BasicObject).returns(T::Boolean) }
-    def ==(other); end
-
-    sig { abstract.returns(T::Boolean) }
-    def ok?; end
-
-    sig { abstract.returns(T::Boolean) }
-    def err?; end
-
-    sig { abstract.returns(OkType) }
-    def unwrap!; end
-
-    sig { abstract.params(message: String).returns(OkType) }
-    def expect!(message); end
-
-    sig { abstract.params(block: T.proc.params(this: OkType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
-    def map_ok(&block); end
-
-    sig { abstract.params(block: T.proc.params(this: ErrType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
-    def map_err(&block); end
   end
 end
