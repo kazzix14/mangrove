@@ -82,6 +82,11 @@ module Mangrove
         self
       end
 
+      sig { override.type_parameters(:ErrType).params(_err: T.type_parameter(:ErrType)).returns(Mangrove::Result[InnerType, T.type_parameter(:ErrType)]) }
+      def transpose(_err)
+        Result::Ok.new(@inner)
+      end
+
       private
 
       sig { returns(InnerType) }
@@ -141,6 +146,11 @@ module Mangrove
       def map_none(&block)
         block.call
       end
+
+      sig { override.type_parameters(:ErrType).params(err: T.type_parameter(:ErrType)).returns(Mangrove::Result[InnerType, T.type_parameter(:ErrType)]) }
+      def transpose(err)
+        Result::Err.new(err)
+      end
     end
 
     sig { abstract.params(other: BasicObject).returns(T::Boolean) }
@@ -166,5 +176,8 @@ module Mangrove
 
     sig { abstract.params(block: T.proc.returns(Option[InnerType])).returns(Option[InnerType]) }
     def map_none(&block); end
+
+    sig { abstract.type_parameters(:ErrType).params(err: T.type_parameter(:ErrType)).returns(Mangrove::Result[InnerType, T.type_parameter(:ErrType)]) }
+    def transpose(err); end
   end
 end

@@ -32,4 +32,8 @@ RSpec.describe Mangrove::Option do
   it "declares #map_none" do
     expect(Mangrove::Option.instance_methods).to include :map_none
   end
+
+  it "declares #transpose" do
+    expect(Mangrove::Option.instance_methods).to include :transpose
+  end
 end

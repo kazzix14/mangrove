@@ -50,4 +50,10 @@ RSpec.describe Mangrove::Option::Some do
       expect(Mangrove::Option::Some.new(:my_symbol).map_none { Mangrove::Option::Some.new(:my_new_symbol) }).to eq Mangrove::Option::Some.new(:my_symbol)
     end
   end
+
+  context "#transpose" do
+    it "returns Result::Ok inheriting the inner" do
+      expect(Mangrove::Option::None.new.transpose(:my_err)).to eq Mangrove::Result::Err.new(:my_err)
+    end
+  end
 end
