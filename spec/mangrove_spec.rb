@@ -14,8 +14,6 @@ RSpec.describe Mangrove do
       class TransposeExample
         extend T::Sig
 
-        include Mangrove::ControlFlow::Handler
-
         sig { params(numbers: T::Enumerable[Integer]).returns(Mangrove::Result[T::Array[Integer], String]) }
         def divide_arguments_by_3(numbers)
           Mangrove::Result.from_results(numbers
@@ -26,6 +24,8 @@ RSpec.describe Mangrove do
                 Mangrove::Result::Err.new("number #{number} is not divisible by 3")
               end
             })
+        rescue ::Mangrove::ControlFlow::ControlSignal => e
+          Mangrove::Result::Err.new(e.inner_value)
         end
       end
       # rubocop:enable Lint/ConstantDefinitionInBlock
@@ -38,8 +38,6 @@ RSpec.describe Mangrove do
       # rubocop:disable Lint/ConstantDefinitionInBlock
       class PropagationExample
         extend T::Sig
-
-        include Mangrove::ControlFlow::Handler
 
         sig { params(numbers: T::Enumerable[Integer]).returns(Mangrove::Result[T::Array[Integer], String]) }
         def divide_arguments_by_3(numbers)
@@ -54,6 +52,8 @@ RSpec.describe Mangrove do
             .map(&:unwrap!)
 
           Mangrove::Result::Ok.new(divided_numbers)
+        rescue ::Mangrove::ControlFlow::ControlSignal => e
+          Mangrove::Result::Err.new(e.inner_value)
         end
       end
       # rubocop:enable Lint/ConstantDefinitionInBlock

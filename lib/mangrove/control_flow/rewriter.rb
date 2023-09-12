@@ -137,7 +137,10 @@ module Mangrove
           ::Parser::AST::Node.new(:send, [
             ::Parser::AST::Node.new(:const, [
               ::Parser::AST::Node.new(:const, [
-                nil,
+                ::Parser::AST::Node.new(:const, %i[
+                  cbase
+                  Mangrove
+                ]),
                 :Result
               ]),
               :Err

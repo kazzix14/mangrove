@@ -67,7 +67,7 @@
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MyClass</span>
   <span class='id identifier rubyid_extend'>extend</span> <span class='const'>T</span><span class='op'>::</span><span class='const'>Sig</span>
 
-  <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Mangrove.html" title="Mangrove (module)">Mangrove</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/ControlFlow.html" title="Mangrove::ControlFlow (module)">ControlFlow</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/ControlFlow/Handler.html" title="Mangrove::ControlFlow::Handler (module)">Handler</a></span></span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Mangrove.html" title="Mangrove (module)">Mangrove</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/ControlFlow.html" title="Mangrove::ControlFlow (module)">ControlFlow</a></span></span><span class='op'>::</span><span class='const'>Handler</span>
 
   <span class='id identifier rubyid_sig'>sig</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_params'>params</span><span class='lparen'>(</span><span class='label'>numbers:</span> <span class='const'>T</span><span class='op'>::</span><span class='const'>Enumerable</span><span class='lbracket'>[</span><span class='const'>Integer</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Mangrove.html" title="Mangrove (module)">Mangrove</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/Result.html" title="Mangrove::Result (module)">Result</a></span></span><span class='lbracket'>[</span><span class='const'>T</span><span class='op'>::</span><span class='const'>Array</span><span class='lbracket'>[</span><span class='const'>Integer</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>String</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
   <span class='kw'>def</span> <span class='id identifier rubyid_divide_arguments_by_3'>divide_arguments_by_3</span><span class='lparen'>(</span><span class='id identifier rubyid_numbers'>numbers</span><span class='rparen'>)</span>
@@ -133,7 +133,7 @@
 
 <span class='comment'># Including this Module into your class appends rescue clause into its methods. Results to `Option#unwrap!` and `Result#unwrap!` propagates to calling method like Ruet&#39;s `?` operator.
 </span><span class='comment'># https://doc.rust-lang.org/reference/expressions/operator-expr.html#the-question-mark-operator
-</span><span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Mangrove.html" title="Mangrove (module)">Mangrove</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/ControlFlow.html" title="Mangrove::ControlFlow (module)">ControlFlow</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/ControlFlow/Handler.html" title="Mangrove::ControlFlow::Handler (module)">Handler</a></span></span>
+</span><span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Mangrove.html" title="Mangrove (module)">Mangrove</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/ControlFlow.html" title="Mangrove::ControlFlow (module)">ControlFlow</a></span></span><span class='op'>::</span><span class='const'>Handler</span>
 </code></pre>
 
 <h2 id="label-Commands">Commands</h2>
@@ -166,7 +166,7 @@ rake release
 </div></div>
 
       <div id="footer">
-  Generated on Fri Sep  1 17:32:57 2023 by
+  Generated on Tue Sep 12 17:35:09 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>

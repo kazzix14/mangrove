@@ -35,9 +35,7 @@ Other examples are available at [`spec/**/**_spec.rb`](https://github.com/kazzix
 Most features are not implemented.
 
 - [x] Option Type (Partially Implemented)
-  - [x] Auto propagation like Rust's `?` (formerly `try!`)
 - [x] Result Type (Partially Implemented)
-  - [x] Auto propagation like Rust's `?` (formerly `try!`)
 - [ ] Builder type (Not implemented)
   - [ ] Auto Implementation
 - [ ] TODO
