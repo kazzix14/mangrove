@@ -48,4 +48,10 @@ RSpec.describe Mangrove::Result::Err do
       expect(Mangrove::Result::Err.new(:my_error).map_err { Mangrove::Result::Err.new(:my_new_error) }).to eq Mangrove::Result::Err.new(:my_new_error)
     end
   end
+
+  context "#to_s" do
+    it "includes inner value" do
+      expect(Mangrove::Result::Err.new("my inner").to_s).to include ": inner=`my inner`"
+    end
+  end
 end

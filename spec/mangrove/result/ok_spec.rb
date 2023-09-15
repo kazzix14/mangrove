@@ -51,4 +51,10 @@ RSpec.describe Mangrove::Result::Ok do
       expect(Mangrove::Result::Ok.new(:my_symbol).map_err { Mangrove::Result::Ok.new(:my_new_symbol) }).to eq Mangrove::Result::Ok.new(:my_symbol)
     end
   end
+
+  context "#to_s" do
+    it "includes inner value" do
+      expect(Mangrove::Result::Ok.new("my inner").to_s).to include ": inner=`my inner`"
+    end
+  end
 end

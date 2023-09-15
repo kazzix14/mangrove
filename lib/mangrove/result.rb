@@ -117,6 +117,11 @@ module Mangrove
       def map_err(&_block)
         self
       end
+
+      sig { returns(String) }
+      def to_s
+        "#{super}: inner=`#{@inner}`"
+      end
     end
 
     class Err
@@ -175,6 +180,11 @@ module Mangrove
       sig { override.params(block: T.proc.params(this: ErrType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
       def map_err(&block)
         block.call(@inner)
+      end
+
+      sig { returns(String) }
+      def to_s
+        "#{super}: inner=`#{@inner}`"
       end
     end
   end
