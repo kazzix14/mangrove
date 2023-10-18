@@ -7,6 +7,7 @@ Gem::Specification.new { |spec|
   spec.version = Mangrove::VERSION
   spec.authors = ["Kazuma Murata"]
   spec.email = ["kazzix14@gmail.com"]
+  spec.licenses    = ['MIT']
 
   spec.summary = "Type Utility for Ruby."
   spec.description = "Type Utility for Ruby."
