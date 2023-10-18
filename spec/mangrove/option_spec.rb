@@ -17,6 +17,10 @@ RSpec.describe Mangrove::Option do
     expect(Mangrove::Option.instance_methods).to include :expect!
   end
 
+  it "declares #expect!" do
+    expect(Mangrove::Option.instance_methods).to include :expect_with!
+  end
+
   it "declares #some?" do
     expect(Mangrove::Option.instance_methods).to include :some?
   end

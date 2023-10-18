@@ -25,6 +25,13 @@ RSpec.describe Mangrove::Option::Some do
     end
   end
 
+  context "#expect_with!" do
+    it "extracts inner value" do
+      expect(Mangrove::Option::Some.new(1).expect_with! { "my expectation" }).to eq 1
+      expect(Mangrove::Option::Some.new(:my_symbol).expect_with! { "my expectation" }).to eq :my_symbol
+    end
+  end
+
   context "#some?" do
     it "returns true" do
       expect(Mangrove::Option::Some.new(1).some?).to eq true

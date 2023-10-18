@@ -3,30 +3,30 @@ Mangrove provides type utility to use with Sorbet.
 
 You can do something like this with the gem.
 
-```ruby
-class MyClass
-  extend T::Sig
+use `rubocop-mangrove`` to statically check rescuing ControlSignal is done
 
-  include Mangrove::ControlFlow::Handler
+```ruby
+class TransposeExample
+  extend T::Sig
 
   sig { params(numbers: T::Enumerable[Integer]).returns(Mangrove::Result[T::Array[Integer], String]) }
   def divide_arguments_by_3(numbers)
-    divided_nubmers = numbers
+    Mangrove::Result.from_results(numbers
       .map { |number|
         if number % 3 == 0
           Mangrove::Result::Ok.new(number / 3)
         else
           Mangrove::Result::Err.new("number #{number} is not divisible by 3")
         end
-      }
-      .map(&:unwrap!)
-
-    Mangrove::Result::Ok.new(divided_nubmers)
+      })
+  rescue ::Mangrove::ControlFlow::ControlSignal => e
+    Mangrove::Result::Err.new(e.inner_value)
   end
 end
+# rubocop:enable Lint/ConstantDefinitionInBlock
 
-expect(MyClass.new.divide_arguments_by_3([3, 4, 6])).to eq Mangrove::Result::Err.new("number 4 is not divisible by 3")
-expect(MyClass.new.divide_arguments_by_3([3, 6, 9])).to eq Mangrove::Result::Ok.new([1, 2, 3])
+expect(TransposeExample.new.divide_arguments_by_3([3, 4, 5])).to eq Mangrove::Result::Err.new(["number 4 is not divisible by 3", "number 5 is not divisible by 3"])
+expect(TransposeExample.new.divide_arguments_by_3([3, 6, 9])).to eq Mangrove::Result::Ok.new([1, 2, 3])
 ```
 
 Other examples are available at [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
@@ -34,9 +34,9 @@ Other examples are available at [`spec/**/**_spec.rb`](https://github.com/kazzix
 ## Features
 Most features are not implemented.
 
-- [x] Option Type (Partially Implemented)
-- [x] Result Type (Partially Implemented)
-- [ ] Builder type (Not implemented)
+- [x] Option Type
+- [x] Result Type
+- [ ] Builder Type Factory
   - [ ] Auto Implementation
 - [ ] TODO
 

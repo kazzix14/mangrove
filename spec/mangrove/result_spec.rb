@@ -13,6 +13,10 @@ RSpec.describe Mangrove::Result do
     expect(Mangrove::Result.instance_methods).to include :expect!
   end
 
+  it "declares #expect_with!" do
+    expect(Mangrove::Result.instance_methods).to include :expect!
+  end
+
   it "declares #ok?" do
     expect(Mangrove::Result.instance_methods).to include :ok?
   end

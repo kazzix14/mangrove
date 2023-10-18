@@ -66,6 +66,11 @@ module Mangrove
         @inner
       end
 
+      sig { override.params(_block: T.proc.returns(T.untyped)).returns(InnerType) }
+      def expect_with!(&_block)
+        @inner
+      end
+
       sig { override.returns(T::Boolean) }
       def some? = true
 
@@ -123,12 +128,17 @@ module Mangrove
 
       sig { override.returns(InnerType) }
       def unwrap!
-        raise Option::ControlSignal, Result::Err.new("called `Option#unwrap!` on an `None` value: #{self}")
+        raise Option::ControlSignal, "called `Option#unwrap!` on an `None` value: #{self}"
       end
 
       sig { override.params(message: String).returns(InnerType) }
       def expect!(message)
-        raise Option::ControlSignal, Result::Err.new(message)
+        raise Option::ControlSignal, message
+      end
+
+      sig { override.params(block: T.proc.returns(T.untyped)).returns(InnerType) }
+      def expect_with!(&block)
+        raise Option::ControlSignal, block.call
       end
 
       sig { override.returns(T::Boolean) }
@@ -164,6 +174,9 @@ module Mangrove
 
     sig { abstract.params(message: String).returns(InnerType) }
     def expect!(message); end
+
+    sig { abstract.params(block: T.proc.returns(T.untyped)).returns(InnerType) }
+    def expect_with!(&block); end
 
     sig { abstract.returns(T::Boolean) }
     def some?; end

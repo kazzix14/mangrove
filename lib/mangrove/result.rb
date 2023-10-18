@@ -33,6 +33,9 @@ module Mangrove
     sig { abstract.params(message: String).returns(OkType) }
     def expect!(message); end
 
+    sig { abstract.params(block: T.proc.returns(T.untyped)).returns(OkType) }
+    def expect_with!(&block); end
+
     sig { abstract.params(block: T.proc.params(this: OkType).returns(Result[OkType, ErrType])).returns(Result[OkType, ErrType]) }
     def map_ok(&block); end
 
@@ -102,6 +105,11 @@ module Mangrove
         @inner
       end
 
+      sig { override.params(_block: T.proc.returns(T.untyped)).returns(OkType) }
+      def expect_with!(&_block)
+        @inner
+      end
+
       sig { override.returns(T::Boolean) }
       def ok? = true
 
@@ -164,6 +172,11 @@ module Mangrove
       sig { override.params(message: String).returns(OkType) }
       def expect!(message)
         raise Result::ControlSignal, message
+      end
+
+      sig { override.params(block: T.proc.returns(T.untyped)).returns(OkType) }
+      def expect_with!(&block)
+        raise Result::ControlSignal, block.call
       end
 
       sig { override.returns(T::Boolean) }
