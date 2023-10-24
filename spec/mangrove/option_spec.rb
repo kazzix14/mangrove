@@ -40,4 +40,10 @@ RSpec.describe Mangrove::Option do
   it "declares #transpose" do
     expect(Mangrove::Option.instance_methods).to include :transpose
   end
+
+  it "implements .from_nilable" do
+    expect(Mangrove::Option.methods).to include :from_nilable
+    expect(Mangrove::Option.from_nilable(1)).to eq Mangrove::Option::Some.new(1)
+    expect(Mangrove::Option.from_nilable(nil)).to eq Mangrove::Option::None.new
+  end
 end

@@ -18,6 +18,20 @@ module Mangrove
 
     InnerType = type_member
 
+    class << self
+      extend ::T::Sig
+
+      sig { type_parameters(:InnerType).params(nilable: T.nilable(T.type_parameter(:InnerType))).returns(Mangrove::Option[T.type_parameter(:InnerType)]) }
+      def from_nilable(nilable)
+        case nilable
+        when NilClass
+          Mangrove::Option::None.new
+        else
+          Mangrove::Option::Some.new(nilable)
+        end
+      end
+    end
+
     # Option::Some
     class Some
       extend T::Sig
