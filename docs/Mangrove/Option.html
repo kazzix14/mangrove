@@ -152,6 +152,37 @@
 
   
     <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#from_nilable-class_method" title="from_nilable (class method)">.<strong>from_nilable</strong>(nilable)  &#x21d2; Mangrove::Option[T.type_parameter(:InnerType)] </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
       Instance Method Summary
       <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
@@ -387,6 +418,89 @@
   
   
 
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="from_nilable-class_method">
+  
+    .<strong>from_nilable</strong>(nilable)  &#x21d2; <tt><span class='object_link'><a href="" title="Mangrove::Option (module)">Mangrove::Option</a></span>[T.type_parameter(:InnerType)]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>nilable</span>
+      
+      
+        <span class='type'>(<tt>T.type_parameter(:InnerType)</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mangrove::Option (module)">Mangrove::Option</a></span>[T.type_parameter(:InnerType)]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27
+28
+29
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_from_nilable'>from_nilable</span><span class='lparen'>(</span><span class='id identifier rubyid_nilable'>nilable</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_nilable'>nilable</span>
+  <span class='kw'>when</span> <span class='const'>NilClass</span>
+    <span class='const'><span class='object_link'><a href="../Mangrove.html" title="Mangrove (module)">Mangrove</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Mangrove::Option (module)">Option</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Option/None.html" title="Mangrove::Option::None (class)">None</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='kw'>else</span>
+    <span class='const'><span class='object_link'><a href="../Mangrove.html" title="Mangrove (module)">Mangrove</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Mangrove::Option (module)">Option</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Option/Some.html" title="Mangrove::Option::Some (class)">Some</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Option/Some.html#initialize-instance_method" title="Mangrove::Option::Some#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_nilable'>nilable</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
 
@@ -447,10 +561,10 @@
       <pre class="lines">
 
 
-167</pre>
+181</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 167</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 181</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -514,10 +628,10 @@
       <pre class="lines">
 
 
-176</pre>
+190</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 176</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 190</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expect!'>expect!</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -581,10 +695,10 @@
       <pre class="lines">
 
 
-179</pre>
+193</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 179</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 193</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expect_with!'>expect_with!</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -648,10 +762,10 @@
       <pre class="lines">
 
 
-191</pre>
+205</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 191</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 205</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_none'>map_none</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -715,10 +829,10 @@
       <pre class="lines">
 
 
-188</pre>
+202</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 188</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 202</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_some'>map_some</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -767,10 +881,10 @@
       <pre class="lines">
 
 
-185</pre>
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 185</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 199</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_none?'>none?</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -819,10 +933,10 @@
       <pre class="lines">
 
 
-182</pre>
+196</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 182</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 196</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_some?'>some?</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -886,10 +1000,10 @@
       <pre class="lines">
 
 
-194</pre>
+208</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 194</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 208</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_transpose'>transpose</span><span class='lparen'>(</span><span class='id identifier rubyid_err'>err</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -938,10 +1052,10 @@
       <pre class="lines">
 
 
-173</pre>
+187</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 187</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap!'>unwrap!</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1005,10 +1119,10 @@
       <pre class="lines">
 
 
-170</pre>
+184</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 184</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap_or'>unwrap_or</span><span class='lparen'>(</span><span class='id identifier rubyid_default'>default</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1021,7 +1135,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Oct 24 12:49:57 2023 by
+  Generated on Tue Oct 24 12:55:36 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.1.2).
 </div>
