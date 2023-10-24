@@ -285,7 +285,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#map_err-instance_method" title="#map_err (instance method)">#<strong>map_err</strong>(&amp;block)  &#x21d2; Result[OkType, ErrType] </a>
+      <a href="#map_err-instance_method" title="#map_err (instance method)">#<strong>map_err</strong>(&amp;block)  &#x21d2; Result[OkType, T.type_parameter(:NewErrType)] </a>
     
 
     
@@ -307,7 +307,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#map_ok-instance_method" title="#map_ok (instance method)">#<strong>map_ok</strong>(&amp;block)  &#x21d2; Result[OkType, ErrType] </a>
+      <a href="#map_ok-instance_method" title="#map_ok (instance method)">#<strong>map_ok</strong>(&amp;block)  &#x21d2; Result[T.type_parameter(:NewOkType), ErrType] </a>
     
 
     
@@ -728,7 +728,7 @@
       <div class="method_details ">
   <h3 class="signature " id="map_err-instance_method">
   
-    #<strong>map_err</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>]</tt> 
+    #<strong>map_err</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)]</tt> 
   
 
   
@@ -753,7 +753,7 @@
         <span class='name'>block</span>
       
       
-        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>])</tt>)</span>
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)])</tt>)</span>
       
       
       
@@ -767,7 +767,7 @@
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>]</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)]</tt>)</span>
       
       
       
@@ -795,7 +795,7 @@
       <div class="method_details ">
   <h3 class="signature " id="map_ok-instance_method">
   
-    #<strong>map_ok</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>]</tt> 
+    #<strong>map_ok</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>]</tt> 
   
 
   
@@ -820,7 +820,7 @@
         <span class='name'>block</span>
       
       
-        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>])</tt>)</span>
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>])</tt>)</span>
       
       
       
@@ -834,7 +834,7 @@
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>]</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>]</tt>)</span>
       
       
       
@@ -968,7 +968,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Oct 24 20:35:17 2023 by
+  Generated on Tue Oct 24 20:44:48 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.1.2).
 </div>

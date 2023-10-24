@@ -25,11 +25,11 @@ RSpec.describe Mangrove::Result do
     expect(Mangrove::Result.instance_methods).to include :err?
   end
 
-  it "declares #map_some" do
+  it "declares #map_ok" do
     expect(Mangrove::Result.instance_methods).to include :map_ok
   end
 
-  it "declares #map_none" do
+  it "declares #map_err" do
     expect(Mangrove::Result.instance_methods).to include :map_err
   end
 
