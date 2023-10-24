@@ -29,12 +29,12 @@ RSpec.describe Mangrove::Option do
     expect(Mangrove::Option.instance_methods).to include :none?
   end
 
-  it "declares #map_some" do
-    expect(Mangrove::Option.instance_methods).to include :map_some
+  it "declares #map" do
+    expect(Mangrove::Option.instance_methods).to include :map
   end
 
-  it "declares #map_none" do
-    expect(Mangrove::Option.instance_methods).to include :map_none
+  it "declares #or" do
+    expect(Mangrove::Option.instance_methods).to include :or
   end
 
   it "declares #transpose" do

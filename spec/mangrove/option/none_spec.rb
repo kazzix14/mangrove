@@ -41,17 +41,17 @@ RSpec.describe Mangrove::Option::None do
     end
   end
 
-  context "#map_some" do
+  context "#map" do
     it "does not change inner value" do
-      expect(Mangrove::Option::None.new.map_some { Mangrove::Option::Some.new(2) }).to eq Mangrove::Option::None.new
-      expect(Mangrove::Option::None.new.map_some { Mangrove::Option::Some.new(:my_new_symbol) }).to eq Mangrove::Option::None.new
+      expect(Mangrove::Option::None.new.map { Mangrove::Option::Some.new(2) }).to eq Mangrove::Option::None.new
+      expect(Mangrove::Option::None.new.map { Mangrove::Option::Some.new(:my_new_symbol) }).to eq Mangrove::Option::None.new
     end
   end
 
-  context "#map_none" do
+  context "#or" do
     it "maps inner value with value returned by given block" do
-      expect(Mangrove::Option::None.new.map_none { Mangrove::Option::Some.new(2) }).to eq Mangrove::Option::Some.new(2)
-      expect(Mangrove::Option::None.new.map_none { Mangrove::Option::Some.new(:my_new_symbol) }).to eq Mangrove::Option::Some.new(:my_new_symbol)
+      expect(Mangrove::Option::None.new.or(Mangrove::Option::Some.new(2))).to eq Mangrove::Option::Some.new(2)
+      expect(Mangrove::Option::None.new.or(Mangrove::Option::Some.new(:my_new_symbol))).to eq Mangrove::Option::Some.new(:my_new_symbol)
     end
   end
 

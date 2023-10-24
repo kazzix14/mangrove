@@ -244,29 +244,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#map_none-instance_method" title="#map_none (instance method)">#<strong>map_none</strong>(&amp;_block)  &#x21d2; Option::Some[InnerType] </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#map_some-instance_method" title="#map_some (instance method)">#<strong>map_some</strong>(&amp;block)  &#x21d2; Option[InnerType] </a>
+      <a href="#map-instance_method" title="#map (instance method)">#<strong>map</strong>(&amp;block)  &#x21d2; ::Mangrove::Option[T.type_parameter(:NewInnerType)] </a>
     
 
     
@@ -289,6 +267,28 @@
   <span class="summary_signature">
     
       <a href="#none%3F-instance_method" title="#none? (instance method)">#<strong>none?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#or-instance_method" title="#or (instance method)">#<strong>or</strong>(_default)  &#x21d2; Option[InnerType] </a>
     
 
     
@@ -720,76 +720,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="map_none-instance_method">
+  <h3 class="signature " id="map-instance_method">
   
-    #<strong>map_none</strong>(&amp;_block)  &#x21d2; <tt><span class='object_link'><a href="" title="Mangrove::Option::Some (class)">Option::Some</a></span>[<span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>]</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>_block</span>
-      
-      
-        <span class='type'>(<tt>T.proc.returns(<span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">Option</a></span>[<span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>])</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Mangrove::Option::Some (class)">Option::Some</a></span>[<span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>]</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-100
-101
-102</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 100</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_map_none'>map_none</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid__block'>_block</span><span class='rparen'>)</span>
-  <span class='kw'>self</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="map_some-instance_method">
-  
-    #<strong>map_some</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">Option</a></span>[<span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>]</tt> 
+    #<strong>map</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">::Mangrove::Option</a></span>[T.type_parameter(:NewInnerType)]</tt> 
   
 
   
@@ -810,7 +743,7 @@
         <span class='name'>block</span>
       
       
-        <span class='type'>(<tt>T.proc.params(inner: <span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>).returns(<span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">Option</a></span>[<span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>])</tt>)</span>
+        <span class='type'>(<tt>T.proc.params(inner: <span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>).returns(<span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">Option</a></span>[T.type_parameter(:NewInnerType)])</tt>)</span>
       
       
       
@@ -824,7 +757,7 @@
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">Option</a></span>[<span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>]</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">::Mangrove::Option</a></span>[T.type_parameter(:NewInnerType)]</tt>)</span>
       
       
       
@@ -845,7 +778,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 95</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_map_some'>map_some</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@inner</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -896,6 +829,73 @@
       <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_none?'>none?</span> <span class='op'>=</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="or-instance_method">
+  
+    #<strong>or</strong>(_default)  &#x21d2; <tt><span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">Option</a></span>[<span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>_default</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">Option</a></span>[<span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">Option</a></span>[<span class='object_link'><a href="#InnerType-constant" title="Mangrove::Option::Some::InnerType (constant)">InnerType</a></span>]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/option.rb', line 100</span>
+
+<span class='kw'>def</span> <span class='kw'>or</span><span class='lparen'>(</span><span class='id identifier rubyid__default'>_default</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1192,7 +1192,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Oct 24 12:55:37 2023 by
+  Generated on Tue Oct 24 20:35:18 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.1.2).
 </div>

@@ -91,13 +91,13 @@ module Mangrove
       sig { override.returns(T::Boolean) }
       def none? = false
 
-      sig { override.params(block: T.proc.params(inner: InnerType).returns(Option[InnerType])).returns(Option[InnerType]) }
-      def map_some(&block)
+      sig { override.type_parameters(:NewInnerType).params(block: T.proc.params(inner: InnerType).returns(Option[T.type_parameter(:NewInnerType)])).returns(::Mangrove::Option[T.type_parameter(:NewInnerType)]) }
+      def map(&block)
         block.call(@inner)
       end
 
-      sig { override.params(_block: T.proc.returns(Option[InnerType])).returns(Option::Some[InnerType]) }
-      def map_none(&_block)
+      sig { override.params(_default: Option[InnerType]).returns(Option[InnerType]) }
+      def or(_default)
         self
       end
 
@@ -161,14 +161,14 @@ module Mangrove
       sig { override.returns(T::Boolean) }
       def none? = true
 
-      sig { override.params(_block: T.proc.params(inner: InnerType).returns(Option[InnerType])).returns(Option::None[InnerType]) }
-      def map_some(&_block)
-        self
+      sig { override.type_parameters(:NewInnerType).params(_block: T.proc.params(inner: InnerType).returns(Option[T.type_parameter(:NewInnerType)])).returns(Option[T.type_parameter(:NewInnerType)]) }
+      def map(&_block)
+        T.cast(self, Option[T.type_parameter(:NewInnerType)])
       end
 
-      sig { override.params(block: T.proc.returns(Option[InnerType])).returns(Option[InnerType]) }
-      def map_none(&block)
-        block.call
+      sig { override.params(default: Option[InnerType]).returns(Option[InnerType]) }
+      def or(default)
+        default
       end
 
       sig { override.type_parameters(:ErrType).params(err: T.type_parameter(:ErrType)).returns(Mangrove::Result[InnerType, T.type_parameter(:ErrType)]) }
@@ -198,11 +198,11 @@ module Mangrove
     sig { abstract.returns(T::Boolean) }
     def none?; end
 
-    sig { abstract.params(block: T.proc.params(inner: InnerType).returns(Option[InnerType])).returns(Option[InnerType]) }
-    def map_some(&block); end
+    sig { abstract.type_parameters(:NewInnerType).params(block: T.proc.params(inner: InnerType).returns(Option[T.type_parameter(:NewInnerType)])).returns(::Mangrove::Option[T.type_parameter(:NewInnerType)]) }
+    def map(&block); end
 
-    sig { abstract.params(block: T.proc.returns(Option[InnerType])).returns(Option[InnerType]) }
-    def map_none(&block); end
+    sig { abstract.params(default: Option[InnerType]).returns(Option[InnerType]) }
+    def or(default); end
 
     sig { abstract.type_parameters(:ErrType).params(err: T.type_parameter(:ErrType)).returns(Mangrove::Result[InnerType, T.type_parameter(:ErrType)]) }
     def transpose(err); end
