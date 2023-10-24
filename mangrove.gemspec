@@ -12,7 +12,7 @@ Gem::Specification.new { |spec|
   spec.summary = "Type Utility for Ruby."
   spec.description = "Type Utility for Ruby."
   spec.homepage = "https://github.com/kazzix14/mangrove"
-  spec.required_ruby_version = ">= 3.2.0"
+  spec.required_ruby_version = ">= 3.1.2"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/kazzix14/mangrove"
