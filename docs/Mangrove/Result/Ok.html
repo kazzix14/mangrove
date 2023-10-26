@@ -170,6 +170,72 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#and-instance_method" title="#and (instance method)">#<strong>and</strong>(other)  &#x21d2; Result[T.type_parameter(:NewOkType), ErrType] </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#and_then-instance_method" title="#and_then (instance method)">#<strong>and_then</strong>(&amp;block)  &#x21d2; Result[T.type_parameter(:NewOkType), ErrType] </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#and_then_wt-instance_method" title="#and_then_wt (instance method)">#<strong>and_then_wt</strong>(_t_new_ok, &amp;block)  &#x21d2; Result[T.type_parameter(:NewOkType), ErrType] </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#err%3F-instance_method" title="#err? (instance method)">#<strong>err?</strong>  &#x21d2; Boolean </a>
     
 
@@ -244,6 +310,28 @@
   
   
     <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#map-instance_method" title="#map (instance method)">#<strong>map</strong>(&amp;block)  &#x21d2; Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)] </a>
+    
+
+    
+  </span>
+  
   
   
   
@@ -352,6 +440,28 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#map_wt-instance_method" title="#map_wt (instance method)">#<strong>map_wt</strong>(_t_new_ok, _t_new_err, &amp;block)  &#x21d2; Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)] </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#ok%3F-instance_method" title="#ok? (instance method)">#<strong>ok?</strong>  &#x21d2; Boolean </a>
     
 
@@ -375,6 +485,72 @@
   <span class="summary_signature">
     
       <a href="#ok_inner-instance_method" title="#ok_inner (instance method)">#<strong>ok_inner</strong>  &#x21d2; OkType </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#or-instance_method" title="#or (instance method)">#<strong>or</strong>(_other)  &#x21d2; Result[OkType, ErrType] </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#or_else-instance_method" title="#or_else (instance method)">#<strong>or_else</strong>(&amp;_block)  &#x21d2; Result[OkType, T.type_parameter(:NewErrType)] </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#or_else_wt-instance_method" title="#or_else_wt (instance method)">#<strong>or_else_wt</strong>(_t_new_err, &amp;_block)  &#x21d2; Result[OkType, T.type_parameter(:NewErrType)] </a>
     
 
     
@@ -453,7 +629,7 @@
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Mangrove::Result</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Result.html#from_results-class_method" title="Mangrove::Result.from_results (method)">from_results</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Result.html#err-class_method" title="Mangrove::Result.err (method)">err</a></span>, <span class='object_link'><a href="../Result.html#from_results-class_method" title="Mangrove::Result.from_results (method)">from_results</a></span>, <span class='object_link'><a href="../Result.html#ok-class_method" title="Mangrove::Result.ok (method)">ok</a></span></p>
 
   
   
@@ -500,12 +676,12 @@
       <pre class="lines">
 
 
-83
-84
-85</pre>
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 117</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_inner'>inner</span><span class='rparen'>)</span>
   <span class='ivar'>@inner</span> <span class='op'>=</span> <span class='id identifier rubyid_inner'>inner</span>
@@ -574,19 +750,19 @@
       <pre class="lines">
 
 
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97</pre>
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
@@ -597,6 +773,218 @@
   <span class='kw'>else</span>
     <span class='kw'>false</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="and-instance_method">
+  
+    #<strong>and</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>other</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+192
+193
+194</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 192</span>
+
+<span class='kw'>def</span> <span class='kw'>and</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_other'>other</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="and_then-instance_method">
+  
+    #<strong>and_then</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>block</span>
+      
+      
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>).returns(<span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>])</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+197
+198
+199</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 197</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_and_then'>and_then</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@inner</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="and_then_wt-instance_method">
+  
+    #<strong>and_then_wt</strong>(_t_new_ok, &amp;block)  &#x21d2; <tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>_t_new_ok</span>
+      
+      
+        <span class='type'>(<tt>T::Class[T.type_parameter(:NewOkType)]</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>block</span>
+      
+      
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>).returns(<span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>])</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+202
+203
+204</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 202</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_and_then_wt'>and_then_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_new_ok'>_t_new_ok</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@inner</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -640,10 +1028,10 @@
       <pre class="lines">
 
 
-123</pre>
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 157</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_err?'>err?</span> <span class='op'>=</span> <span class='kw'>false</span></pre>
     </td>
@@ -703,12 +1091,12 @@
       <pre class="lines">
 
 
-110
-111
-112</pre>
+144
+145
+146</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expect!'>expect!</span><span class='lparen'>(</span><span class='id identifier rubyid__message'>_message</span><span class='rparen'>)</span>
   <span class='ivar'>@inner</span>
@@ -770,15 +1158,82 @@
       <pre class="lines">
 
 
-115
-116
-117</pre>
+149
+150
+151</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 149</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expect_with!'>expect_with!</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid__block'>_block</span><span class='rparen'>)</span>
   <span class='ivar'>@inner</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="map-instance_method">
+  
+    #<strong>map</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>block</span>
+      
+      
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]).returns(<span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+160
+161
+162</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 160</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -837,12 +1292,12 @@
       <pre class="lines">
 
 
-137
-138
-139</pre>
+181
+182
+183</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 181</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_err'>map_err</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid__block'>_block</span><span class='rparen'>)</span>
   <span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_cast'>cast</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Mangrove::Result::Ok (class)">Ok</a></span></span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span></span><span class='comma'>,</span> <span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_type_parameter'>type_parameter</span><span class='lparen'>(</span><span class='symbol'>:NewErrType</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -917,12 +1372,12 @@
       <pre class="lines">
 
 
-143
-144
-145</pre>
+187
+188
+189</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 143</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 187</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_err_wt'>map_err_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_new_err'>_t_new_err</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid__block'>_block</span><span class='rparen'>)</span>
   <span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_cast'>cast</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Mangrove::Result::Ok (class)">Ok</a></span></span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span></span><span class='comma'>,</span> <span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_type_parameter'>type_parameter</span><span class='lparen'>(</span><span class='symbol'>:NewErrType</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -984,12 +1439,12 @@
       <pre class="lines">
 
 
-126
-127
-128</pre>
+170
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 170</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_ok'>map_ok</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Mangrove::Result::Ok (class)">Ok</a></span></span><span class='lbracket'>[</span><span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_type_parameter'>type_parameter</span><span class='lparen'>(</span><span class='symbol'>:NewOkType</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@inner</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1064,15 +1519,104 @@
       <pre class="lines">
 
 
-132
-133
-134</pre>
+176
+177
+178</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 132</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 176</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_ok_wt'>map_ok_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_new_ok'>_t_new_ok</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Mangrove::Result::Ok (class)">Ok</a></span></span><span class='lbracket'>[</span><span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_type_parameter'>type_parameter</span><span class='lparen'>(</span><span class='symbol'>:NewOkType</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@inner</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="map_wt-instance_method">
+  
+    #<strong>map_wt</strong>(_t_new_ok, _t_new_err, &amp;block)  &#x21d2; <tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>_t_new_ok</span>
+      
+      
+        <span class='type'>(<tt>T.type_parameter(:NewOkType)</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>_t_new_err</span>
+      
+      
+        <span class='type'>(<tt>T.type_parameter(:NewErrType)</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>block</span>
+      
+      
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]).returns(<span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+165
+166
+167</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 165</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_map_wt'>map_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_new_ok'>_t_new_ok</span><span class='comma'>,</span> <span class='id identifier rubyid__t_new_err'>_t_new_err</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1116,10 +1660,10 @@
       <pre class="lines">
 
 
-120</pre>
+154</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 154</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ok?'>ok?</span> <span class='op'>=</span> <span class='kw'>true</span></pre>
     </td>
@@ -1164,15 +1708,227 @@
       <pre class="lines">
 
 
-100
-101
-102</pre>
+134
+135
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ok_inner'>ok_inner</span>
   <span class='ivar'>@inner</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="or-instance_method">
+  
+    #<strong>or</strong>(_other)  &#x21d2; <tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>_other</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+207
+208
+209</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 207</span>
+
+<span class='kw'>def</span> <span class='kw'>or</span><span class='lparen'>(</span><span class='id identifier rubyid__other'>_other</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="or_else-instance_method">
+  
+    #<strong>or_else</strong>(&amp;_block)  &#x21d2; <tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>_block</span>
+      
+      
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>).returns(<span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)])</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+212
+213
+214</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 212</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_or_else'>or_else</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid__block'>_block</span><span class='rparen'>)</span>
+  <span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_cast'>cast</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Mangrove::Result::Ok (class)">Ok</a></span></span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span></span><span class='comma'>,</span> <span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_type_parameter'>type_parameter</span><span class='lparen'>(</span><span class='symbol'>:NewErrType</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="or_else_wt-instance_method">
+  
+    #<strong>or_else_wt</strong>(_t_new_err, &amp;_block)  &#x21d2; <tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>_t_new_err</span>
+      
+      
+        <span class='type'>(<tt>T::Class[T.type_parameter(:NewErrType)]</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>_block</span>
+      
+      
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::Ok::ErrType (constant)">ErrType</a></span>).returns(<span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)])</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+217
+218
+219</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 217</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_or_else_wt'>or_else_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_new_err'>_t_new_err</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid__block'>_block</span><span class='rparen'>)</span>
+  <span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_cast'>cast</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Result.html" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Mangrove::Result::Ok (class)">Ok</a></span></span><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::Ok::OkType (constant)">OkType</a></span></span><span class='comma'>,</span> <span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_type_parameter'>type_parameter</span><span class='lparen'>(</span><span class='symbol'>:NewErrType</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1216,12 +1972,12 @@
       <pre class="lines">
 
 
-148
-149
-150</pre>
+222
+223
+224</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 148</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 222</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>super</span><span class='embexpr_end'>}</span><span class='tstring_content'>: inner=`</span><span class='embexpr_beg'>#{</span><span class='ivar'>@inner</span><span class='embexpr_end'>}</span><span class='tstring_content'>`</span><span class='tstring_end'>&quot;</span></span>
@@ -1268,12 +2024,12 @@
       <pre class="lines">
 
 
-105
-106
-107</pre>
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 139</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap!'>unwrap!</span>
   <span class='ivar'>@inner</span>
@@ -1288,7 +2044,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Oct 26 11:19:48 2023 by
+  Generated on Thu Oct 26 12:34:23 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.1.2).
 </div>

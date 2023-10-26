@@ -72,6 +72,48 @@ RSpec.describe Mangrove::Result::Ok do
     end
   end
 
+  describe "#and" do
+    it "returns other" do
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).and(Mangrove::Result::Ok[String, Symbol].new("ok"))).to eq Mangrove::Result::Ok[String, Symbol].new("ok")
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).and(Mangrove::Result::Err[String, Symbol].new(:err))).to eq Mangrove::Result::Err[String, Symbol].new(:err)
+    end
+  end
+
+  describe "#and_then" do
+    it "maps inner value with value returned by given block" do
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).and_then { |_| Mangrove::Result.ok("ok") }).to eq Mangrove::Result::Ok[String, Symbol].new("ok")
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).and_then { |_| Mangrove::Result.err(:err) }).to eq Mangrove::Result::Err[String, Symbol].new(:err)
+    end
+  end
+
+  describe "#and_then_wt" do
+    it "maps inner value with value returned by given block" do
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).and_then_wt(String) { |_| Mangrove::Result.ok("ok") }).to eq Mangrove::Result::Ok[String, Symbol].new("ok")
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).and_then_wt(Symbol) { |_| Mangrove::Result.err(:err) }).to eq Mangrove::Result::Err[Symbol, Symbol].new(:err)
+    end
+  end
+
+  describe "#or" do
+    it "returns self" do
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).or(Mangrove::Result::Ok[Integer, Symbol].new(1))).to eq Mangrove::Result::Ok[Integer, Symbol].new(0)
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).or(Mangrove::Result::Err[Integer, Symbol].new(:error))).to eq Mangrove::Result::Ok[Integer, Symbol].new(0)
+    end
+  end
+
+  describe "#or_else" do
+    it "returns self" do
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).or_else { |_| Mangrove::Result.ok(1) }).to eq Mangrove::Result::Ok[Integer, String].new(0)
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).or_else { |_| Mangrove::Result.err("error") }).to eq Mangrove::Result::Ok[Integer, String].new(0)
+    end
+  end
+
+  describe "#and_then_wt" do
+    it "returns self" do
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).or_else_wt(String) { |_| Mangrove::Result.ok(1) }).to eq Mangrove::Result::Ok[Integer, String].new(0)
+      expect(Mangrove::Result::Ok[Integer, Symbol].new(0).or_else_wt(String) { |_| Mangrove::Result.err("error") }).to eq Mangrove::Result::Ok[Integer, String].new(0)
+    end
+  end
+
   describe "#to_s" do
     it "includes inner value" do
       expect(Mangrove::Result::Ok.new("my inner").to_s).to include ": inner=`my inner`"
