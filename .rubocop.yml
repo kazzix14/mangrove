@@ -46,6 +46,9 @@ Style/GuardClause:
 Style/IfUnlessModifier:
   Enabled: false
 
+Style/MultilineBlockChain:
+  Enabled: false
+
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
