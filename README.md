@@ -98,6 +98,12 @@ class MyService
       }
   end
 end
+
+expect(MyController.new.create("0")).to eq "e1: num < 1"
+expect(MyController.new.create("1")).to eq "{:my_key=>\"`1` < 2\"}"
+expect(MyController.new.create("2")).to eq "e1: mapping to E1 not `2` < 2"
+expect(MyController.new.create("3")).to eq "e2: e2"
+expect(MyController.new.create("invalid")).to eq "other: invalid value for Integer(): \"invalid\""
 ```
 
 Other examples are available at [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
