@@ -103,7 +103,7 @@ module Mangrove
 
       sig { override.type_parameters(:ErrType).params(_err: T.type_parameter(:ErrType)).returns(Mangrove::Result[InnerType, T.type_parameter(:ErrType)]) }
       def transpose(_err)
-        Result::Ok.new(@inner)
+        Result.ok(@inner, T.class_of(_err))
       end
 
       private
@@ -173,7 +173,7 @@ module Mangrove
 
       sig { override.type_parameters(:ErrType).params(err: T.type_parameter(:ErrType)).returns(Mangrove::Result[InnerType, T.type_parameter(:ErrType)]) }
       def transpose(err)
-        Result::Err.new(err)
+        Result::Err[InnerType, T.type_parameter(:ErrType)].new(err)
       end
     end
 

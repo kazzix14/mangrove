@@ -25,7 +25,8 @@ RSpec.describe Mangrove do
               end
             })
         rescue ::Mangrove::ControlFlow::ControlSignal => e
-          Mangrove::Result::Err.new(e.inner_value)
+          # inner_type.newにする？
+          Mangrove::Result::Err[T.untyped, e.inner_type].new(e.inner_value)
         end
       end
       # rubocop:enable Lint/ConstantDefinitionInBlock
@@ -60,6 +61,104 @@ RSpec.describe Mangrove do
 
       expect(PropagationExample.new.divide_arguments_by_3([3, 4, 5])).to eq Mangrove::Result::Err.new("number 4 is not divisible by 3")
       expect(PropagationExample.new.divide_arguments_by_3([3, 6, 9])).to eq Mangrove::Result::Ok.new([1, 2, 3])
+    end
+  end
+
+  context "Test" do
+    class MyTest
+      extend T::Sig
+
+      sig { void }
+      def create
+        MyService.new.execute
+      end
+    end
+
+    class MyService
+      extend T::Sig
+      extend T::Generic
+
+      include Kernel
+
+      E = type_member {{upper: MyServiceError}}
+
+      sig { returns(Mangrove::Result[String, MyServiceError])}
+      def execute
+        if rand() < 0.5
+          err = Mangrove::Result.err(String, MyServiceError::E1.new(MyError::E1.new))
+          return err
+        elsif rand() < 0.5
+          err = Mangrove::Result.err(String, MyServiceError::E2.new(MyError::E2.new))
+          return err
+          #return Mangrove::Result::Err[String, MyError::E2].new(MyError::E2.new)
+        else
+          err = Mangrove::Result.err(String, MyServiceError::E1.new(MyError::E1.new))
+          return err
+          #return Mangrove::Result::Err[String, MyError::E3].new(MyError::E3.new)
+        end
+      end
+
+      module MyServiceError
+        extend T::Sig
+        extend T::Helpers
+
+        interface!
+        sealed!
+
+        sig { abstract.returns(MyError) }
+        def inner; end
+
+        class E1
+          extend T::Sig
+
+          include MyServiceError
+
+          sig { params(inner: MyError::E1).void }
+          def initialize(inner)
+            @inner = inner
+          end
+
+          sig { override.returns(MyError::E1) }
+          def inner = @inner
+        end
+
+        class E2
+          extend T::Sig
+
+          include MyServiceError
+
+          sig { params(inner: MyError::E2).void }
+          def initialize(inner)
+            @inner = inner
+          end
+
+          sig { override.returns(MyError::E2) }
+          def inner = @inner
+        end
+      end
+    end
+
+    class MyError
+      class E1 < MyError
+        extend T::Sig
+
+        sig { returns(String) }
+        def msg = "e1"
+      end
+
+      class E2 < MyError
+        extend T::Sig
+
+        sig { returns(String) }
+        def msg = "e2"
+      end
+
+      class E3 < MyError
+        extend T::Sig
+
+        sig { returns(String) }
+        def msg = "e2"
+      end
     end
   end
 end

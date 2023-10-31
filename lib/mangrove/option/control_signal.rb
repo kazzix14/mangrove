@@ -7,13 +7,17 @@ module Mangrove
   module Option
     class ControlSignal < StandardError
       extend T::Sig
+      extend T::Generic
 
       include Mangrove::ControlFlow::ControlSignal
 
-      sig { params(inner_value: T.untyped).void }
+      InnerType = type_member
+
+      sig { params(inner_value: InnerType).void }
       def initialize(inner_value)
         @inner_value = inner_value
-        super
+        @inner_type = T.let(T.class_of(inner_value), Module)
+        super(T.let(inner_value, T.untyped))
       end
 
       sig { override.params(other: BasicObject).returns(T::Boolean) }
@@ -26,8 +30,11 @@ module Mangrove
         end
       end
 
-      sig { override.returns(T.untyped) }
+      sig { override.returns(InnerType) }
       attr_reader :inner_value
+
+      sig { override.returns(Module) }
+      attr_reader :inner_type
     end
   end
 end
