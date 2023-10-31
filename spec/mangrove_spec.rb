@@ -96,7 +96,17 @@ RSpec.describe Mangrove do
           when Mangrove::Result::Ok
             result.ok_inner
           when Mangrove::Result::Err
-            result.err_inner.inner.msg
+            error = result.err_inner
+
+            case error
+            when MyService::MyServiceError::E1
+              "e1: #{error.inner.msg}"
+            when MyService::MyServiceError::E2
+              "e2: #{error.inner.msg}"
+            when MyService::MyServiceError::Other
+              "other: #{error.inner.msg}"
+            else T.absurd(error)
+            end
           end
         end
       end
@@ -138,7 +148,7 @@ RSpec.describe Mangrove do
                   }
                   .map_ok(&:to_s)
               else
-                Mangrove::Result.err(String, MyServiceError::E1.new(MyAppError::E1.new("else")))
+                Mangrove::Result.err(String, MyServiceError::E2.new(MyAppError::E2.new))
               end
             }
         end
@@ -243,16 +253,16 @@ RSpec.describe Mangrove do
           extend T::Sig
 
           sig { override.returns(String) }
-          def msg = "e2"
+          def msg = "e3"
         end
       end
       # rubocop:enable Lint/ConstantDefinitionInBlock
 
-      expect(MyController.new.create("0")).to eq "num < 1"
+      expect(MyController.new.create("0")).to eq "e1: num < 1"
       expect(MyController.new.create("1")).to eq "{:my_key=>\"`1` < 2\"}"
-      expect(MyController.new.create("2")).to eq "mapping to E1 not `2` < 2"
-      expect(MyController.new.create("3")).to eq "else"
-      expect(MyController.new.create("invalid")).to eq "invalid value for Integer(): \"invalid\""
+      expect(MyController.new.create("2")).to eq "e1: mapping to E1 not `2` < 2"
+      expect(MyController.new.create("3")).to eq "e2: e2"
+      expect(MyController.new.create("invalid")).to eq "other: invalid value for Integer(): \"invalid\""
     end
   end
 end

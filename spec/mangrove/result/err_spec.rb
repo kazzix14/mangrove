@@ -99,7 +99,7 @@ RSpec.describe Mangrove::Result::Err do
   describe "#or_else" do
     it "returns other" do
       expect(Mangrove::Result::Err[Integer, Symbol].new(:error).or_else { |_| Mangrove::Result.ok(2, String) }).to eq Mangrove::Result::Ok[Integer, String].new(2)
-      expect(Mangrove::Result::Err[Integer, Symbol].new(:error).or_else { |_| Mangrove::Result.err(Integer, :err) }).to eq Mangrove::Result::Err[Integer, Symbol].new(:error)
+      expect(Mangrove::Result::Err[Integer, Symbol].new(:error).or_else { |_| Mangrove::Result.err(Integer, :err) }).to eq Mangrove::Result::Err[Integer, Symbol].new(:err)
     end
   end
 

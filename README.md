@@ -1,10 +1,8 @@
 # Mangrove
 Mangrove provides type utility to use with Sorbet.
+use `rubocop-mangrove` to statically check rescuing ControlSignal is done
 
 You can do something like this with the gem.
-
-use `rubocop-mangrove`` to statically check rescuing ControlSignal is done
-
 ```ruby
 class TransposeExample
   extend T::Sig
@@ -27,6 +25,79 @@ end
 
 expect(TransposeExample.new.divide_arguments_by_3([3, 4, 5])).to eq Mangrove::Result::Err.new(["number 4 is not divisible by 3", "number 5 is not divisible by 3"])
 expect(TransposeExample.new.divide_arguments_by_3([3, 6, 9])).to eq Mangrove::Result::Ok.new([1, 2, 3])
+
+```
+
+or like this.
+```ruby
+class MyController
+  extend T::Sig
+
+  sig { params(input: String).returns(String) }
+  def create(input)
+    result = MyService.new.execute(input)
+
+    case result
+    when Mangrove::Result::Ok
+      result.ok_inner
+    when Mangrove::Result::Err
+      error = result.err_inner
+
+      case error
+      when MyService::MyServiceError::E1
+        "e1: #{error.inner.msg}"
+      when MyService::MyServiceError::E2
+        "e2: #{error.inner.msg}"
+      when MyService::MyServiceError::Other
+        "other: #{error.inner.msg}"
+      else T.absurd(error)
+      end
+    end
+  end
+end
+
+class MyService
+  extend T::Sig
+  extend T::Generic
+
+  include Kernel
+
+  E = type_member { { upper: MyServiceError } }
+
+  sig { params(input: String).returns(Mangrove::Result[String, MyServiceError]) }
+  def execute(input)
+    input
+      .safe_to_i
+      .map_err_wt(MyServiceError::Other) { |e|
+        MyServiceError::Other.new(MyAppError::Other.new(e))
+      }.and_then_wt(String) { |num|
+        if num < 1
+          Mangrove::Result.err(String, MyServiceError::E1.new(MyAppError::E1.new("num < 1")))
+        elsif num < 3
+          Mangrove::Result
+            .ok(num, String)
+            .and_then_wt(String) { |n|
+              if n < 2
+                Mangrove::Result.ok("`#{n}` < 2", String)
+              else
+                Mangrove::Result.err(String, "not `#{n}` < 2")
+              end
+            }
+            .map_err_wt(MyServiceError::E1) { |e|
+              MyServiceError::E1.new(MyAppError::E1.new("mapping to E1 #{e}"))
+            }
+            .map_ok { |str|
+              {
+                my_key: str
+              }
+            }
+            .map_ok(&:to_s)
+        else
+          Mangrove::Result.err(String, MyServiceError::E2.new(MyAppError::E2.new))
+        end
+      }
+  end
+end
 ```
 
 Other examples are available at [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
@@ -48,7 +119,7 @@ bundle add mangrove
 
 ## Usage
 
-Documentation is available [here](https://kazzix14.github.io/mangrove/).
+[Documentation is available here](https://kazzix14.github.io/mangrove/).
 For more concrete examples, see [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
 
 ```ruby
@@ -69,7 +140,7 @@ my_none = Option::None.new
 include Mangrove::ControlFlow::Handler
 ```
 
-## Commands
+## Commands for Development
 ```
 git config core.hooksPath hooks
 bundle exec tapioca init
