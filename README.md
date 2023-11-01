@@ -69,10 +69,10 @@ class MyService
     input
       .safe_to_i
       .map_err_wt(MyServiceError::Other) { |e|
-        MyServiceError::Other.new(MyAppError::Other.new(e))
+        MyServiceError::Other.new(MyAppError::Other.new(e)).as_my_service_error
       }.and_then_wt(String) { |num|
         if num < 1
-          Mangrove::Result.err(String, MyServiceError::E1.new(MyAppError::E1.new("num < 1")))
+          Mangrove::Result.err(String, MyServiceError::E1.new(MyAppError::E1.new("num < 1")).as_my_service_error)
         elsif num < 3
           Mangrove::Result
             .ok(num, String)
@@ -84,7 +84,7 @@ class MyService
               end
             }
             .map_err_wt(MyServiceError::E1) { |e|
-              MyServiceError::E1.new(MyAppError::E1.new("mapping to E1 #{e}"))
+              MyServiceError::E1.new(MyAppError::E1.new("mapping to E1 #{e}")).as_my_service_error
             }
             .map_ok { |str|
               {
@@ -93,7 +93,7 @@ class MyService
             }
             .map_ok(&:to_s)
         else
-          Mangrove::Result.err(String, MyServiceError::E2.new(MyAppError::E2.new))
+          Mangrove::Result.err(String, MyServiceError::E2.new(MyAppError::E2.new).as_my_service_error)
         end
       }
   end
@@ -140,10 +140,6 @@ my_ok = Result::Ok.new("my value")
 my_err = Result::Err.new("my err")
 my_some = Option::Some.new(1234)
 my_none = Option::None.new
-
-# Including this Module into your class appends rescue clause into its methods. Results to `Option#unwrap!` and `Result#unwrap!` propagates to calling method like Ruet's `?` operator.
-# https://doc.rust-lang.org/reference/expressions/operator-expr.html#the-question-mark-operator
-include Mangrove::ControlFlow::Handler
 ```
 
 ## Commands for Development

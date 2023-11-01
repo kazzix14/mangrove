@@ -139,12 +139,12 @@
         <dt id="OkType-constant" class="">OkType =
           
         </dt>
-        <dd><pre class="code"><span class='id identifier rubyid_type_member'>type_member</span><span class='lparen'>(</span><span class='symbol'>:out</span><span class='rparen'>)</span></pre></dd>
+        <dd><pre class="code"><span class='id identifier rubyid_type_member'>type_member</span></pre></dd>
       
         <dt id="ErrType-constant" class="">ErrType =
           
         </dt>
-        <dd><pre class="code"><span class='id identifier rubyid_type_member'>type_member</span><span class='lparen'>(</span><span class='symbol'>:out</span><span class='rparen'>)</span></pre></dd>
+        <dd><pre class="code"><span class='id identifier rubyid_type_member'>type_member</span></pre></dd>
       
     </dl>
   
@@ -987,7 +987,7 @@
         <span class='name'>other</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), T.untyped]</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>]</tt>)</span>
       
       
       
@@ -1054,7 +1054,7 @@
         <span class='name'>block</span>
       
       
-        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), T.untyped])</tt>)</span>
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>])</tt>)</span>
       
       
       
@@ -1132,7 +1132,7 @@
         <span class='name'>block</span>
       
       
-        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), T.untyped])</tt>)</span>
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.type_parameter(:NewOkType), <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>])</tt>)</span>
       
       
       
@@ -1318,7 +1318,7 @@
         <span class='name'>block</span>
       
       
-        <span class='type'>(<tt>T.proc.returns(T.untyped)</tt>)</span>
+        <span class='type'>(<tt>T.proc.returns(T.type_parameter(:E))</tt>)</span>
       
       
       
@@ -1883,7 +1883,7 @@
         <span class='name'>other</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.untyped, T.untyped]</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>]</tt>)</span>
       
       
       
@@ -1950,7 +1950,7 @@
         <span class='name'>block</span>
       
       
-        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.untyped, T.type_parameter(:NewErrType)])</tt>)</span>
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)])</tt>)</span>
       
       
       
@@ -2028,7 +2028,7 @@
         <span class='name'>block</span>
       
       
-        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[T.untyped, T.type_parameter(:NewErrType)])</tt>)</span>
+        <span class='type'>(<tt>T.proc.params(this: <span class='object_link'><a href="#ErrType-constant" title="Mangrove::Result::ErrType (constant)">ErrType</a></span>).returns(<span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span>[<span class='object_link'><a href="#OkType-constant" title="Mangrove::Result::OkType (constant)">OkType</a></span>, T.type_parameter(:NewErrType)])</tt>)</span>
       
       
       
@@ -2124,7 +2124,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Oct 31 12:15:12 2023 by
+  Generated on Wed Nov  1 14:25:08 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>

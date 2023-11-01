@@ -15,8 +15,8 @@ module Mangrove
     sealed!
     interface!
 
-    OkType = type_member(:out)
-    ErrType = type_member(:out)
+    OkType = type_member
+    ErrType = type_member
 
     sig { abstract.params(other: BasicObject).returns(T::Boolean) }
     def ==(other); end
@@ -33,7 +33,7 @@ module Mangrove
     sig { abstract.params(message: String).returns(OkType) }
     def expect!(message); end
 
-    sig { abstract.params(block: T.proc.returns(T.untyped)).returns(OkType) }
+    sig { abstract.type_parameters(:E).params(block: T.proc.returns(T.type_parameter(:E))).returns(OkType) }
     def expect_with!(&block); end
 
     sig { abstract.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
@@ -54,30 +54,30 @@ module Mangrove
     sig { abstract.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
     def map_err_wt(_t_new_err, &block); end
 
-    sig { abstract.type_parameters(:NewOkType).params(other: Result[T.type_parameter(:NewOkType), T.untyped]).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+    sig { abstract.type_parameters(:NewOkType).params(other: Result[T.type_parameter(:NewOkType), ErrType]).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
     def and(other); end
 
-    sig { abstract.type_parameters(:NewOkType).params(block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.untyped])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+    sig { abstract.type_parameters(:NewOkType).params(block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), ErrType])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
     def and_then(&block); end
 
-    sig { abstract.type_parameters(:NewOkType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.untyped])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+    sig { abstract.type_parameters(:NewOkType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), ErrType])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
     def and_then_wt(_t_new_ok, &block); end
 
-    sig { abstract.params(other: Result[T.untyped, T.untyped]).returns(Result[OkType, ErrType]) }
+    sig { abstract.params(other: Result[OkType, ErrType]).returns(Result[OkType, ErrType]) }
     def or(other); end
 
-    sig { abstract.type_parameters(:NewErrType).params(block: T.proc.params(this: ErrType).returns(Result[T.untyped, T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
+    sig { abstract.type_parameters(:NewErrType).params(block: T.proc.params(this: ErrType).returns(Result[OkType, T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
     def or_else(&block); end
 
-    sig { abstract.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(Result[T.untyped, T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
+    sig { abstract.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(Result[OkType, T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
     def or_else_wt(_t_new_err, &block); end
 
     class << self
       extend T::Sig
       extend T::Generic
 
-      OkType = type_member(:out)
-      ErrType = type_member(:out)
+      OkType = type_member
+      ErrType = type_member
 
       sig { type_parameters(:T, :E).params(results: T::Enumerable[Result[T.type_parameter(:T), T.type_parameter(:E)]]).returns(Result[T::Enumerable[T.type_parameter(:T)], T::Enumerable[T.type_parameter(:E)]]) }
       def from_results(results)
@@ -145,7 +145,7 @@ module Mangrove
         @inner
       end
 
-      sig { override.params(_block: T.proc.returns(T.untyped)).returns(OkType) }
+      sig { override.type_parameters(:E).params(_block: T.proc.returns(T.type_parameter(:E))).returns(OkType) }
       def expect_with!(&_block)
         @inner
       end
@@ -266,7 +266,7 @@ module Mangrove
         raise Result::ControlSignal, message
       end
 
-      sig { override.params(block: T.proc.returns(T.untyped)).returns(OkType) }
+      sig { override.type_parameters(:E).params(block: T.proc.returns(T.type_parameter(:E))).returns(OkType) }
       def expect_with!(&block)
         raise Result::ControlSignal, block.call
       end

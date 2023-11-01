@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mangrove (0.15.1)
+    mangrove (0.16.0)
       method_source (~> 1.0)
       parser (~> 3.2)
       sorbet-runtime

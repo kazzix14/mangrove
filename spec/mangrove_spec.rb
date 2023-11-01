@@ -124,10 +124,10 @@ RSpec.describe Mangrove do
           input
             .safe_to_i
             .map_err_wt(MyServiceError::Other) { |e|
-              MyServiceError::Other.new(MyAppError::Other.new(e))
+              MyServiceError::Other.new(MyAppError::Other.new(e)).as_my_service_error
             }.and_then_wt(String) { |num|
               if num < 1
-                Mangrove::Result.err(String, MyServiceError::E1.new(MyAppError::E1.new("num < 1")))
+                Mangrove::Result.err(String, MyServiceError::E1.new(MyAppError::E1.new("num < 1")).as_my_service_error)
               elsif num < 3
                 Mangrove::Result
                   .ok(num, String)
@@ -139,7 +139,7 @@ RSpec.describe Mangrove do
                     end
                   }
                   .map_err_wt(MyServiceError::E1) { |e|
-                    MyServiceError::E1.new(MyAppError::E1.new("mapping to E1 #{e}"))
+                    MyServiceError::E1.new(MyAppError::E1.new("mapping to E1 #{e}")).as_my_service_error
                   }
                   .map_ok { |str|
                     {
@@ -148,7 +148,7 @@ RSpec.describe Mangrove do
                   }
                   .map_ok(&:to_s)
               else
-                Mangrove::Result.err(String, MyServiceError::E2.new(MyAppError::E2.new))
+                Mangrove::Result.err(String, MyServiceError::E2.new(MyAppError::E2.new).as_my_service_error)
               end
             }
         end
@@ -157,11 +157,16 @@ RSpec.describe Mangrove do
           extend T::Sig
           extend T::Helpers
 
-          interface!
+          abstract!
           sealed!
 
           sig { abstract.returns(MyAppError) }
           def inner; end
+
+          sig(:final) { returns(MyServiceError) }
+          def as_my_service_error
+            T.let(self, MyServiceError)
+          end
 
           class E1
             extend T::Sig
