@@ -575,8 +575,8 @@
     <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='symbol'>:@inner</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='ivar'>@inner</span>
   <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../Option.html" title="Mangrove::Option (module)">Option</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="None.html" title="Mangrove::Option::None (class)">None</a></span></span>
     <span class='kw'>false</span>
-  <span class='kw'>else</span>
-    <span class='comment'># T.absurd(other)
+  <span class='kw'>else</span> <span class='comment'># rubocop:disable Lint/DuplicateBranch
+</span>    <span class='comment'># Because == is defined on BasicObject, we can&#39;t be sure that `other` is an Option
 </span>    <span class='kw'>false</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -1192,7 +1192,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Nov  1 14:25:08 2023 by
+  Generated on Wed Nov  8 16:39:47 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>
