@@ -54,8 +54,8 @@ module Mangrove
           other.instance_variable_get(:@inner) == @inner
         when Option::None
           false
-        else
-          # T.absurd(other)
+        else # rubocop:disable Lint/DuplicateBranch
+          # Because == is defined on BasicObject, we can't be sure that `other` is an Option
           false
         end
       end
@@ -129,9 +129,9 @@ module Mangrove
           false
         when Option::None
           true
-        else
+        else # rubocop:disable Lint/DuplicateBranch
+          # Because == is defined on BasicObject, we can't be sure that `other` is an Option
           false
-          # T.absurd(other)
         end
       end
 

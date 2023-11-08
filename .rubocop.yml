@@ -2,6 +2,7 @@
 
 AllCops:
   TargetRubyVersion: 3.1
+  NewCops: enable
 
 Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
@@ -26,6 +27,9 @@ Metrics/MethodLength:
 
 Metrics/ModuleLength:
   Enabled: false
+
+Naming/BlockForwarding:
+  EnforcedStyle: explicit
 
 Naming/VariableNumber:
   EnforcedStyle: snake_case
