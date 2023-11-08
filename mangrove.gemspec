@@ -16,7 +16,7 @@ Gem::Specification.new { |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/kazzix14/mangrove"
-  # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["rubygems_mfa_required"] = "true"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -31,13 +31,6 @@ Gem::Specification.new { |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "sorbet-runtime"
-
-  # Utility
-  spec.add_dependency "method_source", "~> 1.0"
-
-  # Parser
-  spec.add_dependency "parser", "~> 3.2"
-  spec.add_dependency "unparser", "~> 0.6.8"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
