@@ -73,11 +73,21 @@ RSpec.describe Mangrove::Result do
 
   it "implements .ok" do
     expect(Mangrove::Result.methods).to include :ok
-    expect(Mangrove::Result.ok(1, String)).to eq Mangrove::Result::Ok[Integer, String].new(1)
+    expect(Mangrove::Result.ok(1)).to eq Mangrove::Result::Ok[Integer, String].new(1)
+  end
+
+  it "implements .ok_wt" do
+    expect(Mangrove::Result.methods).to include :ok_wt
+    expect(Mangrove::Result.ok_wt(1, String)).to eq Mangrove::Result::Ok[Integer, String].new(1)
   end
 
   it "implements .err" do
     expect(Mangrove::Result.methods).to include :err
-    expect(Mangrove::Result.err(Integer, :my_value)).to eq Mangrove::Result::Err[Integer, Symbol].new(:my_value)
+    expect(Mangrove::Result.err(:my_value)).to eq Mangrove::Result::Err[Integer, Symbol].new(:my_value)
+  end
+
+  it "implements .err_wt" do
+    expect(Mangrove::Result.methods).to include :err_wt
+    expect(Mangrove::Result.err_wt(Integer, :my_value)).to eq Mangrove::Result::Err[Integer, Symbol].new(:my_value)
   end
 end

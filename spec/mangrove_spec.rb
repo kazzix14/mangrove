@@ -75,9 +75,9 @@ RSpec.describe Mangrove do
         def safe_to_i
           T.bind(self, String)
 
-          Mangrove::Result.ok(Integer(self), ArgumentError)
+          Mangrove::Result.ok_wt(Integer(self), ArgumentError)
         rescue ArgumentError => e
-          Mangrove::Result.err(Integer, e)
+          Mangrove::Result.err_wt(Integer, e)
         end
       end
 
@@ -127,15 +127,15 @@ RSpec.describe Mangrove do
               MyServiceError::Other.new(MyAppError::Other.new(e)).as_my_service_error
             }.and_then_wt(String) { |num|
               if num < 1
-                Mangrove::Result.err(String, MyServiceError::E1.new(MyAppError::E1.new("num < 1")).as_my_service_error)
+                Mangrove::Result.err_wt(String, MyServiceError::E1.new(MyAppError::E1.new("num < 1")).as_my_service_error)
               elsif num < 3
                 Mangrove::Result
-                  .ok(num, String)
+                  .ok_wt(num, String)
                   .and_then_wt(String) { |n|
                     if n < 2
-                      Mangrove::Result.ok("`#{n}` < 2", String)
+                      Mangrove::Result.ok_wt("`#{n}` < 2", String)
                     else
-                      Mangrove::Result.err(String, "not `#{n}` < 2")
+                      Mangrove::Result.err_wt(String, "not `#{n}` < 2")
                     end
                   }
                   .map_err_wt(MyServiceError::E1) { |e|
@@ -148,7 +148,7 @@ RSpec.describe Mangrove do
                   }
                   .map_ok(&:to_s)
               else
-                Mangrove::Result.err(String, MyServiceError::E2.new(MyAppError::E2.new).as_my_service_error)
+                Mangrove::Result.err_wt(String, MyServiceError::E2.new(MyAppError::E2.new).as_my_service_error)
               end
             }
         end

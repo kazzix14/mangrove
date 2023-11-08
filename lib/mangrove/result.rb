@@ -92,13 +92,23 @@ module Mangrove
         end
       end
 
-      sig { type_parameters(:OkType, :ErrType).params(inner: T.type_parameter(:OkType), _t_err: T::Class[T.type_parameter(:ErrType)]).returns(Result::Ok[T.type_parameter(:OkType), T.type_parameter(:ErrType)]) }
-      def ok(inner, _t_err)
+      sig { type_parameters(:OkType, :ErrType).params(inner: T.type_parameter(:OkType)).returns(Result::Ok[T.type_parameter(:OkType), T.type_parameter(:ErrType)]) }
+      def ok(inner)
         Result::Ok[T.type_parameter(:OkType), T.type_parameter(:ErrType)].new(inner)
       end
 
+      sig { type_parameters(:OkType, :ErrType).params(inner: T.type_parameter(:OkType), _t_err: T::Class[T.type_parameter(:ErrType)]).returns(Result::Ok[T.type_parameter(:OkType), T.type_parameter(:ErrType)]) }
+      def ok_wt(inner, _t_err)
+        Result::Ok[T.type_parameter(:OkType), T.type_parameter(:ErrType)].new(inner)
+      end
+
+      sig { type_parameters(:OkType, :ErrType).params(inner: T.type_parameter(:ErrType)).returns(Result::Err[T.type_parameter(:OkType), T.type_parameter(:ErrType)]) }
+      def err(inner)
+        Result::Err[T.type_parameter(:OkType), T.type_parameter(:ErrType)].new(inner)
+      end
+
       sig { type_parameters(:OkType, :ErrType).params(_t_ok: T::Class[T.type_parameter(:OkType)], inner: T.type_parameter(:ErrType)).returns(Result::Err[T.type_parameter(:OkType), T.type_parameter(:ErrType)]) }
-      def err(_t_ok, inner)
+      def err_wt(_t_ok, inner)
         Result::Err[T.type_parameter(:OkType), T.type_parameter(:ErrType)].new(inner)
       end
     end
