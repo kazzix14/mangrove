@@ -145,9 +145,10 @@ my_none = Option::None.new
 ## Commands for Development
 ```
 git config core.hooksPath hooks
+bundle install
 bundle exec tapioca init
-bundle exec tapioca gems
-bundle exec tapioca dsl
+bundle exec tapioca gems -w `nproc`
+bundle exec tapioca dsl -w `nproc`
 bundle exec tapioca check-shims
 bundle exec tapioca init
 bundle exec rspec -f d
