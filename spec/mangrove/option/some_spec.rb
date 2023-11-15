@@ -60,7 +60,7 @@ RSpec.describe Mangrove::Option::Some do
 
   context "#transpose" do
     it "returns Result::Ok inheriting the inner" do
-      expect(Mangrove::Option::None.new.transpose(:my_err)).to eq Mangrove::Result::Err.new(:my_err)
+      expect(Mangrove::Option::Some.new(:my_ok).transpose(:my_err)).to eq Mangrove::Result::Ok.new(:my_ok)
     end
   end
 end
