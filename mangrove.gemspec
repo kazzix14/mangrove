@@ -15,6 +15,7 @@ Gem::Specification.new { |spec|
   spec.required_ruby_version = ">= 3.1.2"
 
   spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["documentation_uri"] = "https://kazzix14.github.io/mangrove"
   spec.metadata["source_code_uri"] = "https://github.com/kazzix14/mangrove"
   spec.metadata["rubygems_mfa_required"] = "true"
 
