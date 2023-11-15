@@ -23,6 +23,12 @@ RSpec.describe Mangrove::Result::Err do
     end
   end
 
+  describe "#unwrap_or_raise_with!" do
+    it "raises an exception that given block returns" do
+      expect { Mangrove::Result::Err.new(:my_error).unwrap_or_raise_with! { |e| Exception.new("my error: #{e}") } }.to raise_error(Exception, "my error: my_error")
+    end
+  end
+
   describe "#unwrap_or_raise_inner!" do
     it "raises err inner" do
       expect { Mangrove::Result::Err.new(Exception.new("my error")).unwrap_or_raise_inner! }.to raise_error(Exception, "my error")
