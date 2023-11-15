@@ -2,7 +2,7 @@
 Mangrove provides type utility to use with Sorbet.
 use `rubocop-mangrove` to statically check rescuing ControlSignal is done
 
-- [Documentation](https://kazzix14.github.io/mangrove/coverage/index.html#_AllFiles)
+- [Documentation](https://kazzix14.github.io/mangrove/docs/)
 - [Coverage](https://kazzix14.github.io/mangrove/coverage/index.html#_AllFiles)
 
 You can do something like this with the gem.
