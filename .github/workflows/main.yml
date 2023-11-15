@@ -6,6 +6,8 @@ on:
       - main
 
   pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -18,10 +20,41 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - name: Run the default task
-      run: bundle exec rake
+
+    - name: check Gem order
+      run: bundle exec ordinare --check
+
+    - name: Run RuboCop
+      run: bundle exec rubocop -DESP
+
+    - name: Check Sorbet shims
+      run: bundle exec tapioca check-shims
+
+    - name: Check types
+      run: bundle exec spoom tc
+
+    - name: Run RSpec
+      run: bundle exec rspec -f d
+
+    - name: Run yard
+      run: bundle exec yardoc -o doc/ --plugin yard-sorbet
+
+    - name: Deploy documentations to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./doc
+        destination_dir: docs
+
+    - name: Deploy SimpleCov Report to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./coverage
+        destination_dir: coverage
