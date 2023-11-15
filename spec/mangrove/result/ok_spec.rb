@@ -42,8 +42,8 @@ RSpec.describe Mangrove::Result::Ok do
 
   describe "#expect_with!" do
     it "extracts inner value" do
-      expect(Mangrove::Result::Ok.new(1).expect_with! { "my expectation" }).to eq 1
-      expect(Mangrove::Result::Ok.new(:my_symbol).expect_with! { "my expectation" }).to eq :my_symbol
+      expect(Mangrove::Result::Ok.new(1).expect_with! { |_e| "my expectation" }).to eq 1
+      expect(Mangrove::Result::Ok.new(:my_symbol).expect_with! { |_e| "my expectation" }).to eq :my_symbol
     end
   end
 

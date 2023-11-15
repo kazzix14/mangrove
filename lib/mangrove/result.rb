@@ -39,7 +39,7 @@ module Mangrove
     sig { abstract.params(message: String).returns(OkType) }
     def expect!(message); end
 
-    sig { abstract.type_parameters(:E).params(block: T.proc.returns(T.type_parameter(:E))).returns(OkType) }
+    sig { abstract.type_parameters(:E).params(block: T.proc.params(err: ErrType).returns(T.type_parameter(:E))).returns(OkType) }
     def expect_with!(&block); end
 
     sig { abstract.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
@@ -196,7 +196,7 @@ module Mangrove
         @inner
       end
 
-      sig { override.type_parameters(:E).params(_block: T.proc.returns(T.type_parameter(:E))).returns(OkType) }
+      sig { override.type_parameters(:E).params(_block: T.proc.params(err: ErrType).returns(T.type_parameter(:E))).returns(OkType) }
       def expect_with!(&_block)
         @inner
       end
@@ -360,9 +360,9 @@ module Mangrove
         raise Result::ControlSignal, message
       end
 
-      sig { override.type_parameters(:E).params(block: T.proc.returns(T.type_parameter(:E))).returns(OkType) }
+      sig { override.type_parameters(:E).params(block: T.proc.params(err: ErrType).returns(T.type_parameter(:E))).returns(OkType) }
       def expect_with!(&block)
-        raise Result::ControlSignal, block.call
+        raise Result::ControlSignal, block.call(@inner)
       end
 
       sig { override.returns(T::Boolean) }
