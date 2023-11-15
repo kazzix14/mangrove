@@ -73,7 +73,7 @@ module Mangrove
       abstract
         .params(
           new_err_inner: ErrType,
-          condition: T.proc.params(inner: OkType).returns(T::Boolean),
+          condition: T.proc.params(inner: OkType).returns(T::Boolean)
         )
         .returns(
           Result[OkType, ErrType]
@@ -94,7 +94,7 @@ module Mangrove
       abstract
         .params(
           new_ok_inner: OkType,
-          condition: T.proc.params(inner: ErrType).returns(T::Boolean),
+          condition: T.proc.params(inner: ErrType).returns(T::Boolean)
         )
         .returns(
           Result[OkType, ErrType]
@@ -258,7 +258,7 @@ module Mangrove
         override
           .params(
             new_err_inner: ErrType,
-            condition: T.proc.params(inner: OkType).returns(T::Boolean),
+            condition: T.proc.params(inner: OkType).returns(T::Boolean)
           )
           .returns(
             Result[OkType, ErrType]
@@ -291,7 +291,7 @@ module Mangrove
         override
           .params(
             _new_ok_inner: OkType,
-            _condition: T.proc.params(inner: ErrType).returns(T::Boolean),
+            _condition: T.proc.params(inner: ErrType).returns(T::Boolean)
           )
           .returns(
             Result::Ok[OkType, ErrType]
@@ -422,7 +422,7 @@ module Mangrove
         override
           .params(
             _new_err_inner: ErrType,
-            _condition: T.proc.params(inner: OkType).returns(T::Boolean),
+            _condition: T.proc.params(inner: OkType).returns(T::Boolean)
           )
           .returns(
             Result::Err[OkType, ErrType]
@@ -451,7 +451,7 @@ module Mangrove
         override
           .params(
             new_ok_inner: OkType,
-            condition: T.proc.params(inner: ErrType).returns(T::Boolean),
+            condition: T.proc.params(inner: ErrType).returns(T::Boolean)
           )
           .returns(
             Result[OkType, ErrType]
