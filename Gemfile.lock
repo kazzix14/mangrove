@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mangrove (0.18.1)
+    mangrove (0.19)
       sorbet-runtime (= 0.5.11128)
 
 GEM
@@ -10,6 +10,7 @@ GEM
     ast (2.4.2)
     base64 (0.1.1)
     diff-lcs (1.5.0)
+    docile (1.4.0)
     erubi (1.12.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
@@ -74,6 +75,12 @@ GEM
       prism (>= 0.15.1, < 0.16)
       sorbet-runtime (>= 0.5.5685)
     ruby-progressbar (1.13.0)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     sorbet (0.5.11128)
       sorbet-static (= 0.5.11128)
     sorbet-runtime (0.5.11128)
@@ -120,6 +127,7 @@ DEPENDENCIES
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.23)
   ruby-lsp
+  simplecov
   sorbet (= 0.5.11128)
   sorbet-runtime (= 0.5.11128)
   tapioca

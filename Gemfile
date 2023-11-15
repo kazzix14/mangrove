@@ -8,6 +8,7 @@ gemspec
 # Test
 gem "rspec"
 gem "rspec-sorbet"
+gem "simplecov", require: false
 
 # Utility
 gem "ordinare", require: false
