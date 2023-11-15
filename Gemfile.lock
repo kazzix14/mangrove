@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     mangrove (0.17.0)
-      sorbet-runtime
+      sorbet-runtime (= 0.5.11128)
 
 GEM
   remote: https://rubygems.org/
@@ -74,14 +74,14 @@ GEM
       prism (>= 0.15.1, < 0.16)
       sorbet-runtime (>= 0.5.5685)
     ruby-progressbar (1.13.0)
-    sorbet (0.5.11089)
-      sorbet-static (= 0.5.11089)
-    sorbet-runtime (0.5.11089)
-    sorbet-static (0.5.11089-universal-darwin)
-    sorbet-static (0.5.11089-x86_64-linux)
-    sorbet-static-and-runtime (0.5.11089)
-      sorbet (= 0.5.11089)
-      sorbet-runtime (= 0.5.11089)
+    sorbet (0.5.11128)
+      sorbet-static (= 0.5.11128)
+    sorbet-runtime (0.5.11128)
+    sorbet-static (0.5.11128-universal-darwin)
+    sorbet-static (0.5.11128-x86_64-linux)
+    sorbet-static-and-runtime (0.5.11128)
+      sorbet (= 0.5.11128)
+      sorbet-runtime (= 0.5.11128)
     spoom (1.2.4)
       erubi (>= 1.10.0)
       sorbet-static-and-runtime (>= 0.5.10187)
@@ -121,8 +121,8 @@ DEPENDENCIES
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.23)
   ruby-lsp
-  sorbet
-  sorbet-runtime
+  sorbet (= 0.5.11128)
+  sorbet-runtime (= 0.5.11128)
   tapioca
   yard (~> 0.9.34)
   yard-sorbet (~> 0.8.1)

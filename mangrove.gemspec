@@ -30,7 +30,7 @@ Gem::Specification.new { |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "sorbet-runtime"
+  spec.add_dependency "sorbet-runtime", "0.5.11128"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
