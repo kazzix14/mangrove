@@ -189,8 +189,8 @@ module Mangrove
         @inner
       end
 
-      sig { override.params(block: T.proc.params(err: ErrType).returns(Exception)).returns(OkType) }
-      def unwrap_or_raise_with!(&block)
+      sig { override.params(_block: T.proc.params(err: ErrType).returns(Exception)).returns(OkType) }
+      def unwrap_or_raise_with!(&_block)
         @inner
       end
 
