@@ -53,6 +53,20 @@ RSpec.describe Mangrove::Result::Err do
     end
   end
 
+  describe "#map" do
+    it "maps self with value returned by given block" do
+      expect(Mangrove::Result::Err.new(1).map { Mangrove::Result::Ok.new(2) }).to eq Mangrove::Result::Ok.new(2)
+      expect(Mangrove::Result::Err.new(:my_symbol).map { Mangrove::Result::Err.new(:my_new_symbol) }).to eq Mangrove::Result::Err.new(:my_new_symbol)
+    end
+  end
+
+  describe "#map_wt" do
+    it "maps self with value returned by given block" do
+      expect(Mangrove::Result::Err.new(1).map_wt(Integer, Symbol) { Mangrove::Result::Ok.new(2) }).to eq Mangrove::Result::Ok.new(2)
+      expect(Mangrove::Result::Err.new(:my_symbol).map_wt(Symbol, Symbol) { Mangrove::Result::Err.new(:my_new_symbol) }).to eq Mangrove::Result::Err.new(:my_new_symbol)
+    end
+  end
+
   describe "#map_ok" do
     it "does not change inner value" do
       expect(Mangrove::Result::Err.new(:my_error).map_ok { 2 }).to eq Mangrove::Result::Err.new(:my_error)

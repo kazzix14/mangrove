@@ -7,8 +7,8 @@ require "mangrove/result"
 RSpec.describe Mangrove::Result::Ok do
   describe "#ok_inner" do
     it "extracts inner value" do
-      expect(Mangrove::Result::Ok.new(1).unwrap!).to eq 1
-      expect(Mangrove::Result::Ok.new(:my_symbol).unwrap!).to eq :my_symbol
+      expect(Mangrove::Result::Ok.new(1).ok_inner).to eq 1
+      expect(Mangrove::Result::Ok.new(:my_symbol).ok_inner).to eq :my_symbol
     end
   end
 
@@ -21,15 +21,15 @@ RSpec.describe Mangrove::Result::Ok do
 
   describe "#unwrap_or_raise!" do
     it "extracts inner value" do
-      expect(Mangrove::Result::Ok.new(1).unwrap!).to eq 1
-      expect(Mangrove::Result::Ok.new(:my_symbol).unwrap!).to eq :my_symbol
+      expect(Mangrove::Result::Ok.new(1).unwrap_or_raise!(Exception.new)).to eq 1
+      expect(Mangrove::Result::Ok.new(:my_symbol).unwrap_or_raise!(Exception.new)).to eq :my_symbol
     end
   end
 
   describe "#unwrap_or_raise_inner!" do
     it "extracts inner value" do
-      expect(Mangrove::Result::Ok.new(1).unwrap!).to eq 1
-      expect(Mangrove::Result::Ok.new(:my_symbol).unwrap!).to eq :my_symbol
+      expect(Mangrove::Result::Ok.new(1).unwrap_or_raise_inner!).to eq 1
+      expect(Mangrove::Result::Ok.new(:my_symbol).unwrap_or_raise_inner!).to eq :my_symbol
     end
   end
 
@@ -59,12 +59,27 @@ RSpec.describe Mangrove::Result::Ok do
     end
   end
 
+  describe "#map" do
+    it "maps self with value returned by given block" do
+      expect(Mangrove::Result::Ok.new(1).map { Mangrove::Result::Ok.new(2) }).to eq Mangrove::Result::Ok.new(2)
+      expect(Mangrove::Result::Ok.new(:my_symbol).map { Mangrove::Result::Err.new(:my_new_symbol) }).to eq Mangrove::Result::Err.new(:my_new_symbol)
+    end
+  end
+
+  describe "#map_wt" do
+    it "maps self with value returned by given block" do
+      expect(Mangrove::Result::Ok.new(1).map_wt(Integer, Symbol) { Mangrove::Result::Ok.new(2) }).to eq Mangrove::Result::Ok.new(2)
+      expect(Mangrove::Result::Ok.new(:my_symbol).map_wt(Symbol, Symbol) { Mangrove::Result::Ok.new(:my_new_symbol) }).to eq Mangrove::Result::Ok.new(:my_new_symbol)
+    end
+  end
+
   describe "#map_ok" do
     it "maps inner value with value returned by given block" do
       expect(Mangrove::Result::Ok.new(1).map_ok { 2 }).to eq Mangrove::Result::Ok.new(2)
       expect(Mangrove::Result::Ok.new(:my_symbol).map_ok { :my_new_symbol }).to eq Mangrove::Result::Ok.new(:my_new_symbol)
     end
   end
+
   describe "#map_ok_wt" do
     it "maps inner value with value returned by given block" do
       expect(Mangrove::Result::Ok[Integer, Symbol].new(0).map_ok_wt(Symbol) { |_| :ok }).to eq Mangrove::Result::Ok[Symbol, Symbol].new(:ok)
