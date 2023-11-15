@@ -30,6 +30,12 @@ module Mangrove
     sig { abstract.returns(OkType) }
     def unwrap!; end
 
+    sig { abstract.params(exception: Exception).returns(OkType) }
+    def unwrap_or_raise!(exception); end
+
+    sig { abstract.returns(OkType) }
+    def unwrap_or_raise_inner!; end
+
     sig { abstract.params(message: String).returns(OkType) }
     def expect!(message); end
 
@@ -148,6 +154,16 @@ module Mangrove
 
       sig { override.returns(OkType) }
       def unwrap!
+        @inner
+      end
+
+      sig { override.params(_exception: Exception).returns(OkType) }
+      def unwrap_or_raise!(_exception)
+        @inner
+      end
+
+      sig { override.returns(OkType) }
+      def unwrap_or_raise_inner!
         @inner
       end
 
@@ -271,6 +287,16 @@ module Mangrove
       sig { override.returns(OkType) }
       def unwrap!
         raise Result::ControlSignal, @inner
+      end
+
+      sig { override.params(exception: Exception).returns(OkType) }
+      def unwrap_or_raise!(exception)
+        raise exception
+      end
+
+      sig { override.returns(OkType) }
+      def unwrap_or_raise_inner!
+        raise T.unsafe(@inner)
       end
 
       sig { override.params(message: String).returns(OkType) }

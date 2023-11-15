@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mangrove (0.17.0)
+    mangrove (0.18.0)
       sorbet-runtime (= 0.5.11128)
 
 GEM

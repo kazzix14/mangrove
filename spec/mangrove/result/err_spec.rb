@@ -17,6 +17,18 @@ RSpec.describe Mangrove::Result::Err do
     end
   end
 
+  describe "#unwrap_or_raise!" do
+    it "raises given exception" do
+      expect { Mangrove::Result::Err.new(:my_error).unwrap_or_raise!(Exception.new("my error")) }.to raise_error(Exception, "my error")
+    end
+  end
+
+  describe "#unwrap_or_raise_inner!" do
+    it "raises err inner" do
+      expect { Mangrove::Result::Err.new(Exception.new("my error")).unwrap_or_raise_inner! }.to raise_error(Exception, "my error")
+    end
+  end
+
   describe "#expect!" do
     it "raises ControlSignal with custom message" do
       expect { Mangrove::Result::Err.new(:my_error).expect!("my expectation") }.to raise_error(Mangrove::Result::ControlSignal.new("my expectation"))
