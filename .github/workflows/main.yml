@@ -9,15 +9,15 @@ on:
     branches:
       - main
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Ruby ${{ matrix.ruby }}
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     strategy:
       matrix:
         ruby:
