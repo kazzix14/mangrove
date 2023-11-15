@@ -101,6 +101,24 @@ RSpec.describe Mangrove::Result::Err do
     end
   end
 
+  describe "#and_err_if" do
+    let(:err) { Mangrove::Result::Err[Integer, Symbol].new(:"my initial error") }
+
+    context "when given block returns true" do
+      it "returns self" do
+        expect(err.and_err_if("my error") { |i| i == 0 }).to eq err
+        expect(err.and_err_if(Exception.new) { |i| i == 0 }).to eq err
+      end
+    end
+
+    context "when given block returns false" do
+      it "returns self" do
+        expect(err.and_err_if("my error") { |i| i != 0 }).to eq err
+        expect(err.and_err_if(Exception.new) { |i| i != 0 }).to eq err
+      end
+    end
+  end
+
   describe "#or" do
     it "returns other" do
       expect(Mangrove::Result::Err[Integer, Symbol].new(:error).or(Mangrove::Result::Ok[Integer, Symbol].new(0))).to eq Mangrove::Result::Ok[Integer, Symbol].new(0)
@@ -119,6 +137,24 @@ RSpec.describe Mangrove::Result::Err do
     it "returns other" do
       expect(Mangrove::Result::Err[Integer, Symbol].new(:error).or_else_wt(String) { |_| Mangrove::Result.ok_wt(2, String) }).to eq Mangrove::Result::Ok[Integer, String].new(2)
       expect(Mangrove::Result::Err[Integer, Symbol].new(:error).or_else_wt(String) { |_| Mangrove::Result.err_wt(Integer, "error") }).to eq Mangrove::Result::Err[Integer, String].new("error")
+    end
+  end
+
+  describe "#or_ok_if" do
+    let(:err) { Mangrove::Result::Err[Integer, Symbol].new(:my_initial_error) }
+
+    context "when given block returns true" do
+      it "returns a Result::Ok that contains the given argument" do
+        expect(err.or_ok_if("my ok") { |i| i == :my_initial_error }).to eq Mangrove::Result::Ok[String, Symbol].new("my ok")
+        expect(err.or_ok_if(234) { |i| i == :my_initial_error }).to eq Mangrove::Result::Ok[Integer, Symbol].new(234)
+      end
+    end
+
+    context "when given block returns false" do
+      it "returns self" do
+        expect(err.or_ok_if("my error") { |i| i != :my_initial_error }).to eq err
+        expect(err.or_ok_if(Exception.new) { |i| i != :my_initial_error }).to eq err
+      end
     end
   end
 

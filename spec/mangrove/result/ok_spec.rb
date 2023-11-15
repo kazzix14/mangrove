@@ -107,6 +107,24 @@ RSpec.describe Mangrove::Result::Ok do
     end
   end
 
+  describe "#and_err_if" do
+    let(:ok) { Mangrove::Result::Ok[Integer, Symbol].new(0) }
+
+    context "when given block returns true" do
+      it "returns a Result::Err that contains the given argument" do
+        expect(ok.and_err_if("my error") { |i| i == 0 }).to eq Mangrove::Result::Err[String, String].new("my error")
+        expect(ok.and_err_if(Exception.new) { |i| i == 0 }).to eq Mangrove::Result::Err[String, Exception].new(Exception.new)
+      end
+    end
+
+    context "when given block returns false" do
+      it "returns self" do
+        expect(ok.and_err_if("my error") { |i| i != 0 }).to eq ok
+        expect(ok.and_err_if(Exception.new) { |i| i != 0 }).to eq ok
+      end
+    end
+  end
+
   describe "#or" do
     it "returns self" do
       expect(Mangrove::Result::Ok[Integer, Symbol].new(0).or(Mangrove::Result::Ok[Integer, Symbol].new(1))).to eq Mangrove::Result::Ok[Integer, Symbol].new(0)
@@ -121,10 +139,28 @@ RSpec.describe Mangrove::Result::Ok do
     end
   end
 
-  describe "#and_then_wt" do
+  describe "#or_else_wt" do
     it "returns self" do
       expect(Mangrove::Result::Ok[Integer, Symbol].new(0).or_else_wt(String) { |_| Mangrove::Result.ok_wt(1, String) }).to eq Mangrove::Result::Ok[Integer, String].new(0)
       expect(Mangrove::Result::Ok[Integer, Symbol].new(0).or_else_wt(String) { |_| Mangrove::Result.err_wt(Integer, "error") }).to eq Mangrove::Result::Ok[Integer, String].new(0)
+    end
+  end
+
+  describe "#or_ok_if" do
+    let(:ok) { Mangrove::Result::Ok[Integer, Symbol].new(0) }
+
+    context "when given block returns true" do
+      it "returns self" do
+        expect(ok.or_ok_if("my error") { |i| i == 0 }).to eq ok
+        expect(ok.or_ok_if(Exception.new) { |i| i == 0 }).to eq ok
+      end
+    end
+
+    context "when given block returns false" do
+      it "returns self" do
+        expect(ok.or_ok_if("my error") { |i| i != 0 }).to eq ok
+        expect(ok.or_ok_if(Exception.new) { |i| i != 0 }).to eq ok
+      end
     end
   end
 

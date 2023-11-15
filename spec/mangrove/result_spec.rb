@@ -61,6 +61,14 @@ RSpec.describe Mangrove::Result do
     expect(Mangrove::Result.instance_methods).to include :and_then_wt
   end
 
+  it "declares #and_err_if" do
+    expect(Mangrove::Result.instance_methods).to include :and_err_if
+  end
+
+  it "declares #or_ok_if" do
+    expect(Mangrove::Result.instance_methods).to include :or_ok_if
+  end
+
   it "declares #or" do
     expect(Mangrove::Result.instance_methods).to include :or
   end
