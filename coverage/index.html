@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-11-20T06:53:02+00:00">2023-11-20T06:53:02+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-11-20T07:00:48+00:00">2023-11-20T07:00:48+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -5649,7 +5649,7 @@
               
             
 
-            <code class="ruby">      sig { type_parameters(:OkType, :ErrType).params(inner: T.type_parameter(:OkType)).returns(Result::Ok[T.type_parameter(:OkType), T.type_parameter(:ErrType)]) }</code>
+            <code class="ruby">      sig { type_parameters(:OkType).params(inner: T.type_parameter(:OkType)).returns(Result::Ok[T.type_parameter(:OkType), T.untyped]) }</code>
           </li>
         </div>
       
@@ -5675,7 +5675,7 @@
               
             
 
-            <code class="ruby">        Result::Ok[T.type_parameter(:OkType), T.type_parameter(:ErrType)].new(inner)</code>
+            <code class="ruby">        Result::Ok[T.type_parameter(:OkType), T.untyped].new(inner)</code>
           </li>
         </div>
       
@@ -5779,7 +5779,7 @@
               
             
 
-            <code class="ruby">      sig { type_parameters(:OkType, :ErrType).params(inner: T.type_parameter(:ErrType)).returns(Result::Err[T.type_parameter(:OkType), T.type_parameter(:ErrType)]) }</code>
+            <code class="ruby">      sig { type_parameters(:ErrType).params(inner: T.type_parameter(:ErrType)).returns(Result::Err[T.untyped, T.type_parameter(:ErrType)]) }</code>
           </li>
         </div>
       
@@ -5805,7 +5805,7 @@
               
             
 
-            <code class="ruby">        Result::Err[T.type_parameter(:OkType), T.type_parameter(:ErrType)].new(inner)</code>
+            <code class="ruby">        Result::Err[T.untyped, T.type_parameter(:ErrType)].new(inner)</code>
           </li>
         </div>
       
