@@ -112,13 +112,8 @@ expect(MyController.new.create("invalid")).to eq "other: invalid value for Integ
 Other examples are available at [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
 
 ## Features
-Most features are not implemented.
-
-- [x] Option Type
-- [x] Result Type
-- [ ] Builder Type Factory
-  - [ ] Auto Implementation
-- [ ] TODO
+- Option Type
+- Result Type
 
 ## Installation
 
