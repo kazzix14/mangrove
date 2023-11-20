@@ -28,7 +28,7 @@ RSpec.describe Mangrove::Result::Ok do
 
   describe "#unwrap_or_raise_with!" do
     it "extracts inner value" do
-      expect(Mangrove::Result::Ok.new(1).unwrap_or_raise_with! { |e| Exception.new("my error: #{e}") } ).to eq 1
+      expect(Mangrove::Result::Ok.new(1).unwrap_or_raise_with! { |e| Exception.new("my error: #{e}") }).to eq 1
       expect(Mangrove::Result::Ok.new(:my_symbol).unwrap_or_raise_with! { |e| Exception.new("my error: #{e}") }).to eq :my_symbol
     end
   end
