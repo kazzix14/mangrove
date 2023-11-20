@@ -11,6 +11,7 @@ gem "rspec-sorbet"
 gem "simplecov", require: false
 
 # Utility
+gem "debug", require: false
 gem "ordinare", require: false
 gem "rake", "~> 13.0"
 gem "ruboclean", require: false
