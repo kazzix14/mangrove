@@ -53,6 +53,9 @@ Style/IfUnlessModifier:
 Style/MultilineBlockChain:
   Enabled: false
 
+Style/RedundantConstantBase:
+  Enabled: false
+
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
