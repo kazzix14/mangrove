@@ -8,7 +8,7 @@ gemspec
 # Test
 gem "rspec"
 gem "rspec-sorbet"
-gem "simplecov", require: false
+gem "simplecov", "0.22.0", require: false
 
 # Utility
 gem "debug", require: false
@@ -26,6 +26,7 @@ gem "ruby-lsp"
 gem "sorbet", "0.5.11128"
 gem "sorbet-runtime", "0.5.11128"
 gem "tapioca", require: false
+gem "webrick"
 
 # Documentation
 gem "yard", "~> 0.9.34"
