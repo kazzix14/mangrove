@@ -9,6 +9,7 @@ SimpleCov.start {
 
   add_filter "/spec/"
 
+  enable_coverage_for_eval
   enable_coverage :branch
   primary_coverage :branch
 }
