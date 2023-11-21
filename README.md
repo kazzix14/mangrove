@@ -1,119 +1,17 @@
 # Mangrove
 Mangrove provides type utility to use with Sorbet.
-use `rubocop-mangrove` to statically check rescuing ControlSignal is done
+
+Mangrove is a Ruby Gem designed to be the definitive toolkit for leveraging Sorbet's type system in Ruby applications. It's designed to offer a robust, statically-typed experience, focusing on solid types, a functional programming style, and an interface-driven approach.
+
+Use `rubocop-mangrove` to statically check rescuing ControlSignal is done
 
 - [Documentation](https://kazzix14.github.io/mangrove/docs/)
 - [Coverage](https://kazzix14.github.io/mangrove/coverage/index.html#_AllFiles)
 
-You can do something like this with the gem.
-```ruby
-class TransposeExample
-  extend T::Sig
-
-  sig { params(numbers: T::Enumerable[Integer]).returns(Mangrove::Result[T::Array[Integer], String]) }
-  def divide_arguments_by_3(numbers)
-    Mangrove::Result.from_results(numbers
-      .map { |number|
-        if number % 3 == 0
-          Mangrove::Result::Ok.new(number / 3)
-        else
-          Mangrove::Result::Err.new("number #{number} is not divisible by 3")
-        end
-      })
-  rescue ::Mangrove::ControlFlow::ControlSignal => e
-    Mangrove::Result::Err.new(e.inner_value)
-  end
-end
-# rubocop:enable Lint/ConstantDefinitionInBlock
-
-expect(TransposeExample.new.divide_arguments_by_3([3, 4, 5])).to eq Mangrove::Result::Err.new(["number 4 is not divisible by 3", "number 5 is not divisible by 3"])
-expect(TransposeExample.new.divide_arguments_by_3([3, 6, 9])).to eq Mangrove::Result::Ok.new([1, 2, 3])
-
-```
-
-or like this.
-```ruby
-class MyController
-  extend T::Sig
-
-  sig { params(input: String).returns(String) }
-  def create(input)
-    result = MyService.new.execute(input)
-
-    case result
-    when Mangrove::Result::Ok
-      result.ok_inner
-    when Mangrove::Result::Err
-      error = result.err_inner
-
-      case error
-      when MyService::MyServiceError::E1
-        "e1: #{error.inner.msg}"
-      when MyService::MyServiceError::E2
-        "e2: #{error.inner.msg}"
-      when MyService::MyServiceError::Other
-        "other: #{error.inner.msg}"
-      else T.absurd(error)
-      end
-    end
-  end
-end
-
-class MyService
-  extend T::Sig
-  extend T::Generic
-
-  include Kernel
-
-  E = type_member { { upper: MyServiceError } }
-
-  sig { params(input: String).returns(Mangrove::Result[String, MyServiceError]) }
-  def execute(input)
-    input
-      .safe_to_i
-      .map_err_wt(MyServiceError::Other) { |e|
-        MyServiceError::Other.new(MyAppError::Other.new(e)).as_my_service_error
-      }.and_then_wt(String) { |num|
-        if num < 1
-          Mangrove::Result.err(String, MyServiceError::E1.new(MyAppError::E1.new("num < 1")).as_my_service_error)
-        elsif num < 3
-          Mangrove::Result
-            .ok(num, String)
-            .and_then_wt(String) { |n|
-              if n < 2
-                Mangrove::Result.ok("`#{n}` < 2", String)
-              else
-                Mangrove::Result.err(String, "not `#{n}` < 2")
-              end
-            }
-            .map_err_wt(MyServiceError::E1) { |e|
-              MyServiceError::E1.new(MyAppError::E1.new("mapping to E1 #{e}")).as_my_service_error
-            }
-            .map_ok { |str|
-              {
-                my_key: str
-              }
-            }
-            .map_ok(&:to_s)
-        else
-          Mangrove::Result.err(String, MyServiceError::E2.new(MyAppError::E2.new).as_my_service_error)
-        end
-      }
-  end
-end
-
-expect(MyController.new.create("0")).to eq "e1: num < 1"
-expect(MyController.new.create("1")).to eq "{:my_key=>\"`1` < 2\"}"
-expect(MyController.new.create("2")).to eq "e1: mapping to E1 not `2` < 2"
-expect(MyController.new.create("3")).to eq "e2: e2"
-expect(MyController.new.create("invalid")).to eq "other: invalid value for Integer(): \"invalid\""
-```
-
-Other examples are available at [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
-
 ## Features
 - Option Type
 - Result Type
+- Enums with inner types (ADTs)
 
 ## Installation
 
@@ -152,19 +50,10 @@ bundle exec tapioca init
 bundle exec rspec -f d
 bundle exec rubocop -DESP
 bundle exec srb typecheck
+bundle exec spoom tc
 bundle exec ordinare --check
 bundle exec ruboclean
 bundle exec yardoc -o docs/ --plugin yard-sorbet
 rake build
 rake release
 ```
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/kazzix14/mangrove.
