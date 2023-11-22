@@ -312,7 +312,12 @@
 46
 47
 48
-49</pre>
+49
+50
+51
+52
+53
+54</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/tapioca/dsl/compilers/mangrove_enum.rb', line 20</span>
@@ -324,13 +329,16 @@
       <span class='const'>RBI</span><span class='op'>::</span><span class='const'>Helper</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sealed</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='rparen'>)</span>
 
-    <span class='id identifier rubyid_variants'>variants</span> <span class='op'>=</span> <span class='id identifier rubyid_constant'>constant</span><span class='period'>.</span><span class='id identifier rubyid_constants'>constants</span><span class='period'>.</span><span class='id identifier rubyid_filter_map'>filter_map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_variant_name'>variant_name</span><span class='op'>|</span>
-      <span class='id identifier rubyid_maybe_variant'>maybe_variant</span> <span class='op'>=</span> <span class='id identifier rubyid_constant'>constant</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_variant_name'>variant_name</span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_variants'>variants</span> <span class='op'>=</span> <span class='id identifier rubyid_constant'>constant</span>
+      <span class='period'>.</span><span class='id identifier rubyid_constants'>constants</span>
+      <span class='period'>.</span><span class='id identifier rubyid_filter_map'>filter_map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_variant_name'>variant_name</span><span class='op'>|</span>
+        <span class='id identifier rubyid_maybe_variant'>maybe_variant</span> <span class='op'>=</span> <span class='id identifier rubyid_constant'>constant</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_variant_name'>variant_name</span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span>
 
-      <span class='kw'>if</span> <span class='id identifier rubyid_maybe_variant'>maybe_variant</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_defined?'>instance_variable_defined?</span><span class='lparen'>(</span><span class='symbol'>:@__mangrove__enum_inner_type</span><span class='rparen'>)</span>
-        <span class='id identifier rubyid_maybe_variant'>maybe_variant</span>
-      <span class='kw'>end</span>
-    <span class='rbrace'>}</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_maybe_variant'>maybe_variant</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_defined?'>instance_variable_defined?</span><span class='lparen'>(</span><span class='symbol'>:@__mangrove__enum_inner_type</span><span class='rparen'>)</span>
+          <span class='id identifier rubyid_maybe_variant'>maybe_variant</span>
+        <span class='kw'>end</span>
+      <span class='rbrace'>}</span>
+      <span class='period'>.</span><span class='id identifier rubyid_sort_by'>sort_by</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_variant'>variant</span><span class='op'>|</span> <span class='id identifier rubyid_variant'>variant</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='rbrace'>}</span>
 
     <span class='id identifier rubyid_inner_types'>inner_types</span> <span class='op'>=</span> <span class='id identifier rubyid_variants'>variants</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_variant'>variant</span><span class='op'>|</span>
       <span class='id identifier rubyid_inner_type'>inner_type</span> <span class='op'>=</span> <span class='id identifier rubyid_variant'>variant</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='symbol'>:@__mangrove__enum_inner_type</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -338,6 +346,7 @@
         <span class='id identifier rubyid_variant_type'>variant_type</span><span class='period'>.</span><span class='id identifier rubyid_create_method'>create_method</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>initialize</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>parameters:</span> <span class='lbracket'>[</span><span class='id identifier rubyid_create_param'>create_param</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>inner</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='id identifier rubyid_inner_type'>inner_type</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>return_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>void</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
         <span class='id identifier rubyid_variant_type'>variant_type</span><span class='period'>.</span><span class='id identifier rubyid_create_method'>create_method</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>inner</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>return_type:</span> <span class='id identifier rubyid_inner_type'>inner_type</span><span class='rparen'>)</span>
         <span class='id identifier rubyid_variant_type'>variant_type</span><span class='period'>.</span><span class='id identifier rubyid_create_method'>create_method</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>as_super</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>return_type:</span> <span class='id identifier rubyid_constant'>constant</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_variant_type'>variant_type</span><span class='period'>.</span><span class='id identifier rubyid_sort_nodes!'>sort_nodes!</span>
       <span class='rbrace'>}</span>
 
       <span class='id identifier rubyid_inner_type'>inner_type</span>
@@ -345,6 +354,7 @@
 
     <span class='id identifier rubyid_constant_type'>constant_type</span><span class='period'>.</span><span class='id identifier rubyid_create_method'>create_method</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>inner</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>return_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>T.any(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_inner_types'>inner_types</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_constant_type'>constant_type</span><span class='period'>.</span><span class='id identifier rubyid_create_method'>create_method</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>as_super</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>return_type:</span> <span class='id identifier rubyid_constant'>constant</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_constant_type'>constant_type</span><span class='period'>.</span><span class='id identifier rubyid_sort_nodes!'>sort_nodes!</span>
   <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -357,7 +367,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Nov 21 09:43:55 2023 by
+  Generated on Wed Nov 22 02:06:20 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.1.2).
 </div>
