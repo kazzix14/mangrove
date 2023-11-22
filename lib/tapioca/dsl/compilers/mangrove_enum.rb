@@ -24,13 +24,16 @@ module Tapioca
             RBI::Helper.new("sealed")
           )
 
-          variants = constant.constants.filter_map { |variant_name|
-            maybe_variant = constant.const_get(variant_name, false)
+          variants = constant
+            .constants
+            .filter_map { |variant_name|
+              maybe_variant = constant.const_get(variant_name, false)
 
-            if maybe_variant.instance_variable_defined?(:@__mangrove__enum_inner_type)
-              maybe_variant
-            end
-          }
+              if maybe_variant.instance_variable_defined?(:@__mangrove__enum_inner_type)
+                maybe_variant
+              end
+            }
+            .sort_by { |variant| variant.name.to_s }
 
           inner_types = variants.map { |variant|
             inner_type = variant.instance_variable_get(:@__mangrove__enum_inner_type).to_s
@@ -38,6 +41,7 @@ module Tapioca
               variant_type.create_method("initialize", parameters: [create_param("inner", type: inner_type)], return_type: "void")
               variant_type.create_method("inner", return_type: inner_type)
               variant_type.create_method("as_super", return_type: constant.name.to_s)
+              variant_type.sort_nodes!
             }
 
             inner_type
@@ -45,6 +49,7 @@ module Tapioca
 
           constant_type.create_method("inner", return_type: "T.any(#{inner_types.join(", ")})")
           constant_type.create_method("as_super", return_type: constant.name.to_s)
+          constant_type.sort_nodes!
         }
       end
     end

@@ -30,7 +30,9 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
           extend Mangrove::Enum
 
           variants do
-            variant MyEnumVariant, Integer
+            variant MyEnumVariant2, String
+            variant MyEnumVariant1, { a: Integer, b: Integer }
+            variant MyEnumVariant0, Integer
           end
         end
 
@@ -43,7 +45,7 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
     end
 
     describe "#decorate" do
-      it "generates RBI files for enums" do
+      it "generates RBI files for enums. RBI is always be sorted." do
         allow(Tapioca::Compilers::MangroveEnum).to receive(:all_classes).and_return([MyEnumForDslCompiler, OtherClass])
 
         expected = <<~RBI
@@ -56,10 +58,10 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
             sig { returns(MyEnumForDslCompiler) }
             def as_super; end
 
-            sig { returns(T.any(Integer)) }
+            sig { returns(T.any(Integer, {:a=>Integer, :b=>Integer}, String)) }
             def inner; end
 
-            class MyEnumVariant < ::MyEnumForDslCompiler
+            class MyEnumVariant0 < ::MyEnumForDslCompiler
               sig { params(inner: Integer).void }
               def initialize(inner); end
 
@@ -67,6 +69,28 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
               def as_super; end
 
               sig { returns(Integer) }
+              def inner; end
+            end
+
+            class MyEnumVariant1 < ::MyEnumForDslCompiler
+              sig { params(inner: {:a=>Integer, :b=>Integer}).void }
+              def initialize(inner); end
+
+              sig { returns(MyEnumForDslCompiler) }
+              def as_super; end
+
+              sig { returns({:a=>Integer, :b=>Integer}) }
+              def inner; end
+            end
+
+            class MyEnumVariant2 < ::MyEnumForDslCompiler
+              sig { params(inner: String).void }
+              def initialize(inner); end
+
+              sig { returns(MyEnumForDslCompiler) }
+              def as_super; end
+
+              sig { returns(String) }
               def inner; end
             end
 
