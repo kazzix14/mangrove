@@ -4,11 +4,6 @@ on:
   push:
     tags:
       - "v*"
-  workflow_dispatch:
-    inputs:
-      rubygems-otp-code:
-        description: RubyGems OTP code
-        required: true
 
 jobs:
   docs:
@@ -59,11 +54,17 @@ jobs:
       - name: Build Gem
         run: rake build
 
+      - uses: step-security/wait-for-secrets@v1
+        id: input-otp
+        with:
+          secrets: |
+            RUBYGEMS_OTP:
+              name: 'RubyGems OTP'
+
       - name: Publish to RubyGems
         uses: cadwallion/publish-rubygems-action@v1.1.0
         env:
-          GEM_HOST_OTP_CODE: ${{ github.event.inputs.rubygems-otp-code }}
+          GEM_HOST_OTP_CODE: ${{ steps.input-otp.outputs.RUBYGEMS_OTP }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
           RELEASE_COMMAND: rake release
-
