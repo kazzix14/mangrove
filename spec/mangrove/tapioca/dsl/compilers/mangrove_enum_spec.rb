@@ -26,13 +26,18 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
 
     it "gathers only classes that extends Mangrove::Enum" do
       add_ruby_file("content.rb", <<~RUBY)
+        class ClassWithInspection
+         def self.inspect = "inspection!"
+        end
+
         class MyEnumForDslCompiler
           extend Mangrove::Enum
 
           variants do
             variant MyEnumVariant2, String
-            variant MyEnumVariant1, { a: Integer, b: Integer }
+            variant MyEnumVariant1, { a: ClassWithInspection, b: Integer }
             variant MyEnumVariant0, Integer
+            variant MyEnumVariant3, [Integer, ClassWithInspection]
           end
         end
 
@@ -58,7 +63,7 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
             sig { returns(MyEnumForDslCompiler) }
             def as_super; end
 
-            sig { returns(T.any(Integer, {:a=>Integer, :b=>Integer}, String)) }
+            sig { returns(T.any(Integer, { a: ClassWithInspection, b: Integer }, String, [Integer, ClassWithInspection])) }
             def inner; end
 
             class MyEnumVariant0 < ::MyEnumForDslCompiler
@@ -73,13 +78,13 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
             end
 
             class MyEnumVariant1 < ::MyEnumForDslCompiler
-              sig { params(inner: {:a=>Integer, :b=>Integer}).void }
+              sig { params(inner: { a: ClassWithInspection, b: Integer }).void }
               def initialize(inner); end
 
               sig { returns(MyEnumForDslCompiler) }
               def as_super; end
 
-              sig { returns({:a=>Integer, :b=>Integer}) }
+              sig { returns({ a: ClassWithInspection, b: Integer }) }
               def inner; end
             end
 
@@ -91,6 +96,17 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
               def as_super; end
 
               sig { returns(String) }
+              def inner; end
+            end
+
+            class MyEnumVariant3 < ::MyEnumForDslCompiler
+              sig { params(inner: [Integer, ClassWithInspection]).void }
+              def initialize(inner); end
+
+              sig { returns(MyEnumForDslCompiler) }
+              def as_super; end
+
+              sig { returns([Integer, ClassWithInspection]) }
               def inner; end
             end
 
