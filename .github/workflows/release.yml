@@ -41,6 +41,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Release
     if: contains(github.ref, 'refs/tags/v')
+    permissions:
+      id-token: write
     steps:
       - name: Check out code
         uses: actions/checkout@v3
