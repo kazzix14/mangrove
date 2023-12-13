@@ -8,26 +8,26 @@ gemspec
 # Test
 gem "rspec"
 gem "rspec-sorbet"
-gem "simplecov", "0.22.0", require: false
+gem "simplecov", require: false
 
 # Utility
 gem "debug", require: false
 gem "ordinare", require: false
-gem "rake", "~> 13.0"
+gem "rake"
 gem "ruboclean", require: false
 
 # Lint
-gem "rubocop", "~> 1.21"
-gem "rubocop-rake", "~> 0.6.0"
-gem "rubocop-rspec", "~> 2.23"
+gem "rubocop"
+gem "rubocop-rake"
+gem "rubocop-rspec"
 
 # Type and LSP
 gem "ruby-lsp"
-gem "sorbet", "0.5.11128"
-gem "sorbet-runtime", "0.5.11128"
+gem "sorbet"
+gem "sorbet-runtime"
 gem "tapioca", require: false
 gem "webrick"
 
 # Documentation
-gem "yard", "~> 0.9.34"
-gem "yard-sorbet", "~> 0.8.1"
+gem "yard"
+gem "yard-sorbet"

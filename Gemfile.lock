@@ -2,24 +2,23 @@ PATH
   remote: .
   specs:
     mangrove (0.23.0)
-      sorbet-runtime (= 0.5.11128)
+      sorbet-runtime
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
-    base64 (0.1.1)
-    debug (1.8.0)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
+    debug (1.9.0)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     diff-lcs (1.5.0)
     docile (1.4.0)
     erubi (1.12.0)
-    io-console (0.6.0)
-    irb (1.9.0)
+    io-console (0.7.0)
+    irb (1.10.1)
       rdoc
       reline (>= 0.3.8)
-    json (2.6.3)
+    json (2.7.1)
     language_server-protocol (3.17.0.3)
     netrc (0.11.0)
     ordinare (0.4.0)
@@ -28,19 +27,19 @@ GEM
       ast (~> 2.4.1)
       racc
     prettier_print (1.2.1)
-    prism (0.15.1)
+    prism (0.18.0)
     psych (5.1.1.1)
       stringio
-    racc (1.7.1)
+    racc (1.7.3)
     rainbow (3.1.1)
-    rake (13.0.6)
-    rbi (0.1.3)
-      prism (>= 0.15.1, < 0.17)
+    rake (13.1.0)
+    rbi (0.1.5)
+      prism (>= 0.18.0, < 0.19)
       sorbet-runtime (>= 0.5.9204)
-    rdoc (6.6.0)
+    rdoc (6.6.1)
       psych (>= 4.0.0)
-    regexp_parser (2.8.2)
-    reline (0.4.0)
+    regexp_parser (2.8.3)
+    reline (0.4.1)
       io-console (~> 0.5)
     rexml (3.2.6)
     rspec (3.12.0)
@@ -59,8 +58,7 @@ GEM
       sorbet-runtime
     rspec-support (3.12.1)
     ruboclean (0.4.0)
-    rubocop (1.57.1)
-      base64 (~> 0.1.1)
+    rubocop (1.59.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -68,10 +66,10 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
-      rubocop-ast (>= 1.28.1, < 2.0)
+      rubocop-ast (>= 1.30.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.29.0)
+    rubocop-ast (1.30.0)
       parser (>= 3.2.1.0)
     rubocop-capybara (2.19.0)
       rubocop (~> 1.41)
@@ -79,13 +77,13 @@ GEM
       rubocop (~> 1.33)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (2.24.1)
-      rubocop (~> 1.33)
+    rubocop-rspec (2.25.0)
+      rubocop (~> 1.40)
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
-    ruby-lsp (0.12.0)
+    ruby-lsp (0.13.1)
       language_server-protocol (~> 3.17.0)
-      prism (>= 0.15.1, < 0.16)
+      prism (>= 0.18.0, < 0.19)
       sorbet-runtime (>= 0.5.5685)
     ruby-progressbar (1.13.0)
     simplecov (0.22.0)
@@ -94,27 +92,27 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    sorbet (0.5.11128)
-      sorbet-static (= 0.5.11128)
-    sorbet-runtime (0.5.11128)
-    sorbet-static (0.5.11128-universal-darwin)
-    sorbet-static (0.5.11128-x86_64-linux)
-    sorbet-static-and-runtime (0.5.11128)
-      sorbet (= 0.5.11128)
-      sorbet-runtime (= 0.5.11128)
+    sorbet (0.5.11151)
+      sorbet-static (= 0.5.11151)
+    sorbet-runtime (0.5.11151)
+    sorbet-static (0.5.11151-universal-darwin)
+    sorbet-static (0.5.11151-x86_64-linux)
+    sorbet-static-and-runtime (0.5.11151)
+      sorbet (= 0.5.11151)
+      sorbet-runtime (= 0.5.11151)
     spoom (1.2.4)
       erubi (>= 1.10.0)
       sorbet-static-and-runtime (>= 0.5.10187)
       syntax_tree (>= 6.1.1)
       thor (>= 0.19.2)
-    stringio (3.0.9)
+    stringio (3.1.0)
     syntax_tree (6.2.0)
       prettier_print (>= 1.2.0)
-    tapioca (0.11.10)
+    tapioca (0.11.13)
       bundler (>= 2.2.25)
       netrc (>= 0.11.0)
       parallel (>= 1.21.0)
-      rbi (~> 0.1.0, >= 0.1.0)
+      rbi (>= 0.1.4, < 0.2)
       sorbet-static-and-runtime (>= 0.5.10187)
       spoom (~> 1.2.0, >= 1.2.0)
       thor (>= 1.2.0)
@@ -135,21 +133,21 @@ DEPENDENCIES
   debug
   mangrove!
   ordinare
-  rake (~> 13.0)
+  rake
   rspec
   rspec-sorbet
   ruboclean
-  rubocop (~> 1.21)
-  rubocop-rake (~> 0.6.0)
-  rubocop-rspec (~> 2.23)
+  rubocop
+  rubocop-rake
+  rubocop-rspec
   ruby-lsp
-  simplecov (= 0.22.0)
-  sorbet (= 0.5.11128)
-  sorbet-runtime (= 0.5.11128)
+  simplecov
+  sorbet
+  sorbet-runtime
   tapioca
   webrick
-  yard (~> 0.9.34)
-  yard-sorbet (~> 0.8.1)
+  yard
+  yard-sorbet
 
 BUNDLED WITH
    2.4.18
