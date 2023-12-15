@@ -21,7 +21,7 @@ bundle add mangrove
 
 ## Usage
 
-[Documentation is available here](https://kazzix14.github.io/mangrove/).
+[Documentation is available here](https://kazzix14.github.io/mangrove/docs).
 For more concrete examples, see [`spec/**/**_spec.rb`](https://github.com/kazzix14/mangrove/tree/main/spec).
 
 ```ruby
