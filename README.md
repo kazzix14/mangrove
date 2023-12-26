@@ -54,6 +54,7 @@ bundle exec spoom tc
 bundle exec ordinare --check
 bundle exec ruboclean
 bundle exec yardoc -o docs/ --plugin yard-sorbet
+bundle exec ruby ./bench/result_bench.rb
 rake build
 rake release
 ```
