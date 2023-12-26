@@ -102,7 +102,7 @@ RSpec.describe Mangrove::Result::Ok do
   end
 
   describe "#map_err_wt" do
-    it "maps inner value with value returned by given block" do
+    it "does not change inner value" do
       expect(Mangrove::Result::Ok[Integer, Symbol].new(0).map_err_wt(Symbol) { |_| :error }).to eq Mangrove::Result::Ok[Integer, Symbol].new(0)
       expect(Mangrove::Result::Ok[Integer, Symbol].new(1).map_err_wt(String) { |_| "error" }).to eq Mangrove::Result::Ok[Integer, String].new(1)
     end
