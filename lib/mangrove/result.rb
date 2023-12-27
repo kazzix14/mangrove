@@ -21,9 +21,12 @@ module Mangrove
     sig { abstract.params(other: BasicObject).returns(T::Boolean) }
     def ==(other); end
 
+    # @deprecated Use #is_a?(Result::Ok) instead to enable Sorbet to define types statically.
+    #   This method will be removed in future versions.
     sig { abstract.returns(T::Boolean) }
     def ok?; end
 
+    # @deprecated Use #is_a?(Result::Err) instead to enable Sorbet to define types statically.
     sig { abstract.returns(T::Boolean) }
     def err?; end
 
@@ -209,9 +212,11 @@ module Mangrove
         @inner
       end
 
+      # @deprecated Use #is_a?(Result::Ok) instead to enable Sorbet to define types statically.
       sig { override.returns(T::Boolean) }
       def ok? = true
 
+      # @deprecated Use #is_a?(Result::Err) instead to enable Sorbet to define types statically.
       sig { override.returns(T::Boolean) }
       def err? = false
 
@@ -378,9 +383,11 @@ module Mangrove
         raise Result::ControlSignal, block.call(@inner)
       end
 
+      # @deprecated Use #is_a?(Result::Ok) instead to enable Sorbet to define types statically.
       sig { override.returns(T::Boolean) }
       def ok? = false
 
+      # @deprecated Use #is_a?(Result::Err) instead to enable Sorbet to define types statically.
       sig { override.returns(T::Boolean) }
       def err? = true
 
