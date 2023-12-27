@@ -4,6 +4,7 @@
 require "mangrove"
 require "tapioca/dsl"
 
+# @api private
 module Tapioca
   module Compilers
     class MangroveEnum < Tapioca::Dsl::Compiler
