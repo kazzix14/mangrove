@@ -87,7 +87,7 @@
 
 <h2 id="label-Usage">Usage</h2>
 
-<p><a href="https://kazzix14.github.io/mangrove/">Documentation is available here</a>. For more concrete examples, see href="https://github.com/kazzix14/mangrove/tree/main/spec"></a>.</p>
+<p><a href="https://kazzix14.github.io/mangrove/docs">Documentation is available here</a>. For more concrete examples, see href="https://github.com/kazzix14/mangrove/tree/main/spec"></a>.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="Mangrove.html" title="Mangrove (module)">Mangrove</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/Result.html" title="Mangrove::Result (module)">Result</a></span></span><span class='lbracket'>[</span><span class='const'>OkType</span><span class='comma'>,</span> <span class='const'>ErrType</span><span class='rbracket'>]</span>
 <span class='const'><span class='object_link'><a href="Mangrove.html" title="Mangrove (module)">Mangrove</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/Result.html" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/Result/Ok.html" title="Mangrove::Result::Ok (class)">Ok</a></span></span><span class='lbracket'>[</span><span class='const'>OkType</span><span class='comma'>,</span> <span class='const'>ErrType</span><span class='rbracket'>]</span>
@@ -118,13 +118,14 @@ bundle exec spoom tc
 bundle exec ordinare --check
 bundle exec ruboclean
 bundle exec yardoc -o docs/ --plugin yard-sorbet
+bundle exec yard server --reload --plugin yard-sorbet
 rake build
 rake release
 </code></pre>
 </div></div>
 
       <div id="footer">
-  Generated on Wed Dec  6 10:53:48 2023 by
+  Generated on Wed Feb 14 11:47:34 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>
