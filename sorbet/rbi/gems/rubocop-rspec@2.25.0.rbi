@@ -1903,9 +1903,10 @@ RuboCop::Cop::RSpec::Eq::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 # extracting out some behavior, e.g. with a `let` block, or a helper
 # method.
 #
-# You can set literals you want to fold with `CountAsOne`.
-# Available are: 'array', 'hash', and 'heredoc'. Each literal
-# will be counted as one line regardless of its actual size.
+# You can set constructs you want to fold with `CountAsOne`.
+# Available are: 'array', 'hash', 'heredoc', and 'method_call'.
+# Each construct will be counted as one line regardless of
+# its actual size.
 #
 # @example
 #   # bad
@@ -1923,7 +1924,7 @@ RuboCop::Cop::RSpec::Eq::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 #   result = service.call
 #   expect(result).to be(true)
 #   end
-# @example CountAsOne: ['array', 'heredoc']
+# @example CountAsOne: ['array', 'heredoc', 'method_call']
 #
 #   it do
 #   array = [         # +1
@@ -1939,22 +1940,27 @@ RuboCop::Cop::RSpec::Eq::RESTRICT_ON_SEND = T.let(T.unsafe(nil), Array)
 #   Heredoc
 #   content.
 #   HEREDOC
-#   end                 # 5 points
 #
-# source://rubocop-rspec//lib/rubocop/cop/rspec/example_length.rb#51
+#   foo(            # +1
+#   1,
+#   2
+#   )
+#   end               # 6 points
+#
+# source://rubocop-rspec//lib/rubocop/cop/rspec/example_length.rb#57
 class RuboCop::Cop::RSpec::ExampleLength < ::RuboCop::Cop::RSpec::Base
   include ::RuboCop::Cop::CodeLength
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/example_length.rb#56
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/example_length.rb#62
   def on_block(node); end
 
   private
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/example_length.rb#64
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/example_length.rb#70
   def cop_label; end
 end
 
-# source://rubocop-rspec//lib/rubocop/cop/rspec/example_length.rb#54
+# source://rubocop-rspec//lib/rubocop/cop/rspec/example_length.rb#60
 RuboCop::Cop::RSpec::ExampleLength::LABEL = T.let(T.unsafe(nil), String)
 
 # Checks for examples without a description.
@@ -4117,7 +4123,7 @@ module RuboCop::Cop::RSpec::Metadata
   private
 
   # source://rubocop-rspec//lib/rubocop/cop/rspec/mixin/metadata.rb#49
-  def on_matadata_arguments(metadata_arguments); end
+  def on_metadata_arguments(metadata_arguments); end
 end
 
 # Use consistent metadata style.
@@ -4160,59 +4166,59 @@ class RuboCop::Cop::RSpec::MetadataStyle < ::RuboCop::Cop::RSpec::Base
 
   private
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#61
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#66
   def autocorrect_pair(corrector, node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#66
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#71
   def autocorrect_symbol(corrector, node); end
 
   # @return [Boolean]
   #
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#73
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#78
   def bad_metadata_pair?(node); end
 
   # @return [Boolean]
   #
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#77
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#82
   def bad_metadata_symbol?(_node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#81
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#86
   def format_symbol_to_pair_source(node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#85
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#90
   def insert_pair(corrector, node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#96
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#101
   def insert_pair_as_last_argument(corrector, node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#105
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#110
   def insert_pair_to_empty_hash_metadata(corrector, node, hash_node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#112
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#117
   def insert_pair_to_non_empty_hash_metadata(corrector, node, hash_node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#119
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#124
   def insert_symbol(corrector, node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#126
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#131
   def message_for_style; end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#133
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#138
   def on_metadata_pair(node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#141
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#146
   def on_metadata_symbol(node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#149
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#154
   def remove_pair(corrector, node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#159
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#164
   def remove_pair_following(corrector, node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#171
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#176
   def remove_pair_preceding(corrector, node); end
 
-  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#183
+  # source://rubocop-rspec//lib/rubocop/cop/rspec/metadata_style.rb#188
   def remove_symbol(corrector, node); end
 end
 
@@ -6673,7 +6679,7 @@ class RuboCop::Cop::RSpec::SpecFilePathFormat < ::RuboCop::Cop::RSpec::Base
   def custom_transform; end
 
   # source://rubocop-rspec//lib/rubocop/cop/rspec/spec_file_path_format.rb#62
-  def ensure_correct_file_path(class_name, arguments); end
+  def ensure_correct_file_path(send_node, class_name, arguments); end
 
   # source://rubocop-rspec//lib/rubocop/cop/rspec/spec_file_path_format.rb#98
   def expected_path(constant); end
@@ -7400,10 +7406,10 @@ class RuboCop::Cop::Style::TrailingCommaInArguments < ::RuboCop::Cop::Base
   include ::RuboCop::Cop::ConfigurableEnforcedStyle
   include ::RuboCop::Cop::RangeHelp
 
-  # source://rubocop/1.57.1/lib/rubocop/cop/style/trailing_comma_in_arguments.rb#95
+  # source://rubocop/1.59.0/lib/rubocop/cop/style/trailing_comma_in_arguments.rb#95
   def on_csend(node); end
 
-  # source://rubocop/1.57.1/lib/rubocop/cop/style/trailing_comma_in_arguments.rb#95
+  # source://rubocop/1.59.0/lib/rubocop/cop/style/trailing_comma_in_arguments.rb#95
   def on_send(node); end
 
   class << self
@@ -7555,7 +7561,7 @@ end
 
 # Wrapper for RSpec examples
 #
-# source://rubocop-rspec//lib/rubocop/rspec/example.rb#7
+# source://rubocop-rspec//lib/rubocop/rspec/example.rb#6
 class RuboCop::RSpec::Example < ::RuboCop::RSpec::Concept
   # source://rubocop-rspec//lib/rubocop/rspec/example.rb#28
   def definition; end
@@ -7581,7 +7587,7 @@ end
 
 # Wrapper for RSpec example groups
 #
-# source://rubocop-rspec//lib/rubocop/rspec/example_group.rb#12
+# source://rubocop-rspec//lib/rubocop/rspec/example_group.rb#6
 class RuboCop::RSpec::ExampleGroup < ::RuboCop::RSpec::Concept
   # source://rubocop-rspec//lib/rubocop/rspec/example_group.rb#28
   def examples; end
@@ -7621,7 +7627,7 @@ end
 
 # Wrapper for RSpec hook
 #
-# source://rubocop-rspec//lib/rubocop/rspec/hook.rb#7
+# source://rubocop-rspec//lib/rubocop/rspec/hook.rb#6
 class RuboCop::RSpec::Hook < ::RuboCop::RSpec::Concept
   # @return [Boolean]
   #
