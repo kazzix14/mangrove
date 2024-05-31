@@ -2,8 +2,6 @@
 
 Mangrove is a Ruby Gem designed to be the definitive toolkit for leveraging Sorbet's type system in Ruby applications. It's designed to offer a robust, statically-typed experience, focusing on solid types, a functional programming style, and an interface-driven approach.
 
-Use `rubocop-mangrove` to statically check rescuing ControlSignal is done
-
 - [Documentation](https://kazzix14.github.io/mangrove/docs/)
 - [Coverage](https://kazzix14.github.io/mangrove/coverage/index.html#_AllFiles)
 
