@@ -1,5 +1,4 @@
 # Mangrove
-Mangrove provides type utility to use with Sorbet.
 
 Mangrove is a Ruby Gem designed to be the definitive toolkit for leveraging Sorbet's type system in Ruby applications. It's designed to offer a robust, statically-typed experience, focusing on solid types, a functional programming style, and an interface-driven approach.
 
@@ -9,6 +8,7 @@ Use `rubocop-mangrove` to statically check rescuing ControlSignal is done
 - [Coverage](https://kazzix14.github.io/mangrove/coverage/index.html#_AllFiles)
 
 ## Features
+
 - Option Type
 - Result Type
 - Enums with inner types (ADTs)
@@ -36,9 +36,38 @@ my_ok = Result::Ok.new("my value")
 my_err = Result::Err.new("my err")
 my_some = Option::Some.new(1234)
 my_none = Option::None.new
+
+##############################
+
+response = MyClient
+  .new
+  .and_then { |client| client.get_response() }
+  .and_then { |response| response.body }
+
+case response
+when Mangrove::Result::Ok
+  puts response.ok_inner
+when Mangrove::Result::Err
+  puts response.err_inner
+end
+
+##############################
+
+class MyEnum
+  extend Mangrove::Enum
+
+  variants do
+    variant VariantWithInteger, Integer
+    variant VariantWithString, String
+    variant VariantWithException, Exception
+    variant VariantWithTuple, [Integer, String]
+    variant VariantWithShape, { name: String, age: Integer }
+  end
+end
 ```
 
 ## Commands for Development
+
 ```
 git config core.hooksPath hooks
 bundle install
