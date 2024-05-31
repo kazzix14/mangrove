@@ -51,7 +51,7 @@ module Mangrove
     sig { abstract.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
     def map(&block); end
 
-    sig { abstract.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T.type_parameter(:NewOkType), _t_new_err: T.type_parameter(:NewErrType), block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
+    sig { abstract.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
     def map_wt(_t_new_ok, _t_new_err, &block); end
 
     sig { abstract.type_parameters(:NewOkType).params(block: T.proc.params(this: OkType).returns(T.type_parameter(:NewOkType))).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
@@ -225,7 +225,7 @@ module Mangrove
         block.call(self)
       end
 
-      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T.type_parameter(:NewOkType), _t_new_err: T.type_parameter(:NewErrType), block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
       def map_wt(_t_new_ok, _t_new_err, &block)
         block.call(self)
       end
@@ -396,7 +396,7 @@ module Mangrove
         block.call(self)
       end
 
-      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T.type_parameter(:NewOkType), _t_new_err: T.type_parameter(:NewErrType), block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
       def map_wt(_t_new_ok, _t_new_err, &block)
         block.call(self)
       end
