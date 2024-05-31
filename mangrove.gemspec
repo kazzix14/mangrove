@@ -29,7 +29,7 @@ Gem::Specification.new { |spec|
   }
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.require_paths = %w[lib rbi]
 
   spec.add_dependency "sorbet-runtime", ">= 0.5.0"
 
