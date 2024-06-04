@@ -17,12 +17,12 @@ require "sorbet-runtime"
 require "benchmark"
 require "vernier"
 
-COUNT = 10000000
+COUNT = 10_000_000
 
 Benchmark.bm(24) { |r|
   Vernier.profile(out: "vernier_profile.json", interval: 19) {
     r.report("Exception") {
-      COUNT.times do
+      COUNT.times {
         begin
           if rand(2).zero?
             _ok = 1
@@ -32,11 +32,11 @@ Benchmark.bm(24) { |r|
         rescue StandardError => e
           _err = e.message
         end
-      end
+      }
     }
 
     r.report("Mangrove::Result") {
-      COUNT.times do
+      COUNT.times {
         if rand(2).zero?
           T.cast(Mangrove::Result::Ok.new(1), Mangrove::Result[T.untyped, T.untyped])
         else
@@ -48,7 +48,7 @@ Benchmark.bm(24) { |r|
         else
           _err = return_value.err_inner
         end
-      end
+      }
     }
   }
 }
