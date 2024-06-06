@@ -28,8 +28,8 @@ RSpec.describe Mangrove::Result::Ok do
 
   describe "#unwrap_or_raise_with!" do
     it "extracts inner value" do
-      expect(Mangrove::Result::Ok.new(1).unwrap_or_raise_with! { |e| Exception.new("my error: #{e}") }).to eq 1
-      expect(Mangrove::Result::Ok.new(:my_symbol).unwrap_or_raise_with! { |e| Exception.new("my error: #{e}") }).to eq :my_symbol
+      expect(Mangrove::Result::Ok.new(1).unwrap_or_raise_with!(&->(e) { Exception.new("my error: #{e}") })).to eq 1
+      expect(Mangrove::Result::Ok.new(:my_symbol).unwrap_or_raise_with!(&->(e) { Exception.new("my error: #{e}") })).to eq :my_symbol
     end
   end
 
@@ -49,8 +49,8 @@ RSpec.describe Mangrove::Result::Ok do
 
   describe "#expect_with!" do
     it "extracts inner value" do
-      expect(Mangrove::Result::Ok.new(1).expect_with! { |_e| "my expectation" }).to eq 1
-      expect(Mangrove::Result::Ok.new(:my_symbol).expect_with! { |_e| "my expectation" }).to eq :my_symbol
+      expect(Mangrove::Result::Ok.new(1).expect_with!(&->(_e) { "my expectation" })).to eq 1
+      expect(Mangrove::Result::Ok.new(:my_symbol).expect_with!(&->(_e) { "my expectation" })).to eq :my_symbol
     end
   end
 
@@ -103,8 +103,8 @@ RSpec.describe Mangrove::Result::Ok do
 
   describe "#map_err_wt" do
     it "does not change inner value" do
-      expect(Mangrove::Result::Ok[Integer].new(0).map_err_wt(Symbol) { |_| :error }).to eq Mangrove::Result::Ok[Integer].new(0)
-      expect(Mangrove::Result::Ok[Integer].new(1).map_err_wt(String) { |_| "error" }).to eq Mangrove::Result::Ok[Integer].new(1)
+      expect(Mangrove::Result::Ok[Integer].new(0).map_err_wt(Symbol, &->(_) { :error })).to eq Mangrove::Result::Ok[Integer].new(0)
+      expect(Mangrove::Result::Ok[Integer].new(1).map_err_wt(String, &->(_) { "error" })).to eq Mangrove::Result::Ok[Integer].new(1)
     end
   end
 
@@ -156,15 +156,15 @@ RSpec.describe Mangrove::Result::Ok do
 
   describe "#or_else" do
     it "returns self" do
-      expect(Mangrove::Result::Ok[Integer].new(0).or_else { |_| Mangrove::Result.ok_wt(1, String) }).to eq Mangrove::Result::Ok[Integer].new(0)
-      expect(Mangrove::Result::Ok[Integer].new(0).or_else { |_| Mangrove::Result.err_wt(Integer, "error") }).to eq Mangrove::Result::Ok[Integer].new(0)
+      expect(Mangrove::Result::Ok[Integer].new(0).or_else(&->(_) { Mangrove::Result.ok_wt(1, String) })).to eq Mangrove::Result::Ok[Integer].new(0)
+      expect(Mangrove::Result::Ok[Integer].new(0).or_else(&->(_) { Mangrove::Result.err_wt(Integer, "error") })).to eq Mangrove::Result::Ok[Integer].new(0)
     end
   end
 
   describe "#or_else_wt" do
     it "returns self" do
-      expect(Mangrove::Result::Ok[Integer].new(0).or_else_wt(String) { |_| Mangrove::Result.ok_wt(1, String) }).to eq Mangrove::Result::Ok[Integer].new(0)
-      expect(Mangrove::Result::Ok[Integer].new(0).or_else_wt(String) { |_| Mangrove::Result.err_wt(Integer, "error") }).to eq Mangrove::Result::Ok[Integer].new(0)
+      expect(Mangrove::Result::Ok[Integer].new(0).or_else_wt(String, &->(_) { Mangrove::Result.ok_wt(1, String) })).to eq Mangrove::Result::Ok[Integer].new(0)
+      expect(Mangrove::Result::Ok[Integer].new(0).or_else_wt(String, &->(_) { Mangrove::Result.err_wt(Integer, "error") })).to eq Mangrove::Result::Ok[Integer].new(0)
     end
   end
 

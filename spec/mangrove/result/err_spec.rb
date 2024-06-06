@@ -82,8 +82,8 @@ RSpec.describe Mangrove::Result::Err do
 
   describe "#map_ok_wt" do
     it "does not change inner value" do
-      expect(Mangrove::Result::Err[Symbol].new(:error).map_ok_wt(Symbol) { |_| :ok }).to eq Mangrove::Result::Err[Symbol].new(:error)
-      expect(Mangrove::Result::Err[Symbol].new(:error).map_ok_wt(String) { |_| "ok" }).to eq Mangrove::Result::Err[Symbol].new(:error)
+      expect(Mangrove::Result::Err[Symbol].new(:error).map_ok_wt(Symbol, &->(_) { :ok })).to eq Mangrove::Result::Err[Symbol].new(:error)
+      expect(Mangrove::Result::Err[Symbol].new(:error).map_ok_wt(String, &->(_) { "ok" })).to eq Mangrove::Result::Err[Symbol].new(:error)
     end
   end
 
@@ -109,15 +109,15 @@ RSpec.describe Mangrove::Result::Err do
 
   describe "#and_then" do
     it "maps inner value with value returned by given block" do
-      expect(Mangrove::Result::Err[Symbol].new(:error).and_then { |_| Mangrove::Result::Ok[String].new("err") }).to eq Mangrove::Result::Err[Symbol].new(:error)
-      expect(Mangrove::Result::Err[Symbol].new(:error).and_then { |_| Mangrove::Result::Ok[Symbol].new(:err) }).to eq Mangrove::Result::Err[Symbol].new(:error)
+      expect(Mangrove::Result::Err[Symbol].new(:error).and_then(&->(_) { Mangrove::Result::Ok[String].new("err") })).to eq Mangrove::Result::Err[Symbol].new(:error)
+      expect(Mangrove::Result::Err[Symbol].new(:error).and_then(&->(_) { Mangrove::Result::Ok[Symbol].new(:err) })).to eq Mangrove::Result::Err[Symbol].new(:error)
     end
   end
 
   describe "#and_then_wt" do
     it "maps inner value with value returned by given block" do
-      expect(Mangrove::Result::Err[Symbol].new(:error).and_then_wt(String) { |_| Mangrove::Result.ok_wt("ok", Symbol) }).to eq Mangrove::Result::Err[Symbol].new(:error)
-      expect(Mangrove::Result::Err[Symbol].new(:error).and_then_wt(Symbol) { |_| Mangrove::Result.err_wt(Symbol, :err) }).to eq Mangrove::Result::Err[Symbol].new(:error)
+      expect(Mangrove::Result::Err[Symbol].new(:error).and_then_wt(String, &->(_) { Mangrove::Result.ok_wt("ok", Symbol) })).to eq Mangrove::Result::Err[Symbol].new(:error)
+      expect(Mangrove::Result::Err[Symbol].new(:error).and_then_wt(Symbol, &->(_) { Mangrove::Result.err_wt(Symbol, :err) })).to eq Mangrove::Result::Err[Symbol].new(:error)
     end
   end
 

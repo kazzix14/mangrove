@@ -46,7 +46,7 @@ jobs:
       - name: Check Sorbet shims
         run: bundle exec tapioca check-shims
       - name: Check types
-        run: bundle exec spoom tc
+        run: bundle exec spoom srb tc
     strategy:
       matrix:
         ruby:
