@@ -3,6 +3,7 @@
 
 require "rubygems/user_interaction"
 require "spec_helper"
+require "spoom"
 require "tapioca/helpers/test/dsl_compiler"
 require "tapioca/dsl/compilers/mangrove_enum"
 

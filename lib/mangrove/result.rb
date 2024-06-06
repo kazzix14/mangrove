@@ -15,8 +15,8 @@ module Mangrove
     sealed!
     interface!
 
-    OkType = type_member
-    ErrType = type_member
+    OkType = type_member(:out)
+    ErrType = type_member(:out)
 
     sig { abstract.params(other: BasicObject).returns(T::Boolean) }
     def ==(other); end
@@ -66,44 +66,46 @@ module Mangrove
     sig { abstract.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
     def map_err_wt(_t_new_err, &block); end
 
-    sig { abstract.type_parameters(:NewOkType).params(other: Result[T.type_parameter(:NewOkType), ErrType]).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+    sig { abstract.type_parameters(:NewOkType, :NewErrType).params(other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(T.any(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)], Result[T.type_parameter(:NewOkType), ErrType])) }
     def and(other); end
 
-    sig { abstract.type_parameters(:NewOkType).params(block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), ErrType])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+    sig { abstract.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(T.any(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)], Result[T.type_parameter(:NewOkType), ErrType])) }
     def and_then(&block); end
 
-    sig { abstract.type_parameters(:NewOkType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), ErrType])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+    sig { abstract.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(T.any(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)], Result[T.type_parameter(:NewOkType), ErrType])) }
     def and_then_wt(_t_new_ok, &block); end
 
     sig {
       abstract
+        .type_parameters(:NewErrType)
         .params(
-          new_err_inner: ErrType,
+          new_err_inner: T.type_parameter(:NewErrType),
           condition: T.proc.params(inner: OkType).returns(T::Boolean)
         )
         .returns(
-          Result[OkType, ErrType]
+          T.any(Result[OkType, T.type_parameter(:NewErrType)], Result[OkType, ErrType])
         )
     }
     def and_err_if(new_err_inner, &condition); end
 
-    sig { abstract.params(other: Result[OkType, ErrType]).returns(Result[OkType, ErrType]) }
+    sig { abstract.type_parameters(:NewOkType, :NewErrType).params(other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(T.any(Result[OkType, T.type_parameter(:NewErrType)], Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])) }
     def or(other); end
 
-    sig { abstract.type_parameters(:NewErrType).params(block: T.proc.params(this: ErrType).returns(Result[OkType, T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
+    sig { abstract.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: ErrType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(T.any(Result[OkType, T.type_parameter(:NewErrType)], Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])) }
     def or_else(&block); end
 
-    sig { abstract.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(Result[OkType, T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
+    sig { abstract.type_parameters(:NewOkType, :NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(T.any(Result[OkType, T.type_parameter(:NewErrType)], Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])) }
     def or_else_wt(_t_new_err, &block); end
 
     sig {
       abstract
+        .type_parameters(:NewOkType)
         .params(
-          new_ok_inner: OkType,
+          new_ok_inner: T.type_parameter(:NewOkType),
           condition: T.proc.params(inner: ErrType).returns(T::Boolean)
         )
         .returns(
-          Result[OkType, ErrType]
+          T.any(Result[T.type_parameter(:NewOkType), ErrType], Result[OkType, ErrType])
         )
     }
     def or_ok_if(new_ok_inner, &condition); end
@@ -121,31 +123,33 @@ module Mangrove
 
         if errs.empty?
           # This is safe as errs is empty.
-          Result::Ok[T::Enumerable[T.type_parameter(:T)], T::Enumerable[T.type_parameter(:E)]].new(results.map { |r| T.cast(r, Result::Ok[T.type_parameter(:T), T.type_parameter(:E)]).ok_inner })
+          Result::Ok[T::Enumerable[T.type_parameter(:T)]].new(results.map { |r| T.cast(r, Result::Ok[T.type_parameter(:T)]).ok_inner })
         else
           # This is safe as errs is results where err? is true
-          Result::Err[T::Enumerable[T.type_parameter(:T)], T::Enumerable[T.type_parameter(:E)]].new(errs.map { |r| T.cast(r, Result::Err[T.type_parameter(:T), T.type_parameter(:E)]).err_inner })
+          Result::Err[T::Enumerable[T.type_parameter(:E)]].new(errs.map { |r| T.cast(r, Result::Err[T.type_parameter(:E)]).err_inner })
         end
       end
 
-      sig { type_parameters(:OkType).params(inner: T.type_parameter(:OkType)).returns(Result::Ok[T.type_parameter(:OkType), T.untyped]) }
+      sig { type_parameters(:OkType).params(inner: T.type_parameter(:OkType)).returns(Result::Ok[T.type_parameter(:OkType)]) }
       def ok(inner)
-        Result::Ok[T.type_parameter(:OkType), T.untyped].new(inner)
+        Result::Ok[T.type_parameter(:OkType)].new(inner)
       end
 
-      sig { type_parameters(:OkType, :ErrType).params(inner: T.type_parameter(:OkType), _t_err: T::Class[T.type_parameter(:ErrType)]).returns(Result::Ok[T.type_parameter(:OkType), T.type_parameter(:ErrType)]) }
+      # @deprecated
+      sig { type_parameters(:OkType, :ErrType).params(inner: T.type_parameter(:OkType), _t_err: T::Class[T.type_parameter(:ErrType)]).returns(Result::Ok[T.type_parameter(:OkType)]) }
       def ok_wt(inner, _t_err)
-        Result::Ok[T.type_parameter(:OkType), T.type_parameter(:ErrType)].new(inner)
+        Result::Ok[T.type_parameter(:OkType)].new(inner)
       end
 
-      sig { type_parameters(:ErrType).params(inner: T.type_parameter(:ErrType)).returns(Result::Err[T.untyped, T.type_parameter(:ErrType)]) }
+      sig { type_parameters(:ErrType).params(inner: T.type_parameter(:ErrType)).returns(Result::Err[T.type_parameter(:ErrType)]) }
       def err(inner)
-        Result::Err[T.untyped, T.type_parameter(:ErrType)].new(inner)
+        Result::Err[T.type_parameter(:ErrType)].new(inner)
       end
 
-      sig { type_parameters(:OkType, :ErrType).params(_t_ok: T::Class[T.type_parameter(:OkType)], inner: T.type_parameter(:ErrType)).returns(Result::Err[T.type_parameter(:OkType), T.type_parameter(:ErrType)]) }
+      # @deprecated
+      sig { type_parameters(:OkType, :ErrType).params(_t_ok: T::Class[T.type_parameter(:OkType)], inner: T.type_parameter(:ErrType)).returns(Result::Err[T.type_parameter(:ErrType)]) }
       def err_wt(_t_ok, inner)
-        Result::Err[T.type_parameter(:OkType), T.type_parameter(:ErrType)].new(inner)
+        Result::Err[T.type_parameter(:ErrType)].new(inner)
       end
     end
 
@@ -157,7 +161,7 @@ module Mangrove
       include Result
 
       OkType = type_member
-      ErrType = type_member
+      ErrType = type_member { { fixed: T.noreturn } }
 
       sig { params(inner: OkType).void }
       def initialize(inner)
@@ -232,82 +236,86 @@ module Mangrove
 
       sig { override.type_parameters(:NewOkType).params(block: T.proc.params(this: OkType).returns(T.type_parameter(:NewOkType))).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
       def map_ok(&block)
-        Result::Ok[T.type_parameter(:NewOkType), ErrType].new(block.call(@inner))
+        Result::Ok[T.type_parameter(:NewOkType)].new(block.call(@inner))
       end
 
       # Because sorbet does not deduct types from return values well. This method takes a type of new inner values.
       sig { override.type_parameters(:NewOkType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], block: T.proc.params(this: OkType).returns(T.type_parameter(:NewOkType))).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
       def map_ok_wt(_t_new_ok, &block)
-        Result::Ok[T.type_parameter(:NewOkType), ErrType].new(block.call(@inner))
+        Result::Ok[T.type_parameter(:NewOkType)].new(block.call(@inner))
       end
 
       sig { override.type_parameters(:NewErrType).params(_block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
       def map_err(&_block)
-        T.cast(self, Result::Ok[OkType, T.type_parameter(:NewErrType)])
+        self
       end
 
       # Because sorbet does not deduct types from return values well. This method takes a type of new inner values.
       sig { override.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], _block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
       def map_err_wt(_t_new_err, &_block)
-        T.cast(self, Result::Ok[OkType, T.type_parameter(:NewErrType)])
+        self
       end
 
-      sig { override.type_parameters(:NewOkType).params(other: Result[T.type_parameter(:NewOkType), ErrType]).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
       def and(other)
         other
       end
 
-      sig { override.type_parameters(:NewOkType).params(block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), ErrType])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
       def and_then(&block)
         block.call(@inner)
       end
 
-      sig { override.type_parameters(:NewOkType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), ErrType])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+      # @deprecated
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
       def and_then_wt(_t_new_ok, &block)
         block.call(@inner)
       end
 
       sig {
         override
+          .type_parameters(:NewErrType)
           .params(
-            new_err_inner: ErrType,
+            new_err_inner: T.type_parameter(:NewErrType),
             condition: T.proc.params(inner: OkType).returns(T::Boolean)
           )
           .returns(
-            Result[OkType, ErrType]
+            Result[OkType, T.type_parameter(:NewErrType)]
           )
       }
       def and_err_if(new_err_inner, &condition)
         if condition.call(@inner)
-          Result::Err[OkType, ErrType].new(new_err_inner)
+          Result::Err[T.type_parameter(:NewErrType)].new(new_err_inner)
         else
           self
         end
       end
 
-      sig { override.params(_other: Result[OkType, ErrType]).returns(Result[OkType, ErrType]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(_other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
       def or(_other)
         self
       end
 
-      sig { override.type_parameters(:NewErrType).params(_block: T.proc.params(this: ErrType).returns(Result[OkType, T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(_block: T.proc.params(this: ErrType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
       def or_else(&_block)
-        T.cast(self, Result::Ok[OkType, T.type_parameter(:NewErrType)])
+        self
       end
 
-      sig { override.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], _block: T.proc.params(this: ErrType).returns(Result[OkType, T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
+      # @deprecated
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], _block: T.proc.params(this: ErrType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
       def or_else_wt(_t_new_err, &_block)
-        T.cast(self, Result::Ok[OkType, T.type_parameter(:NewErrType)])
+        self
       end
 
       sig {
         override
+          .type_parameters(:NewOkType)
           .params(
-            _new_ok_inner: OkType,
+            _new_ok_inner: T.type_parameter(:NewOkType),
             _condition: T.proc.params(inner: ErrType).returns(T::Boolean)
           )
           .returns(
-            Result::Ok[OkType, ErrType]
+            Result[OkType, ErrType]
           )
       }
       def or_ok_if(_new_ok_inner, &_condition)
@@ -327,7 +335,7 @@ module Mangrove
 
       include Result
 
-      OkType = type_member
+      OkType = type_member { { fixed: T.noreturn } }
       ErrType = type_member
 
       sig { params(inner: ErrType).void }
@@ -403,83 +411,84 @@ module Mangrove
 
       sig { override.type_parameters(:NewOkType).params(_block: T.proc.params(this: OkType).returns(T.type_parameter(:NewOkType))).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
       def map_ok(&_block)
-        T.cast(self, Result::Err[T.type_parameter(:NewOkType), ErrType])
+        self
       end
 
-      # Because sorbet does not deduct types from return values well. This method takes a type of new inner values.
       sig { override.type_parameters(:NewOkType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _block: T.proc.params(this: OkType).returns(T.type_parameter(:NewOkType))).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
       def map_ok_wt(_t_new_ok, &_block)
-        T.cast(self, Result::Err[T.type_parameter(:NewOkType), ErrType])
+        self
       end
 
       sig { override.type_parameters(:NewErrType).params(block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
       def map_err(&block)
-        Result::Err[OkType, T.type_parameter(:NewErrType)].new(block.call(@inner))
+        Result::Err[T.type_parameter(:NewErrType)].new(block.call(@inner))
       end
 
-      # Because sorbet does not deduct types from return values well. This method takes a type of new inner values.
       sig { override.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
       def map_err_wt(_t_new_err, &block)
-        Result::Err[OkType, T.type_parameter(:NewErrType)].new(block.call(@inner))
+        Result::Err[T.type_parameter(:NewErrType)].new(block.call(@inner))
       end
 
-      sig { override.type_parameters(:NewOkType).params(_other: Result[T.type_parameter(:NewOkType), ErrType]).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(_other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
       def and(_other)
-        T.cast(self, Result::Err[T.type_parameter(:NewOkType), ErrType])
+        self
       end
 
-      sig { override.type_parameters(:NewOkType).params(_block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), ErrType])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(_block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
       def and_then(&_block)
-        T.cast(self, Result::Err[T.type_parameter(:NewOkType), ErrType])
+        self
       end
 
-      sig { override.type_parameters(:NewOkType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), ErrType])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
+      # @deprecated
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
       def and_then_wt(_t_new_ok, &_block)
-        T.cast(self, Result::Err[T.type_parameter(:NewOkType), ErrType])
+        self
       end
 
       sig {
         override
+          .type_parameters(:NewErrType)
           .params(
-            _new_err_inner: ErrType,
+            _new_err_inner: T.type_parameter(:NewErrType),
             _condition: T.proc.params(inner: OkType).returns(T::Boolean)
           )
           .returns(
-            Result::Err[OkType, ErrType]
+            Result[OkType, ErrType]
           )
       }
       def and_err_if(_new_err_inner, &_condition)
         self
       end
 
-      sig { override.params(other: Result[OkType, ErrType]).returns(Result[OkType, ErrType]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
       def or(other)
         other
       end
 
-      sig { override.type_parameters(:NewErrType).params(block: T.proc.params(this: ErrType).returns(Result[OkType, T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: ErrType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
       def or_else(&block)
         block.call(@inner)
       end
 
-      sig { override.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(Result[OkType, T.type_parameter(:NewErrType)])).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
+      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
       def or_else_wt(_t_new_err, &block)
         block.call(@inner)
       end
 
       sig {
         override
+          .type_parameters(:NewOkType)
           .params(
-            new_ok_inner: OkType,
+            new_ok_inner: T.type_parameter(:NewOkType),
             condition: T.proc.params(inner: ErrType).returns(T::Boolean)
           )
           .returns(
-            Result[OkType, ErrType]
+            Result[T.type_parameter(:NewOkType), ErrType]
           )
       }
       def or_ok_if(new_ok_inner, &condition)
         if condition.call(@inner)
-          Result::Ok[OkType, ErrType].new(new_ok_inner)
+          Result::Ok[T.type_parameter(:NewOkType)].new(new_ok_inner)
         else
           self
         end

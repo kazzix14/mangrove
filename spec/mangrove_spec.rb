@@ -14,7 +14,7 @@ RSpec.describe Mangrove do
       class TransposeExample
         extend T::Sig
 
-        sig { params(numbers: T::Enumerable[Integer]).returns(Mangrove::Result[T::Array[Integer], String]) }
+        sig { params(numbers: T::Enumerable[Integer]).returns(Mangrove::Result[T::Enumerable[Integer], String]) }
         def divide_arguments_by_3(numbers)
           Mangrove::Result.from_results(numbers
             .map { |number|

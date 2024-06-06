@@ -77,9 +77,9 @@ bundle exec tapioca init
 bundle exec rspec -f d
 bundle exec rubocop -DESP
 bundle exec srb typecheck
-bundle exec spoom tc
+bundle exec spoom srb tc
 bundle exec ordinare --check
-bundle exec ruboclean
+bundle exec ruboclean --verify
 bundle exec yardoc -o docs/ --plugin yard-sorbet
 bundle exec yard server --reload --plugin yard-sorbet
 rake build
