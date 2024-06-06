@@ -82,6 +82,8 @@ bundle exec ordinare --check
 bundle exec ruboclean --verify
 bundle exec yardoc -o docs/ --plugin yard-sorbet
 bundle exec yard server --reload --plugin yard-sorbet
+bundle exec ruby ./bench/result_bench.rb
+bundle exec ruby --yjit ./bench/result_bench.rb
 rake build
 rake release
 ```
