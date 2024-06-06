@@ -9,8 +9,8 @@ Gem::Specification.new { |spec|
   spec.email = ["kazzix14@gmail.com"]
   spec.licenses = ["MIT"]
 
-  spec.summary = "Type Utility for Ruby."
-  spec.description = "Type Utility for Ruby."
+  spec.summary = "Toolkit for leveraging Sorbet's type system."
+  spec.description = "Mangrove is a Ruby Gem designed to be the definitive toolkit for leveraging Sorbet's type system in Ruby applications. It's designed to offer a robust, statically-typed experience, focusing on solid types, a functional programming style, and an interface-driven approach. Mangrove has `Result`, `Option` and `Algebraic Data Type` currently."
   spec.homepage = "https://github.com/kazzix14/mangrove"
   spec.required_ruby_version = ">= 3.1.2"
 
