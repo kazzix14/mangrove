@@ -24,8 +24,8 @@ For more concrete examples, see [`spec/**/**_spec.rb`](https://github.com/kazzix
 
 ```ruby
 Mangrove::Result[OkType, ErrType]
-Mangrove::Result::Ok[OkType, ErrType]
-Mangrove::Result::Err[OkType, ErrType]
+Mangrove::Result::Ok[OkType]
+Mangrove::Result::Err[ErrType]
 Mangrove::Option[InnerType]
 Mangrove::Option::Some[InnerType]
 Mangrove::Option::None[InnerType]
