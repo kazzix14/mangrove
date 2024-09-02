@@ -101,6 +101,21 @@ RSpec.describe Mangrove::Result::Err do
     end
   end
 
+  describe "#tap_ok" do
+    it "calls given block with inner value" do
+      # 静的に到達しないことがわかってしまって型検査に通らないので、T.let で型を指定する
+      expect(T.let(Mangrove::Result::Err.new(:my_symbol), Mangrove::Result[Integer, Symbol]).tap_ok { |i| i * 2 }).to eq Mangrove::Result::Err.new(:my_symbol)
+      expect(T.let(Mangrove::Result::Err.new(1), Mangrove::Result[Symbol, Integer]).tap_ok(&:to_s)).to eq Mangrove::Result::Err.new(1)
+    end
+  end
+
+  describe "#tap_err" do
+    it "calls given block with inner value" do
+      expect(Mangrove::Result::Err.new(1).tap_err(&:to_s)).to eq Mangrove::Result::Err.new(1)
+      expect(Mangrove::Result::Err.new(:my_symbol).tap_err(&:to_s)).to eq Mangrove::Result::Err.new(:my_symbol)
+    end
+  end
+
   describe "#and" do
     it "returns self" do
       expect(Mangrove::Result::Err[Symbol].new(:error).and(Mangrove::Result::Ok[String].new("ok"))).to eq Mangrove::Result::Err[Symbol].new(:error)

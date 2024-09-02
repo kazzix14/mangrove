@@ -53,6 +53,14 @@ RSpec.describe Mangrove::Result do
     expect(Mangrove::Result.instance_methods).to include :map_err
   end
 
+  it "declares #tap_ok" do
+    expect(Mangrove::Result.instance_methods).to include :tap_ok
+  end
+
+  it "declares #tap_err" do
+    expect(Mangrove::Result.instance_methods).to include :tap_err
+  end
+
   it "declares #and" do
     expect(Mangrove::Result.instance_methods).to include :and
   end

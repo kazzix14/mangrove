@@ -66,6 +66,12 @@ module Mangrove
     sig { abstract.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
     def map_err_wt(_t_new_err, &block); end
 
+    sig { abstract.params(block: T.proc.params(this: OkType).void).returns(Result[OkType, ErrType]) }
+    def tap_ok(&block); end
+
+    sig { abstract.params(block: T.proc.params(this: ErrType).void).returns(Result[OkType, ErrType]) }
+    def tap_err(&block); end
+
     sig { abstract.type_parameters(:NewOkType, :NewErrType).params(other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(T.any(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)], Result[T.type_parameter(:NewOkType), ErrType])) }
     def and(other); end
 
@@ -256,6 +262,17 @@ module Mangrove
         self
       end
 
+      sig { override.params(block: T.proc.params(this: OkType).void).returns(Result[OkType, ErrType]) }
+      def tap_ok(&block)
+        block.call(@inner)
+        self
+      end
+
+      sig { override.params(_block: T.proc.params(this: ErrType).void).returns(Result[OkType, ErrType]) }
+      def tap_err(&_block)
+        self
+      end
+
       sig { override.type_parameters(:NewOkType, :NewErrType).params(other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }
       def and(other)
         other
@@ -427,6 +444,17 @@ module Mangrove
       sig { override.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }
       def map_err_wt(_t_new_err, &block)
         Result::Err[T.type_parameter(:NewErrType)].new(block.call(@inner))
+      end
+
+      sig { override.params(_block: T.proc.params(this: OkType).void).returns(Result[OkType, ErrType]) }
+      def tap_ok(&_block)
+        self
+      end
+
+      sig { override.params(block: T.proc.params(this: ErrType).void).returns(Result[OkType, ErrType]) }
+      def tap_err(&block)
+        block.call(@inner)
+        self
       end
 
       sig { override.type_parameters(:NewOkType, :NewErrType).params(_other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(Result[T.type_parameter(:NewOkType), ErrType]) }
