@@ -30,6 +30,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./doc
           destination_dir: docs
+      - name: Run RSpec
+        run: bundle exec rspec -f d
       - name: Deploy SimpleCov Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
