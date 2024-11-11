@@ -48,7 +48,13 @@ module Tapioca
             inner_type
           }
 
-          constant_type.create_method("inner", return_type: "T.any(#{inner_types.join(", ")})")
+          return_type = if inner_types.size == 1
+                          T.must(inner_types.first)
+                        else
+                          "T.any(#{inner_types.join(", ")})"
+                        end
+
+          constant_type.create_method("inner", return_type:)
           constant_type.create_method("as_super", return_type: constant.name.to_s)
           constant_type.sort_nodes!
         }
