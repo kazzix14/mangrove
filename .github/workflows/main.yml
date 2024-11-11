@@ -30,8 +30,8 @@ jobs:
       matrix:
         ruby:
           - "3.1.2"
-          - "3.2.2"
-          - "3.3.2"
+          - "3.2.6"
+          - "3.3.6"
 
   typecheck:
     runs-on: ubuntu-latest
@@ -51,8 +51,8 @@ jobs:
       matrix:
         ruby:
           - "3.1.2"
-          - "3.2.2"
-          - "3.3.2"
+          - "3.2.6"
+          - "3.3.6"
 
   test:
     runs-on: ubuntu-latest
@@ -73,5 +73,5 @@ jobs:
       matrix:
         ruby:
           - "3.1.2"
-          - "3.2.2"
-          - "3.3.2"
+          - "3.2.6"
+          - "3.3.6"
