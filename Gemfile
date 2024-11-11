@@ -15,6 +15,7 @@ gem "debug", group: :development, require: false
 gem "ordinare", group: :development, require: false
 gem "rake", group: :development, require: false
 gem "ruboclean", group: :development, require: false
+gem "vernier", group: :development, require: false
 
 # Lint
 gem "rubocop", group: :development, require: false

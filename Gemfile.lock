@@ -112,6 +112,7 @@ GEM
       yard-sorbet
     thor (1.3.2)
     unicode-display_width (2.5.0)
+    vernier (1.0.1)
     webrick (1.8.1)
     yard (0.9.36)
     yard-sorbet (0.9.0)
@@ -139,6 +140,7 @@ DEPENDENCIES
   sorbet
   sorbet-runtime
   tapioca
+  vernier
   webrick
   yard
   yard-sorbet
