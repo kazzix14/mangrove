@@ -118,6 +118,51 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
 
         expect(rbi_for(:MyEnumForDslCompiler)).to eq(expected)
       end
+
+      context "when there is only one variant" do
+        it "generates RBI files for enums." do
+          add_ruby_file("content.rb", <<~RUBY)
+            class MyEnumWithOneVariant
+              extend Mangrove::Enum
+
+              variants do
+                variant MyEnumVariant1, String
+              end
+            end
+          RUBY
+
+          expected = <<~RBI
+            # typed: strong
+
+            class MyEnumWithOneVariant
+              abstract!
+              sealed!
+
+              sig { returns(MyEnumWithOneVariant) }
+              def as_super; end
+
+              sig { returns(String) }
+              def inner; end
+
+              class MyEnumVariant1 < ::MyEnumWithOneVariant
+                sig { params(inner: String).void }
+                def initialize(inner); end
+
+                sig { returns(MyEnumWithOneVariant) }
+                def as_super; end
+
+                sig { returns(String) }
+                def inner; end
+              end
+
+              abstract!
+              sealed!
+            end
+          RBI
+
+          expect(rbi_for(:MyEnumWithOneVariant)).to eq(expected)
+        end
+      end
     end
   end
 end
