@@ -142,9 +142,7 @@ RSpec.describe Mangrove do
                     MyServiceError::E1.new(MyAppError::E1.new("mapping to E1 #{e}")).as_my_service_error
                   }
                   .map_ok { |str|
-                    {
-                      my_key: str
-                    }
+                    "{my_key: #{str}}"
                   }
                   .map_ok(&:to_s)
               else
@@ -264,7 +262,7 @@ RSpec.describe Mangrove do
       # rubocop:enable Lint/ConstantDefinitionInBlock
 
       expect(MyController.new.create("0").force_encoding("UTF-8")).to eq "e1: num < 1"
-      expect(MyController.new.create("1").force_encoding("UTF-8")).to eq "{:my_key=>\"`1` < 2\"}"
+      expect(MyController.new.create("1").force_encoding("UTF-8")).to eq "{my_key: `1` < 2}"
       expect(MyController.new.create("2").force_encoding("UTF-8")).to eq "e1: mapping to E1 not `2` < 2"
       expect(MyController.new.create("3").force_encoding("UTF-8")).to eq "e2: e2"
       expect(MyController.new.create("invalid").force_encoding("UTF-8")).to eq "other: invalid value for Integer(): \"invalid\""
