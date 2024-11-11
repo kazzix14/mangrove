@@ -28,7 +28,7 @@ jobs:
         run: bundle exec rubocop -DESP
     strategy:
       matrix:
-        ruby: &ruby_versions
+        ruby:
           - "3.1.2"
           - "3.2.6"
           - "3.3.6"
@@ -50,7 +50,11 @@ jobs:
         run: bundle exec spoom srb tc
     strategy:
       matrix:
-        ruby: *ruby_versions
+        ruby:
+          - "3.1.2"
+          - "3.2.6"
+          - "3.3.6"
+          - "3.4.0-preview2"
 
   test:
     runs-on: ubuntu-latest
@@ -69,4 +73,8 @@ jobs:
         run: bundle exec rspec -f d
     strategy:
       matrix:
-        ruby: *ruby_versions
+        ruby:
+          - "3.1.2"
+          - "3.2.6"
+          - "3.3.6"
+          - "3.4.0-preview2"
