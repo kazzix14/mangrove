@@ -22,13 +22,13 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - name: check Gem order
+      - name: Check Gem order
         run: bundle exec ordinare --check
       - name: Run RuboCop
         run: bundle exec rubocop -DESP
     strategy:
       matrix:
-        ruby:
+        ruby: &ruby_versions
           - "3.1.2"
           - "3.2.6"
           - "3.3.6"
@@ -49,10 +49,7 @@ jobs:
         run: bundle exec spoom srb tc
     strategy:
       matrix:
-        ruby:
-          - "3.1.2"
-          - "3.2.6"
-          - "3.3.6"
+        ruby: *ruby_versions
 
   test:
     runs-on: ubuntu-latest
@@ -71,7 +68,4 @@ jobs:
         run: bundle exec rspec -f d
     strategy:
       matrix:
-        ruby:
-          - "3.1.2"
-          - "3.2.6"
-          - "3.3.6"
+        ruby: *ruby_versions
