@@ -32,7 +32,7 @@ jobs:
           - "3.1.2"
           - "3.2.6"
           - "3.3.6"
-          - "3.4.0-preview2"
+          - "3.4.1"
 
   typecheck:
     runs-on: ubuntu-latest
@@ -54,7 +54,7 @@ jobs:
           - "3.1.2"
           - "3.2.6"
           - "3.3.6"
-          - "3.4.0-preview2"
+          - "3.4.1"
 
   test:
     runs-on: ubuntu-latest
@@ -77,4 +77,4 @@ jobs:
           - "3.1.2"
           - "3.2.6"
           - "3.3.6"
-          - "3.4.0-preview2"
+          - "3.4.1"
