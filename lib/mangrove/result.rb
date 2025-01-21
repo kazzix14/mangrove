@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require_relative "result/control_signal"
+require_relative "result/ext"
 
 module Mangrove
   # Result is a type that represents either success (`Ok`) or failure (`Err`).
