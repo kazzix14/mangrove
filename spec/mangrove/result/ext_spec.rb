@@ -4,6 +4,12 @@
 require "spec_helper"
 
 RSpec.describe Mangrove::Result::Ext do
+  # rubocop:disable Lint/ConstantDefinitionInBlock
+  class Object
+    include Mangrove::Result::Ext
+  end
+  # rubocop:enable Lint/ConstantDefinitionInBlock
+
   describe "#in_ok" do
     it "wraps the value in Result::Ok" do
       expect("test".in_ok).to eq(Mangrove::Result::Ok.new("test"))
