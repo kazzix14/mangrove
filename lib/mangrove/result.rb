@@ -42,6 +42,9 @@ module Mangrove
     sig { abstract.returns(OkType) }
     def unwrap_or_raise_inner!; end
 
+    sig { abstract.params(ctx: Result::CollectingContext[OkType, ErrType]).returns(OkType) }
+    def unwrap_in(ctx); end
+
     sig { abstract.params(message: String).returns(OkType) }
     def expect!(message); end
 
@@ -170,28 +173,28 @@ module Mangrove
           .returns(Mangrove::Result[T.type_parameter(:O), T.type_parameter(:E)])
       }
       def collecting(_t_ok, _t_err, &block)
-        catch(:return) {
+        catch(:__mangrove_result_collecting_context_return) {
           block.call(CollectingContext[T.type_parameter(:O), T.type_parameter(:E)].new)
         }
       end
+    end
 
-      class CollectingContext
-        extend T::Sig
-        extend T::Generic
+    class CollectingContext
+      extend T::Sig
+      extend T::Generic
 
-        O = type_member
-        E = type_member
+      O = type_member
+      E = type_member
 
-        sig { params(result: Mangrove::Result[O, E]).returns(O) }
-        def try!(result)
-          case result
-          when Mangrove::Result::Ok
-            result.ok_inner
-          when Mangrove::Result::Err
-            throw :return, result
-          else
-            T.absurd(result)
-          end
+      sig { params(result: Mangrove::Result[O, E]).returns(O) }
+      def try!(result)
+        case result
+        when Mangrove::Result::Ok
+          result.ok_inner
+        when Mangrove::Result::Err
+          throw :__mangrove_result_collecting_context_return, result
+        else
+          T.absurd(result)
         end
       end
     end
@@ -246,6 +249,11 @@ module Mangrove
 
       sig { override.returns(OkType) }
       def unwrap_or_raise_inner!
+        @inner
+      end
+
+      sig { override.params(_ctx: Result::CollectingContext[OkType, ErrType]).returns(OkType) }
+      def unwrap_in(_ctx)
         @inner
       end
 
@@ -433,6 +441,11 @@ module Mangrove
       sig { override.returns(OkType) }
       def unwrap_or_raise_inner!
         raise T.unsafe(@inner)
+      end
+
+      sig { override.params(_ctx: Result::CollectingContext[OkType, ErrType]).returns(T.noreturn) }
+      def unwrap_in(_ctx)
+        throw :__mangrove_result_collecting_context_return, self
       end
 
       sig { override.params(message: String).returns(OkType) }

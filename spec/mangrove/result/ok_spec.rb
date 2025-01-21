@@ -40,6 +40,13 @@ RSpec.describe Mangrove::Result::Ok do
     end
   end
 
+  describe "#unwrap_in" do
+    it "extracts inner value" do
+      expect(Mangrove::Result::Ok.new(1).unwrap_in(Mangrove::Result::CollectingContext.new)).to eq 1
+      expect(Mangrove::Result::Ok.new(:my_symbol).unwrap_in(Mangrove::Result::CollectingContext.new)).to eq :my_symbol
+    end
+  end
+
   describe "#expect!" do
     it "extracts inner value" do
       expect(Mangrove::Result::Ok.new(1).expect!("my expectation")).to eq 1

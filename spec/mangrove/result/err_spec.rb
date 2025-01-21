@@ -35,6 +35,12 @@ RSpec.describe Mangrove::Result::Err do
     end
   end
 
+  describe "#unwrap_in" do
+    it "raises err inner" do
+      expect { Mangrove::Result::Err.new(Exception.new("my error")).unwrap_in(Mangrove::Result::CollectingContext.new) }.to throw_symbol(:__mangrove_result_collecting_context_return, Mangrove::Result::Err.new(Exception.new("my error")))
+    end
+  end
+
   describe "#expect!" do
     it "raises ControlSignal with custom message" do
       expect { Mangrove::Result::Err.new(:my_error).expect!("my expectation") }.to raise_error(Mangrove::Result::ControlSignal.new("my expectation"))

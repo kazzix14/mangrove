@@ -21,6 +21,10 @@ RSpec.describe Mangrove::Result do
     expect(Mangrove::Result.instance_methods).to include :unwrap_or_raise_inner!
   end
 
+  it "declares #unwrap_in" do
+    expect(Mangrove::Result.instance_methods).to include :unwrap_in
+  end
+
   it "declares #expect!" do
     expect(Mangrove::Result.instance_methods).to include :expect!
   end
