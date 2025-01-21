@@ -35,6 +35,7 @@ Naming/VariableNumber:
   EnforcedStyle: snake_case
 
 Style/BlockDelimiters:
+  Enabled: false
   EnforcedStyle: always_braces
   AllowedMethods:
   - describe
