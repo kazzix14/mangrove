@@ -157,6 +157,43 @@ module Mangrove
       def err_wt(_t_ok, inner)
         Result::Err[T.type_parameter(:ErrType)].new(inner)
       end
+
+      sig {
+        type_parameters(:O, :E)
+          .params(
+            _t_ok: T::Class[T.type_parameter(:O)],
+            _t_err: T::Class[T.type_parameter(:E)],
+            block: T.proc.params(
+              do_block: CollectingContext[T.type_parameter(:O), T.type_parameter(:E)]
+            ).returns(Mangrove::Result[T.type_parameter(:O), T.type_parameter(:E)])
+          )
+          .returns(Mangrove::Result[T.type_parameter(:O), T.type_parameter(:E)])
+      }
+      def collecting(_t_ok, _t_err, &block)
+        catch(:return) {
+          block.call(CollectingContext[T.type_parameter(:O), T.type_parameter(:E)].new)
+        }
+      end
+
+      class CollectingContext
+        extend T::Sig
+        extend T::Generic
+
+        O = type_member
+        E = type_member
+
+        sig { params(result: Mangrove::Result[O, E]).returns(O) }
+        def try!(result)
+          case result
+          when Mangrove::Result::Ok
+            result.ok_inner
+          when Mangrove::Result::Err
+            throw :return, result
+          else
+            T.absurd(result)
+          end
+        end
+      end
     end
 
     class Ok
