@@ -62,9 +62,9 @@
 
 <p>Mangrove is a Ruby toolkit that brings a functional, statically-typed flavor to your Sorbet-enabled projects. Inspired by concepts from languages like Rust and Haskell, Mangrove provides a robust set of tools—primarily <code>Result</code> and ADT-like Enums—to help you write safer, more expressive Ruby code.</p>
 <ul><li>
-<p><strong>Documentation[https://kazzix14.github.io/mangrove/docs/]</strong></p>
+<p><a href="https://kazzix14.github.io/mangrove/docs/">Documentation</a></p>
 </li><li>
-<p><strong>Coverage[https://kazzix14.github.io/mangrove/coverage/index.html#_AllFiles]</strong></p>
+<p><a href="https://kazzix14.github.io/mangrove/coverage/index.html#_AllFiles">Coverage</a></p>
 </li></ul>
 <hr>
 
@@ -142,6 +142,31 @@
 <span class='comment'># More chaining, etc...
 </span></code></pre>
 
+<h3 id="label-Extension+Methods">Extension Methods</h3>
+
+<p>Mangrove provides convenient extension methods through <code>Mangrove::Result::Ext</code>. These methods allow you to easily wrap any value in a <code>Result</code>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Include the extension in your classes
+</span><span class='kw'>class</span> <span class='const'>Object</span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Mangrove.html" title="Mangrove (module)">Mangrove</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/Result.html" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Mangrove/Result/Ext.html" title="Mangrove::Result::Ext (module)">Ext</a></span></span>
+<span class='kw'>end</span>
+
+<span class='comment'># Now you can use in_ok and in_err on any object
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>success</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_in_ok'>in_ok</span>  <span class='comment'># =&gt; Result::Ok(&quot;success&quot;)
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>error</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_in_err'>in_err</span>   <span class='comment'># =&gt; Result::Err(&quot;error&quot;)
+</span>
+<span class='comment'># Useful in method chains
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello</span><span class='tstring_end'>&quot;</span></span>
+  <span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span>
+  <span class='period'>.</span><span class='id identifier rubyid_in_ok'>in_ok</span>
+  <span class='period'>.</span><span class='id identifier rubyid_map_ok'>map_ok</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='embexpr_end'>}</span><span class='tstring_content'>!</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>  <span class='comment'># =&gt; Result::Ok(&quot;HELLO!&quot;)
+</span>
+<span class='comment'># Error case
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>error message</span><span class='tstring_end'>&quot;</span></span>
+  <span class='period'>.</span><span class='id identifier rubyid_in_err'>in_err</span>
+  <span class='period'>.</span><span class='id identifier rubyid_map_err'>map_err</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='embexpr_end'>}</span><span class='tstring_content'>!</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span> <span class='comment'># =&gt; Result::Err(&quot;error message!&quot;)
+</span></code></pre>
+
 <h3 id="label-Enums+-28ADTs-29">Enums (ADTs)</h3>
 
 <p>Define an enum with typed variants:</p>
@@ -206,7 +231,7 @@ rake release
 </div></div>
 
       <div id="footer">
-  Generated on Tue Jan 21 07:33:56 2025 by
+  Generated on Tue Jan 21 09:49:00 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.2.2).
 </div>
