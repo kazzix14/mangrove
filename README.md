@@ -2,8 +2,8 @@
 
 Mangrove is a Ruby toolkit that brings a functional, statically-typed flavor to your Sorbet-enabled projects. Inspired by concepts from languages like Rust and Haskell, Mangrove provides a robust set of tools—primarily `Result` and ADT-like Enums—to help you write safer, more expressive Ruby code.
 
-- **[Documentation](https://kazzix14.github.io/mangrove/docs/)**
-- **[Coverage](https://kazzix14.github.io/mangrove/coverage/index.html#_AllFiles)**
+- [Documentation](https://kazzix14.github.io/mangrove/docs/)
+- [Coverage](https://kazzix14.github.io/mangrove/coverage/index.html#_AllFiles)
 
 ---
 
