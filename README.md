@@ -65,24 +65,24 @@ end
 # Let's say we have a special DSL context for collecting short-circuits:
 # (Hypothetical usage)
 
-ctx = SomeCollectingContext.new
+Result.collecting(String, StandardError) do |ctx|
+  final_result = MyClient.new
+    .connect
+    .and_then do |connection|
+      MyClient.new.request("Payload from #{connection}")
+    end
 
-final_result = MyClient.new
-  .connect
-  .and_then do |connection|
-    MyClient.new.request("Payload from #{connection}")
-  end
+  # Option 1: Call from the context
+  response_data = ctx.try!(final_result)
+  # => If 'final_result' is Err, short-circuits now;
+  #    otherwise returns the Ok(T) value.
 
-# Option 1: Call from the context
-response_data = ctx.try!(final_result)
-# => If 'final_result' is Err, short-circuits now;
-#    otherwise returns the Ok(T) value.
+  puts response_data  # If no errors, prints "Response: Connected"
 
-puts response_data  # If no errors, prints "Response: Connected"
-
-# Option 2: Call via 'unwrap_in(ctx)'
-# This does the same short-circuit if 'Err', using the context:
-response_data_alt = final_result.unwrap_in(ctx)
+  # Option 2: Call via 'unwrap_in(ctx)'
+  # This does the same short-circuit if 'Err', using the context:
+  response_data_alt = final_result.unwrap_in(ctx)
+end
 
 # More chaining, etc...
 ```
@@ -107,41 +107,6 @@ puts int_v.inner  # => 123
 ```
 
 For more details on monadic methods, short-circuit contexts, and advanced usage, please visit the [official documentation](https://kazzix14.github.io/mangrove/docs/) or see real-world usages in [`spec/`](https://github.com/kazzix14/mangrove/tree/main/spec).
-
----
-
-## Example: Monadic Control Flow
-
-A quick snippet showing how you might short-circuit in a pseudo “collecting” DSL:
-
-```ruby
-class CollectingContext
-  extend T::Sig
-
-  # short-circuits if given an Err
-  sig { type_parameters(:O, :E).params(result: Mangrove::Result[T.type_parameter(:O), T.type_parameter(:E)]).returns(T.type_parameter(:O)) }
-  def try!(result)
-    case result
-    when Mangrove::Result::Ok
-      result.ok_inner
-    when Mangrove::Result::Err
-      # short-circuit out
-      throw :return, result.err_inner
-    end
-  end
-end
-
-# Suppose we wrap this with a .collecting that uses catch(:return) to intercept the short-circuit.
-return_value = Mangrove::Result.collecting(String, StandardError) do |ctx|
-  part1 = ctx.try!(MyClient.new.connect)
-  part2 = ctx.try!(MyClient.new.request("More data"))
-  Mangrove::Result::Ok.new("#{part1} => #{part2}")
-end
-
-# If everything is Ok, 'return_value' might be something like:
-# => Mangrove::Result::Ok("Connected => Response: More data")
-# If an error occurs, it short-circuits with that error's inner value.
-```
 
 ---
 
@@ -175,9 +140,7 @@ Run these commands to maintain code quality, generate documentation, and verify 
 We welcome contributions! To get started:
 
 1. Fork & clone the repo
-2. Install dependencies: ```bash
-bundle install
-```
+2. Install dependencies: `bundle install`
 3. Make your changes and add tests
 4. Submit a PR
 
