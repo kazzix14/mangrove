@@ -10,10 +10,10 @@ Mangrove is a Ruby toolkit that brings a functional, statically-typed flavor to 
 ## Highlights
 
 - **Sorbet Integration**
-  Built from the ground up to work smoothly with Sorbet’s type system.
+  Built from the ground up to work smoothly with Sorbet's type system.
 
 - **Result Type**
-  Model success/failure outcomes with explicit types—no more “return false or nil” for errors!
+  Model success/failure outcomes with explicit types—no more "return false or nil" for errors!
 
 - **Enums (ADTs)**
   Define your own sealed enums with typed variants. Each variant can hold distinct inner data.
@@ -33,17 +33,17 @@ bundle add mangrove
 
 ## Usage Overview
 
-Mangrove revolves around **`Result`** and a sealed “Enum” mechanism for ADTs.
+Mangrove revolves around **`Result`** and a sealed "Enum" mechanism for ADTs.
 
 ### Result
 
 A `Result` is either `Ok(T)` or `Err(E)`. You can compose them with monadic methods like `and_then` and `or_else`.
-For “early returns” in a functional style, you have two main approaches:
+For "early returns" in a functional style, you have two main approaches:
 
 1. **A context-based DSL (e.g., `ctx.try!`)**
 2. **An instance method on `Result` itself, `unwrap_in(ctx)`**, which behaves similarly.
 
-Here’s an example of chaining requests and short-circuiting on error:
+Here's an example of chaining requests and short-circuiting on error:
 
 ```ruby
 class MyClient
@@ -85,6 +85,32 @@ Result.collecting(String, StandardError) do |ctx|
 end
 
 # More chaining, etc...
+```
+
+### Extension Methods
+
+Mangrove provides convenient extension methods through `Mangrove::Result::Ext`. These methods allow you to easily wrap any value in a `Result`:
+
+```ruby
+# Include the extension in your classes
+class Object
+  include Mangrove::Result::Ext
+end
+
+# Now you can use in_ok and in_err on any object
+"success".in_ok  # => Result::Ok("success")
+"error".in_err   # => Result::Err("error")
+
+# Useful in method chains
+"hello"
+  .upcase
+  .in_ok
+  .map_ok { |s| "#{s}!" }  # => Result::Ok("HELLO!")
+
+# Error case
+"error message"
+  .in_err
+  .map_err { |e| "#{e}!" } # => Result::Err("error message!")
 ```
 
 ### Enums (ADTs)
