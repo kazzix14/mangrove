@@ -31,6 +31,9 @@ Metrics/ModuleLength:
 Naming/BlockForwarding:
   EnforcedStyle: explicit
 
+Naming/MethodParameterName:
+  Enabled: false
+
 Naming/VariableNumber:
   EnforcedStyle: snake_case
 
@@ -64,3 +67,4 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
+
