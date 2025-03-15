@@ -17,7 +17,6 @@ Mangrove is a Ruby toolkit that brings a functional, statically-typed flavor to 
 
 - **Enums (ADTs)**
   Define your own sealed enums with typed variants. Each variant can hold distinct inner data.
-
 - **Functional Patterns**
   Chain transformations or short-circuit error handling with a clean monadic style.
 
