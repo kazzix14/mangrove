@@ -51,10 +51,14 @@ RSpec.describe "Mangrove::Result.collecting" do
 
   describe "Result::Ok#unwrap_in" do
     it "returns the inner value if it does not encouter an error" do
+
       final = Mangrove::Result.collecting(Integer, String) { |ctx|
-        a = Mangrove::Result::Ok.new(100).unwrap_in(ctx)
-        b = Mangrove::Result::Ok.new(3).unwrap_in(ctx)
-        Mangrove::Result::Ok.new(a * b)
+        seems_ok_a = T.let(Mangrove::Result.ok(100), Mangrove::Result[Integer, String])
+        seems_ok_b = T.let(Mangrove::Result.ok(3), Mangrove::Result[Integer, String])
+
+        a = seems_ok_a.unwrap_in(ctx)
+        b = seems_ok_b.unwrap_in(ctx)
+        Mangrove::Result.ok(a * b)
       }
 
       expect(final).to eq(Mangrove::Result::Ok.new(300))
@@ -64,10 +68,14 @@ RSpec.describe "Mangrove::Result.collecting" do
   describe "Result::Err#unwrap_in" do
     it "returns error inner if it encounters an error" do
       final = Mangrove::Result.collecting(Integer, String) { |ctx|
-        a = Mangrove::Result::Ok.new(100).unwrap_in(ctx)
-        b = Mangrove::Result::Err.new("error").unwrap_in(ctx)
+        seems_ok_a = T.let(Mangrove::Result.ok_wt(100, String), Mangrove::Result[Integer, String])
+        seems_err_b = T.let(Mangrove::Result.err_wt(String, "error"), Mangrove::Result[Integer, String])
+
+        a = seems_ok_a.unwrap_in(ctx)
+        b = seems_err_b.unwrap_in(ctx)
+
         # ↓ここには到達しない
-        Mangrove::Result::Ok.new(a * b)
+        Mangrove::Result.ok(a * b)
       }
 
       expect(final).to eq(Mangrove::Result::Err.new("error"))
