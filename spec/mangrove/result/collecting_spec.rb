@@ -66,6 +66,7 @@ RSpec.describe "Mangrove::Result.collecting" do
       final = Mangrove::Result.collecting(Integer, String) { |ctx|
         a = Mangrove::Result::Ok.new(100).unwrap_in(ctx)
         b = Mangrove::Result::Err.new("error").unwrap_in(ctx)
+        # ↓ここには到達しない
         Mangrove::Result::Ok.new(a * b)
       }
 
