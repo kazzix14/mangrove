@@ -50,20 +50,26 @@ RSpec.describe "Mangrove::Result.collecting" do
   end
 
   describe "Result::Ok#unwrap_in" do
-    it "returns the inner value" do
-      ok = Mangrove::Result::Ok.new(100)
-      ctx = Mangrove::Result::CollectingContext.new
+    it "returns the inner value if it does not encouter an error" do
+      final = Mangrove::Result.collecting(Integer, String) { |ctx|
+        a = Mangrove::Result::Ok.new(100).unwrap_in(ctx)
+        b = Mangrove::Result::Ok.new(3).unwrap_in(ctx)
+        Mangrove::Result::Ok.new(a * b)
+      }
 
-      expect(ok.unwrap_in(ctx)).to eq(100)
+      expect(final).to eq(Mangrove::Result::Ok.new(300))
     end
   end
 
   describe "Result::Err#unwrap_in" do
-    it "raises an error" do
-      err = Mangrove::Result::Err.new("boom")
-      ctx = Mangrove::Result::CollectingContext.new
+    it "returns error inner if it encounters an error" do
+      final = Mangrove::Result.collecting(Integer, String) { |ctx|
+        a = Mangrove::Result::Ok.new(100).unwrap_in(ctx)
+        b = Mangrove::Result::Err.new("error").unwrap_in(ctx)
+        Mangrove::Result::Ok.new(a * b)
+      }
 
-      expect { err.unwrap_in(ctx) }.to throw_symbol(:__mangrove_result_collecting_context_return, err)
+      expect(final).to eq(Mangrove::Result::Err.new("error"))
     end
   end
 end
