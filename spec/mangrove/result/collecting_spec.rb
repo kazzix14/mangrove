@@ -51,7 +51,6 @@ RSpec.describe "Mangrove::Result.collecting" do
 
   describe "Result::Ok#unwrap_in" do
     it "returns the inner value if it does not encouter an error" do
-
       final = Mangrove::Result.collecting(Integer, String) { |ctx|
         seems_ok_a = T.let(Mangrove::Result.ok(100), Mangrove::Result[Integer, String])
         seems_ok_b = T.let(Mangrove::Result.ok(3), Mangrove::Result[Integer, String])
