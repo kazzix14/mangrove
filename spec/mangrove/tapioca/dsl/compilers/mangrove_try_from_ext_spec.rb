@@ -38,9 +38,9 @@ RSpec.describe ::Tapioca::Compilers::TryFromExt do
           extend T::Sig
           extend Mangrove::TryFromExt
 
-          try_convert_from(SourceClass, StandardError) do |source|
+          try_convert_from(from: SourceClass, to: DestinationClass, err: StandardError, &lambda { |source|
             Mangrove::Result::Ok.new(source.value)
-          end
+          })
         end
 
         class OtherClass
@@ -65,9 +65,9 @@ RSpec.describe ::Tapioca::Compilers::TryFromExt do
             extend T::Sig
             extend Mangrove::TryFromExt
 
-            try_convert_from(SourceClass, StandardError) do |source|
+            try_convert_from(from: SourceClass, to: DestinationClass, err: StandardError, &lambda { |source|
               Mangrove::Result::Ok.new(source.value)
-            end
+            })
           end
         RUBY
 
@@ -102,13 +102,13 @@ RSpec.describe ::Tapioca::Compilers::TryFromExt do
               extend T::Sig
               extend Mangrove::TryFromExt
 
-              try_convert_from(FirstSource, String) do |source|
+              try_convert_from(from: FirstSource, to: DestinationClass, err: String, &lambda { |source|
                 Mangrove::Result::Ok.new(source.value)
-              end
+              })
 
-              try_convert_from(SecondSource, Integer) do |source|
+              try_convert_from(from: SecondSource, to: DestinationClass, err: Integer, &lambda { |source|
                 Mangrove::Result::Ok.new(source.number.to_s)
-              end
+              })
             end
           RUBY
 

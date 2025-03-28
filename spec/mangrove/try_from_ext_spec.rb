@@ -1,4 +1,4 @@
-# typed: ignore
+# typed: false
 # frozen_string_literal: true
 
 # rubocop:disable Lint/ConstantDefinitionInBlock
@@ -33,11 +33,13 @@ RSpec.describe Mangrove::TryFromExt do
         end
 
         # TestSourceからTestDestinationへの変換を定義
-        try_convert_from(TestSource, StandardError) do |source|
-          Mangrove::Result::Ok.new(TestDestination.new(Integer(source.value)))
-        rescue ArgumentError => e
-          Mangrove::Result::Err.new(e)
-        end
+        try_convert_from(from: TestSource, to: TestDestination, err: StandardError, &lambda { |source|
+          begin
+            Mangrove::Result::Ok.new(TestDestination.new(Integer(source.value)))
+          rescue ArgumentError => e
+            Mangrove::Result::Err.new(e)
+          end
+        })
       end
     end
 
@@ -81,9 +83,9 @@ RSpec.describe Mangrove::TryFromExt do
             @text = text
           end
 
-          try_convert_from(TestSource, StandardError) do |source|
-            Mangrove::Result::Ok.new(new(source.value.upcase))
-          end
+          try_convert_from(from: TestSource, to: AnotherDestination, err: StandardError, &lambda { |source|
+            Mangrove::Result::Ok.new(AnotherDestination.new(source.value.upcase))
+          })
         end
       end
 
