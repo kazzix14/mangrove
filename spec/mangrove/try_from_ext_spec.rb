@@ -33,13 +33,13 @@ RSpec.describe Mangrove::TryFromExt do
         end
 
         # TestSourceからTestDestinationへの変換を定義
-        try_convert_from(from: TestSource, to: TestDestination, err: StandardError, &lambda { |source|
+        try_convert_from from: TestSource, to: TestDestination, err: StandardError, &lambda { |source|
           begin
             Mangrove::Result::Ok.new(TestDestination.new(Integer(source.value)))
           rescue ArgumentError => e
             Mangrove::Result::Err.new(e)
           end
-        })
+        }
       end
     end
 

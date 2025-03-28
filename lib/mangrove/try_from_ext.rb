@@ -12,12 +12,13 @@ module Mangrove
       type_parameters(:I, :O, :E)
         .params(
           from: T::Class[T.type_parameter(:I)],
-          _to: T::Class[T.type_parameter(:O)],
+          to: T::Class[T.type_parameter(:O)],
           err: T::Class[T.type_parameter(:E)],
           block: T.proc.params(arg: T.type_parameter(:I)).returns(Mangrove::Result[T.type_parameter(:O), T.type_parameter(:E)])
         ).void
     }
-    def try_convert_from(from:, _to:, err:, &block)
+    # rubocop:disable Lint/UnusedMethodArgument
+    def try_convert_from(from:, to:, err:, &block)
       T.bind(self, T::Class[T.type_parameter(:O)])
 
       vars = from.instance_variable_get(:@convertable_to) || {}
@@ -35,5 +36,6 @@ module Mangrove
         proc.call(self)
       end
     end
+    # rubocop:enable Lint/UnusedMethodArgument
   end
 end
