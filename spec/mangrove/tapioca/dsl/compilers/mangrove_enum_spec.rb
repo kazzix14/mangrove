@@ -64,8 +64,8 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
             sig { returns(MyEnumForDslCompiler) }
             def as_super; end
 
-            sig { params(hash: T::Hash[T.any(Symbol, String), T.untyped], inner_deserialization_methods: T.nilable(T::Array[Symbol])).returns(MyEnumForDslCompiler) }
-            def deserialize(hash, inner_deserialization_methods); end
+            sig { params(hash: T::Hash[T.any(Symbol, String), T.untyped]).returns(MyEnumForDslCompiler) }
+            def deserialize(hash); end
 
             sig { returns(T.any(Integer, { a: ClassWithInspection, b: Integer }, String, [Integer, ClassWithInspection])) }
             def inner; end
@@ -159,8 +159,8 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
               sig { returns(MyEnumWithOneVariant) }
               def as_super; end
 
-              sig { params(hash: T::Hash[T.any(Symbol, String), T.untyped], inner_deserialization_methods: T.nilable(T::Array[Symbol])).returns(MyEnumWithOneVariant) }
-              def deserialize(hash, inner_deserialization_methods); end
+              sig { params(hash: T::Hash[T.any(Symbol, String), T.untyped]).returns(MyEnumWithOneVariant) }
+              def deserialize(hash); end
 
               sig { returns(String) }
               def inner; end

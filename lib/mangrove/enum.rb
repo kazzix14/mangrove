@@ -123,14 +123,14 @@ module Mangrove
 
         abstract!
 
-        def self.deserialize(hash, inner_deserialization_methods: [:deserialize, :from_hash])
+        def self.deserialize(hash)
           klass = const_get(hash[:type] || hash["type"])
           value = hash[:value] || hash["value"]
 
           begin
             klass.new(value)
           rescue TypeError
-            klass.new(klass.deserialize(value, inner_deserialization_methods: inner_deserialization_methods, depth: depth + 1))
+            klass.new(klass.deserialize(value))
           end
         end
       RUBY
