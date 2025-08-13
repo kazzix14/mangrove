@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-03-28T07:17:16+00:00">2025-03-28T07:17:16+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-13T14:37:42+00:00">2025-08-13T14:37:42+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -29,7 +29,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         29.88
+         29.98
        </span>
     </span> hits/line
     )
@@ -53,11 +53,11 @@
 
   
     <div class="t-branch-summary">
-      <span><b>45</b> total branches, </span>
-      <span class="green"><b>25</b> branches covered</span> and
-      <span class="red"><b>20</b> branches missed.</span>
+      <span><b>117</b> total branches, </span>
+      <span class="green"><b>30</b> branches covered</span> and
+      <span class="red"><b>87</b> branches missed.</span>
       (<span class="red">
-  55.56%
+  25.64%
 </span>
 )
     </div>
@@ -119,16 +119,16 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#59cdee7cd3bfe025229c3b10d266f3d18f6e400f" class="src_link" title="lib/mangrove/enum.rb">lib/mangrove/enum.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">101</td>
-            <td class="cell--number">7</td>
-            <td class="cell--number">7</td>
+            <td class="cell--number">141</td>
+            <td class="cell--number">4</td>
+            <td class="cell--number">4</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.14</td>
+            <td class="cell--number">1.00</td>
             
-              <td class="green strong cell--number t-file__branch-coverage">100.00 %</td>
-              <td class="cell--number">0</td>
-              <td class="cell--number">0</td>
-              <td class="cell--number">0</td>
+              <td class="red strong cell--number t-file__branch-coverage">6.94 %</td>
+              <td class="cell--number">72</td>
+              <td class="cell--number">5</td>
+              <td class="cell--number">67</td>
             
           </tr>
         
@@ -230,12 +230,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#c0b5db55cba3f46140f60ed0daeafa95cf9473d0" class="src_link" title="lib/tapioca/dsl/compilers/mangrove_enum.rb">lib/tapioca/dsl/compilers/mangrove_enum.rb</a></td>
-            <td class="yellow strong cell--number t-file__coverage">80.85 %</td>
-            <td class="cell--number">89</td>
-            <td class="cell--number">47</td>
-            <td class="cell--number">38</td>
+            <td class="yellow strong cell--number t-file__coverage">82.00 %</td>
+            <td class="cell--number">92</td>
+            <td class="cell--number">50</td>
+            <td class="cell--number">41</td>
             <td class="cell--number">9</td>
-            <td class="cell--number">59.72</td>
+            <td class="cell--number">56.40</td>
             
               <td class="red strong cell--number t-file__branch-coverage">40.00 %</td>
               <td class="cell--number">10</td>
@@ -251,7 +251,7 @@
             <td class="cell--number">21</td>
             <td class="cell--number">21</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">227.57</td>
+            <td class="cell--number">228.38</td>
             
               <td class="red strong cell--number t-file__branch-coverage">50.00 %</td>
               <td class="cell--number">2</td>
@@ -267,7 +267,7 @@
             <td class="cell--number">18</td>
             <td class="cell--number">14</td>
             <td class="cell--number">4</td>
-            <td class="cell--number">487.28</td>
+            <td class="cell--number">489.00</td>
             
               <td class="red strong cell--number t-file__branch-coverage">25.00 %</td>
               <td class="cell--number">4</td>
@@ -788,8 +788,8 @@
 
     
       <h4>
-        <span class="green">
-  100.0%
+        <span class="red">
+  6.94%
 </span>
 
         branches covered
@@ -797,16 +797,16 @@
     
 
     <div class="t-line-summary">
-      <b>7</b> relevant lines.
-      <span class="green"><b>7</b> lines covered</span> and
+      <b>4</b> relevant lines.
+      <span class="green"><b>4</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
       <div class="t-branch-summary">
-          <span><b>0</b> total branches, </span>
-          <span class="green"><b>0</b> branches covered</span> and
-          <span class="red"><b>0</b> branches missed.</span>
+          <span><b>72</b> total branches, </span>
+          <span class="green"><b>5</b> branches covered</span> and
+          <span class="red"><b>67</b> branches missed.</span>
       </div>
     
 
@@ -1459,7 +1459,7 @@
               
             
 
-            <code class="ruby">              def ==(other)</code>
+            <code class="ruby">              def serialize(inner_serialization_methods: [:serialize, :to_h])</code>
           </li>
         </div>
       
@@ -1471,7 +1471,7 @@
               
             
 
-            <code class="ruby">                other.is_a?(self.class) &amp;&amp; other.inner == @inner</code>
+            <code class="ruby">                serialized_inner = begin</code>
           </li>
         </div>
       
@@ -1483,7 +1483,7 @@
               
             
 
-            <code class="ruby">              end</code>
+            <code class="ruby">                  serialized_klass = [</code>
           </li>
         </div>
       
@@ -1495,7 +1495,7 @@
               
             
 
-            <code class="ruby">            end</code>
+            <code class="ruby">                    Hash,</code>
           </li>
         </div>
       
@@ -1507,7 +1507,7 @@
               
             
 
-            <code class="ruby">          NESTED_RUBY</code>
+            <code class="ruby">                    String,</code>
           </li>
         </div>
       
@@ -1519,7 +1519,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                    Numeric,</code>
           </li>
         </div>
       
@@ -1531,7 +1531,7 @@
               
             
 
-            <code class="ruby">          class_eval(code, __FILE__, __LINE__ + 1)</code>
+            <code class="ruby">                    TrueClass,</code>
           </li>
         </div>
       
@@ -1543,7 +1543,7 @@
               
             
 
-            <code class="ruby">          class_eval(id.to_s, __FILE__, __LINE__ + 1)</code>
+            <code class="ruby">                    FalseClass,</code>
           </li>
         </div>
       
@@ -1555,7 +1555,7 @@
               
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">                    NilClass</code>
           </li>
         </div>
       
@@ -1567,7 +1567,7 @@
               
             
 
-            <code class="ruby">      RUBY</code>
+            <code class="ruby">                  ]</code>
           </li>
         </div>
       
@@ -1591,7 +1591,7 @@
               
             
 
-            <code class="ruby">      original_const_missing = receiver.method(:const_missing)</code>
+            <code class="ruby">                  if serialized_klass.any? { |klass| @inner.is_a?(klass) }</code>
           </li>
         </div>
       
@@ -1603,7 +1603,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                    @inner</code>
           </li>
         </div>
       
@@ -1615,35 +1615,31 @@
               
             
 
-            <code class="ruby">      receiver.class_eval(outer_code, __FILE__, __LINE__ + 1)</code>
+            <code class="ruby">                  else</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="68">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="68">
             
 
             
               
             
 
-            <code class="ruby">      EnumVariantsScope.new(receiver).call(&amp;block)</code>
+            <code class="ruby">                    inner_serialization_methods.find do |method_name|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="69">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="69">
             
 
             
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                      if @inner.respond_to?(method_name, true)</code>
           </li>
         </div>
       
@@ -1655,21 +1651,19 @@
               
             
 
-            <code class="ruby">      # Mark as sealed hear because we can not define classes in const_missing after marking as sealed</code>
+            <code class="ruby">                        maybe_hash = @inner.send(method_name)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="71">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="71">
             
 
             
               
             
 
-            <code class="ruby">      receiver.send(:eval, &quot;sealed!&quot;, nil, __FILE__, __LINE__)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1681,7 +1675,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                        if maybe_hash.is_a?(Hash)</code>
           </li>
         </div>
       
@@ -1693,7 +1687,7 @@
               
             
 
-            <code class="ruby">      variants = constants.filter_map { |variant_name|</code>
+            <code class="ruby">                          break maybe_hash</code>
           </li>
         </div>
       
@@ -1705,7 +1699,7 @@
               
             
 
-            <code class="ruby">        maybe_variant = receiver.const_get(variant_name, false)</code>
+            <code class="ruby">                        end</code>
           </li>
         </div>
       
@@ -1717,7 +1711,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                      end</code>
           </li>
         </div>
       
@@ -1729,7 +1723,7 @@
               
             
 
-            <code class="ruby">        if maybe_variant.instance_variable_defined?(:@__mangrove__enum_inner_type)</code>
+            <code class="ruby">                    end</code>
           </li>
         </div>
       
@@ -1741,7 +1735,7 @@
               
             
 
-            <code class="ruby">          maybe_variant</code>
+            <code class="ruby">                  end</code>
           </li>
         </div>
       
@@ -1753,7 +1747,7 @@
               
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">                end</code>
           </li>
         </div>
       
@@ -1765,7 +1759,7 @@
               
             
 
-            <code class="ruby">      }</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1777,7 +1771,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                { type: self.class.name, value: serialized_inner }</code>
           </li>
         </div>
       
@@ -1789,38 +1783,12 @@
               
             
 
-            <code class="ruby">      receiver.class_eval(&lt;&lt;~RUBY, __FILE__, __LINE__ + 1)</code>
+            <code class="ruby">              end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="82">
-            
-              <span class="hits">1</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">        @sorbet_sealed_module_all_subclasses = #{variants} # @sorbet_sealed_module_all_subclasses = #{variants}</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="83">
-            
-
-            
-              
-            
-
-            <code class="ruby">      RUBY</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="84">
+          <li class="never" data-hits="" data-linenumber="82">
             
 
             
@@ -1832,6 +1800,30 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="83">
+            
+
+            
+              
+            
+
+            <code class="ruby">              def ==(other)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="84">
+            
+
+            
+              
+            
+
+            <code class="ruby">                other.is_a?(self.class) &amp;&amp; other.inner == @inner</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="never" data-hits="" data-linenumber="85">
             
 
@@ -1839,7 +1831,7 @@
               
             
 
-            <code class="ruby">      # Bring back the original const_missing</code>
+            <code class="ruby">              end</code>
           </li>
         </div>
       
@@ -1851,7 +1843,7 @@
               
             
 
-            <code class="ruby">      receiver.define_singleton_method(:const_missing, original_const_missing)</code>
+            <code class="ruby">            end</code>
           </li>
         </div>
       
@@ -1863,7 +1855,7 @@
               
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">          NESTED_RUBY</code>
           </li>
         </div>
       
@@ -1880,44 +1872,38 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="89">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="89">
             
 
             
               
             
 
-            <code class="ruby">    sig { params(receiver: T::Class[T.anything]).void }</code>
+            <code class="ruby">          class_eval(code, __FILE__, __LINE__ + 1)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="90">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="90">
             
 
             
               
             
 
-            <code class="ruby">    def self.extended(receiver)</code>
+            <code class="ruby">          class_eval(id.to_s, __FILE__, __LINE__ + 1)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="91">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="91">
             
 
             
               
             
 
-            <code class="ruby">      code = &lt;&lt;~RUBY</code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -1929,7 +1915,7 @@
               
             
 
-            <code class="ruby">        extend T::Sig</code>
+            <code class="ruby">      RUBY</code>
           </li>
         </div>
       
@@ -1941,7 +1927,7 @@
               
             
 
-            <code class="ruby">        extend T::Helpers</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1953,7 +1939,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      original_const_missing = receiver.method(:const_missing)</code>
           </li>
         </div>
       
@@ -1965,7 +1951,7 @@
               
             
 
-            <code class="ruby">        abstract!</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1977,12 +1963,28 @@
               
             
 
-            <code class="ruby">      RUBY</code>
+            <code class="ruby">      receiver.class_eval(outer_code, __FILE__, __LINE__ + 1)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="97">
+          <li class="covered" data-hits="1" data-linenumber="97">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      EnumVariantsScope.new(receiver).call(&amp;block)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="98">
+            
+              <span class="hits">1</span>
             
 
             
@@ -1994,19 +1996,215 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="98">
+          <li class="never" data-hits="" data-linenumber="99">
             
 
             
               
             
 
-            <code class="ruby">      receiver.class_eval(code)</code>
+            <code class="ruby">      # Mark as sealed hear because we can not define classes in const_missing after marking as sealed</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="99">
+          <li class="covered" data-hits="1" data-linenumber="100">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      receiver.send(:eval, &quot;sealed!&quot;, nil, __FILE__, __LINE__)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="101">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="102">
+            
+
+            
+              
+            
+
+            <code class="ruby">      variants = constants.filter_map { |variant_name|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="103">
+            
+
+            
+              
+            
+
+            <code class="ruby">        maybe_variant = receiver.const_get(variant_name, false)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="104">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="105">
+            
+
+            
+              
+            
+
+            <code class="ruby">        if maybe_variant.instance_variable_defined?(:@__mangrove__enum_inner_type)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="106">
+            
+
+            
+              
+            
+
+            <code class="ruby">          maybe_variant</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="107">
+            
+
+            
+              
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="108">
+            
+
+            
+              
+            
+
+            <code class="ruby">      }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="109">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="110">
+            
+
+            
+              
+            
+
+            <code class="ruby">      receiver.class_eval(&lt;&lt;~RUBY, __FILE__, __LINE__ + 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="111">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">        @sorbet_sealed_module_all_subclasses = #{variants} # @sorbet_sealed_module_all_subclasses = #{variants}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="112">
+            
+
+            
+              
+            
+
+            <code class="ruby">      RUBY</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="113">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="114">
+            
+
+            
+              
+            
+
+            <code class="ruby">      # Bring back the original const_missing</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="115">
+            
+
+            
+              
+            
+
+            <code class="ruby">      receiver.define_singleton_method(:const_missing, original_const_missing)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="116">
             
 
             
@@ -2018,7 +2216,283 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="100">
+          <li class="never" data-hits="" data-linenumber="117">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="118">
+            
+
+            
+              
+            
+
+            <code class="ruby">    sig { params(receiver: T::Class[T.anything]).void }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="119">
+            
+
+            
+              
+            
+
+            <code class="ruby">    def self.extended(receiver)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="120">
+            
+
+            
+              
+            
+
+            <code class="ruby">      code = &lt;&lt;~RUBY</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="121">
+            
+
+            
+              
+            
+
+            <code class="ruby">        extend T::Sig</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="122">
+            
+
+            
+              
+            
+
+            <code class="ruby">        extend T::Helpers</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="123">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="124">
+            
+
+            
+              
+            
+
+            <code class="ruby">        abstract!</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="125">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="126">
+            
+
+            
+              
+            
+
+            <code class="ruby">        def self.deserialize(hash)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="127">
+            
+
+            
+              
+            
+
+            <code class="ruby">          klass = const_get(hash[:type] || hash[&quot;type&quot;])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="128">
+            
+
+            
+              
+            
+
+            <code class="ruby">          value = hash[:value] || hash[&quot;value&quot;]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="129">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="130">
+            
+
+            
+              
+            
+
+            <code class="ruby">          begin</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="131">
+            
+
+            
+              
+            
+
+            <code class="ruby">            klass.new(value)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="132">
+            
+
+            
+              
+            
+
+            <code class="ruby">          rescue TypeError</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="133">
+            
+
+            
+              
+            
+
+            <code class="ruby">            klass.new(klass.deserialize(value))</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="134">
+            
+
+            
+              
+            
+
+            <code class="ruby">          end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="135">
+            
+
+            
+              
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="136">
+            
+
+            
+              
+            
+
+            <code class="ruby">      RUBY</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="137">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="138">
+            
+
+            
+              
+            
+
+            <code class="ruby">      receiver.class_eval(code)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="139">
+            
+
+            
+              
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="140">
             
 
             
@@ -2030,7 +2504,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="101">
+          <li class="never" data-hits="" data-linenumber="141">
             
 
             
@@ -14391,7 +14865,7 @@
     <h3>lib/tapioca/dsl/compilers/mangrove_enum.rb</h3>
     <h4>
       <span class="yellow">
-  80.85%
+  82.0%
 </span>
 
       lines covered
@@ -14408,8 +14882,8 @@
     
 
     <div class="t-line-summary">
-      <b>47</b> relevant lines.
-      <span class="green"><b>38</b> lines covered</span> and
+      <b>50</b> relevant lines.
+      <span class="green"><b>41</b> lines covered</span> and
       <span class="red"><b>9</b> lines missed.</span>
     </div>
 
@@ -14637,9 +15111,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2767" data-linenumber="17">
+          <li class="covered" data-hits="2777" data-linenumber="17">
             
-              <span class="hits">2767</span>
+              <span class="hits">2777</span>
             
 
             
@@ -14994,7 +15468,7 @@
               
             
 
-            <code class="ruby">              variant_type.create_method(&quot;inner&quot;, return_type: inner_type)</code>
+            <code class="ruby">              variant_type.create_method(&quot;serialize&quot;, parameters: [create_param(&quot;inner_serialization_methods&quot;, type: &quot;T.nilable(T::Array[Symbol])&quot;)], return_type: &quot;T::Hash[Symbol, T.untyped]&quot;)</code>
           </li>
         </div>
       
@@ -15008,7 +15482,7 @@
               
             
 
-            <code class="ruby">              variant_type.create_method(&quot;as_super&quot;, return_type: constant.name.to_s)</code>
+            <code class="ruby">              variant_type.create_method(&quot;inner&quot;, return_type: inner_type)</code>
           </li>
         </div>
       
@@ -15022,19 +15496,21 @@
               
             
 
-            <code class="ruby">              variant_type.sort_nodes!</code>
+            <code class="ruby">              variant_type.create_method(&quot;as_super&quot;, return_type: constant.name.to_s)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="46">
+          <li class="covered" data-hits="1" data-linenumber="46">
+            
+              <span class="hits">1</span>
             
 
             
               
             
 
-            <code class="ruby">            }</code>
+            <code class="ruby">              variant_type.sort_nodes!</code>
           </li>
         </div>
       
@@ -15046,12 +15522,24 @@
               
             
 
+            <code class="ruby">            }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="48">
+            
+
+            
+              
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="48">
+          <li class="covered" data-hits="1" data-linenumber="49">
             
               <span class="hits">1</span>
             
@@ -15065,7 +15553,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
+          <li class="never" data-hits="" data-linenumber="50">
             
 
             
@@ -15077,7 +15565,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="50">
+          <li class="never" data-hits="" data-linenumber="51">
             
 
             
@@ -15089,7 +15577,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="51">
+          <li class="covered" data-hits="1" data-linenumber="52">
             
               <span class="hits">1</span>
             
@@ -15107,7 +15595,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="52">
+          <li class="covered" data-hits="1" data-linenumber="53">
             
               <span class="hits">1</span>
             
@@ -15121,7 +15609,7 @@
         </div>
       
         <div>
-          <li class="missed-branch" data-hits="" data-linenumber="53">
+          <li class="missed-branch" data-hits="" data-linenumber="54">
             
 
             
@@ -15137,7 +15625,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="54">
+          <li class="missed" data-hits="0" data-linenumber="55">
             
 
             
@@ -15149,7 +15637,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="55">
+          <li class="never" data-hits="" data-linenumber="56">
             
 
             
@@ -15161,7 +15649,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="56">
+          <li class="never" data-hits="" data-linenumber="57">
             
 
             
@@ -15169,20 +15657,6 @@
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="57">
-            
-              <span class="hits">1</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">          constant_type.create_method(&quot;inner&quot;, return_type:)</code>
           </li>
         </div>
       
@@ -15196,7 +15670,7 @@
               
             
 
-            <code class="ruby">          constant_type.create_method(&quot;as_super&quot;, return_type: constant.name.to_s)</code>
+            <code class="ruby">          constant_type.create_method(&quot;inner&quot;, return_type:)</code>
           </li>
         </div>
       
@@ -15210,12 +15684,54 @@
               
             
 
+            <code class="ruby">          constant_type.create_method(&quot;serialize&quot;, parameters: [create_param(&quot;inner_serialization_methods&quot;, type: &quot;T.nilable(T::Array[Symbol])&quot;)], return_type: &quot;T::Hash[Symbol, T.untyped]&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="60">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">          constant_type.create_method(&quot;deserialize&quot;, parameters: [create_param(&quot;hash&quot;, type: &quot;T::Hash[T.any(Symbol, String), T.untyped]&quot;)], return_type: constant.name)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="61">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">          constant_type.create_method(&quot;as_super&quot;, return_type: constant.name.to_s)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="62">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
             <code class="ruby">          constant_type.sort_nodes!</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="60">
+          <li class="never" data-hits="" data-linenumber="63">
             
 
             
@@ -15227,7 +15743,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="61">
+          <li class="never" data-hits="" data-linenumber="64">
             
 
             
@@ -15239,7 +15755,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
+          <li class="never" data-hits="" data-linenumber="65">
             
 
             
@@ -15247,46 +15763,6 @@
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="63">
-            
-              <span class="hits">1</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">      private</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="64">
-            
-
-            
-              
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="65">
-            
-              <span class="hits">2</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">      sig { params(runtime_type: T.untyped).returns(String) }</code>
           </li>
         </div>
       
@@ -15300,12 +15776,52 @@
               
             
 
+            <code class="ruby">      private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="67">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="68">
+            
+              <span class="hits">2</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      sig { params(runtime_type: T.untyped).returns(String) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="69">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
             <code class="ruby">      def runtime_type_to_type_name(runtime_type)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed-branch" data-hits="1" data-linenumber="67">
+          <li class="missed-branch" data-hits="1" data-linenumber="70">
             
               <span class="hits">1</span>
             
@@ -15323,7 +15839,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="68">
+          <li class="missed" data-hits="0" data-linenumber="71">
             
 
             
@@ -15335,7 +15851,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="69">
+          <li class="missed" data-hits="0" data-linenumber="72">
             
 
             
@@ -15347,7 +15863,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="70">
+          <li class="never" data-hits="" data-linenumber="73">
             
 
             
@@ -15359,7 +15875,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="71">
+          <li class="never" data-hits="" data-linenumber="74">
             
 
             
@@ -15371,7 +15887,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="72">
+          <li class="missed" data-hits="0" data-linenumber="75">
             
 
             
@@ -15387,7 +15903,7 @@
         </div>
       
         <div>
-          <li class="missed-branch" data-hits="1" data-linenumber="73">
+          <li class="missed-branch" data-hits="1" data-linenumber="76">
             
               <span class="hits">1</span>
             
@@ -15405,7 +15921,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="74">
+          <li class="missed" data-hits="0" data-linenumber="77">
             
 
             
@@ -15417,7 +15933,7 @@
         </div>
       
         <div>
-          <li class="missed-branch" data-hits="0" data-linenumber="75">
+          <li class="missed-branch" data-hits="0" data-linenumber="78">
             
 
             
@@ -15437,7 +15953,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="76">
+          <li class="missed" data-hits="0" data-linenumber="79">
             
 
             
@@ -15449,42 +15965,6 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="77">
-            
-
-            
-              
-            
-
-            <code class="ruby">            end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="78">
-            
-
-            
-              
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="79">
-            
-
-            
-              
-            
-
-            <code class="ruby">            &quot;#{k}: #{runtime_type_to_type_name(v)}&quot;</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="80">
             
 
@@ -15492,7 +15972,7 @@
               
             
 
-            <code class="ruby">          }.join(&quot;, &quot;)</code>
+            <code class="ruby">            end</code>
           </li>
         </div>
       
@@ -15516,12 +15996,48 @@
               
             
 
-            <code class="ruby">          &quot;{ #{content} }&quot;</code>
+            <code class="ruby">            &quot;#{k}: #{runtime_type_to_type_name(v)}&quot;</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="83">
+            
+
+            
+              
+            
+
+            <code class="ruby">          }.join(&quot;, &quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="84">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="85">
+            
+
+            
+              
+            
+
+            <code class="ruby">          &quot;{ #{content} }&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="86">
             
 
             
@@ -15537,7 +16053,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="84">
+          <li class="covered" data-hits="1" data-linenumber="87">
             
               <span class="hits">1</span>
             
@@ -15551,7 +16067,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="85">
+          <li class="never" data-hits="" data-linenumber="88">
             
 
             
@@ -15563,7 +16079,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="86">
+          <li class="never" data-hits="" data-linenumber="89">
             
 
             
@@ -15575,7 +16091,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="87">
+          <li class="never" data-hits="" data-linenumber="90">
             
 
             
@@ -15587,7 +16103,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="88">
+          <li class="never" data-hits="" data-linenumber="91">
             
 
             
@@ -15599,7 +16115,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="89">
+          <li class="never" data-hits="" data-linenumber="92">
             
 
             
@@ -15868,9 +16384,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4751" data-linenumber="17">
+          <li class="covered" data-hits="4768" data-linenumber="17">
             
-              <span class="hits">4751</span>
+              <span class="hits">4768</span>
             
 
             
@@ -16443,9 +16959,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8756" data-linenumber="17">
+          <li class="covered" data-hits="8787" data-linenumber="17">
             
-              <span class="hits">8756</span>
+              <span class="hits">8787</span>
             
 
             
