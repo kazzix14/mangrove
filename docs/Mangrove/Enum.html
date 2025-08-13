@@ -206,19 +206,30 @@
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99</pre>
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/enum.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/enum.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_extended'>extended</span><span class='lparen'>(</span><span class='id identifier rubyid_receiver'>receiver</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='heredoc_beg'>&lt;&lt;~RUBY</span>
@@ -226,6 +237,17 @@
 </span><span class='tstring_content'>    extend T::Helpers
 </span><span class='tstring_content'>
 </span><span class='tstring_content'>    abstract!
+</span><span class='tstring_content'>
+</span><span class='tstring_content'>    def self.deserialize(hash)
+</span><span class='tstring_content'>      klass = const_get(hash[:type] || hash[&quot;type&quot;])
+</span><span class='tstring_content'>      value = hash[:value] || hash[&quot;value&quot;]
+</span><span class='tstring_content'>
+</span><span class='tstring_content'>      begin
+</span><span class='tstring_content'>        klass.new(value)
+</span><span class='tstring_content'>      rescue TypeError
+</span><span class='tstring_content'>        klass.new(klass.deserialize(value))
+</span><span class='tstring_content'>      end
+</span><span class='tstring_content'>    end
 </span><span class='heredoc_end'>  RUBY
 </span>
   <span class='id identifier rubyid_receiver'>receiver</span><span class='period'>.</span><span class='id identifier rubyid_class_eval'>class_eval</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
@@ -332,7 +354,36 @@
 84
 85
 86
-87</pre>
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/mangrove/enum.rb', line 35</span>
@@ -354,6 +405,35 @@
 </span><span class='tstring_content'>
 </span><span class='tstring_content'>          def as_super
 </span><span class='tstring_content'>            T.cast(self, \#{caller.send(:binding).receiver.name})
+</span><span class='tstring_content'>          end
+</span><span class='tstring_content'>
+</span><span class='tstring_content'>          def serialize(inner_serialization_methods: [:serialize, :to_h])
+</span><span class='tstring_content'>            serialized_inner = begin
+</span><span class='tstring_content'>              serialized_klass = [
+</span><span class='tstring_content'>                Hash,
+</span><span class='tstring_content'>                String,
+</span><span class='tstring_content'>                Numeric,
+</span><span class='tstring_content'>                TrueClass,
+</span><span class='tstring_content'>                FalseClass,
+</span><span class='tstring_content'>                NilClass
+</span><span class='tstring_content'>              ]
+</span><span class='tstring_content'>
+</span><span class='tstring_content'>              if serialized_klass.any? { |klass| @inner.is_a?(klass) }
+</span><span class='tstring_content'>                @inner
+</span><span class='tstring_content'>              else
+</span><span class='tstring_content'>                inner_serialization_methods.find do |method_name|
+</span><span class='tstring_content'>                  if @inner.respond_to?(method_name, true)
+</span><span class='tstring_content'>                    maybe_hash = @inner.send(method_name)
+</span><span class='tstring_content'>
+</span><span class='tstring_content'>                    if maybe_hash.is_a?(Hash)
+</span><span class='tstring_content'>                      break maybe_hash
+</span><span class='tstring_content'>                    end
+</span><span class='tstring_content'>                  end
+</span><span class='tstring_content'>                end
+</span><span class='tstring_content'>              end
+</span><span class='tstring_content'>            end
+</span><span class='tstring_content'>
+</span><span class='tstring_content'>            { type: self.class.name, value: serialized_inner }
 </span><span class='tstring_content'>          end
 </span><span class='tstring_content'>
 </span><span class='tstring_content'>          def ==(other)
@@ -400,7 +480,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Mar 28 07:17:10 2025 by
+  Generated on Wed Aug 13 14:37:36 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.2.2).
 </div>
