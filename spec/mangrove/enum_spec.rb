@@ -9,23 +9,33 @@ require "spec_helper"
 class MyEnum
   extend Mangrove::Enum
 
+  class ChildEnum
+    extend Mangrove::Enum
+
+    variants {
+      variant VariantWithShape, { name: String, age: Integer }
+    }
+  end
+
   variants {
     variant VariantWithInteger, Integer
     variant VariantWithString, String
     variant VariantWithException, Exception
     variant VariantWithTuple, [Integer, String]
     variant VariantWithShape, { name: String, age: Integer }
+    variant VariantWithChild, ChildEnum
   }
 end
 
 RSpec.describe Mangrove::Enum do
-  it "can list subclesses" do
+  it "can list subclasses" do
     expect(MyEnum.sealed_subclasses).to contain_exactly(
       MyEnum::VariantWithInteger,
       MyEnum::VariantWithString,
       MyEnum::VariantWithException,
       MyEnum::VariantWithTuple,
-      MyEnum::VariantWithShape
+      MyEnum::VariantWithShape,
+      MyEnum::VariantWithChild
     )
   end
 
@@ -54,6 +64,58 @@ RSpec.describe Mangrove::Enum do
     end
   end
 
+  describe "serialize" do
+    it "serializes the enum to a hash" do
+      expect(
+        MyEnum::VariantWithChild.new(
+          MyEnum::ChildEnum::VariantWithShape.new({ name: "john", age: 23 })
+        ).respond_to?(:serialize)
+      ).to be_truthy
+      expect(
+        MyEnum::VariantWithInteger.new(2).serialize
+      ).to eq({ type: "MyEnum::VariantWithInteger", value: 2 })
+
+      expect(
+        MyEnum::VariantWithChild.new(
+          MyEnum::ChildEnum::VariantWithShape.new({ name: "john", age: 23 })
+        ).serialize
+      ).to eq(
+        {
+          type: "MyEnum::VariantWithChild",
+          value: {
+            type: "MyEnum::ChildEnum::VariantWithShape",
+            value: {
+              name: "john",
+              age: 23
+            }
+          }
+        }
+      )
+    end
+  end
+
+  describe "#deserialize" do
+    it "deserializes the enum from a hash" do
+      expect(MyEnum.deserialize({ type: "MyEnum::VariantWithInteger", value: 2 })).to eq MyEnum::VariantWithInteger.new(2)
+      expect(
+        MyEnum.deserialize(
+          {
+            type: "MyEnum::VariantWithChild",
+            value: {
+              type: "MyEnum::ChildEnum::VariantWithShape",
+              value: {
+                name: "john",
+                age: 23
+              }
+            }
+          }
+        )
+      ).to eq MyEnum::VariantWithChild.new(
+        MyEnum::ChildEnum::VariantWithShape.new({ name: "john", age: 23 })
+      )
+    end
+  end
+
   context "when used in case statement" do
     it "matches the self type" do
       expect {
@@ -68,6 +130,8 @@ RSpec.describe Mangrove::Enum do
         when MyEnum::VariantWithTuple
           raise
         when MyEnum::VariantWithShape
+          e
+        when MyEnum::VariantWithChild
           e
         else
           T.absurd(e)

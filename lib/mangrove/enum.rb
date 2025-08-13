@@ -51,6 +51,35 @@ module Mangrove
                 T.cast(self, \#{caller.send(:binding).receiver.name})
               end
 
+              def serialize(inner_serialization_methods: [:serialize, :to_h])
+                serialized_inner = begin
+                  serialized_klass = [
+                    Hash,
+                    String,
+                    Numeric,
+                    TrueClass,
+                    FalseClass,
+                    NilClass
+                  ]
+
+                  if serialized_klass.any? { |klass| @inner.is_a?(klass) }
+                    @inner
+                  else
+                    inner_serialization_methods.find do |method_name|
+                      if @inner.respond_to?(method_name, true)
+                        maybe_hash = @inner.send(method_name)
+
+                        if maybe_hash.is_a?(Hash)
+                          break maybe_hash
+                        end
+                      end
+                    end
+                  end
+                end
+
+                { type: self.class.name, value: serialized_inner }
+              end
+
               def ==(other)
                 other.is_a?(self.class) && other.inner == @inner
               end
@@ -93,6 +122,17 @@ module Mangrove
         extend T::Helpers
 
         abstract!
+
+        def self.deserialize(hash, inner_deserialization_methods: [:deserialize, :from_hash])
+          klass = const_get(hash[:type] || hash["type"])
+          value = hash[:value] || hash["value"]
+
+          begin
+            klass.new(value)
+          rescue TypeError
+            klass.new(klass.deserialize(value, inner_deserialization_methods: inner_deserialization_methods, depth: depth + 1))
+          end
+        end
       RUBY
 
       receiver.class_eval(code)
