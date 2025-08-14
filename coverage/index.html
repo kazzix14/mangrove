@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-14T05:49:40+00:00">2025-08-14T05:49:40+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-14T06:09:46+00:00">2025-08-14T06:09:46+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -119,7 +119,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#59cdee7cd3bfe025229c3b10d266f3d18f6e400f" class="src_link" title="lib/mangrove/enum.rb">lib/mangrove/enum.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">141</td>
+            <td class="cell--number">142</td>
             <td class="cell--number">4</td>
             <td class="cell--number">4</td>
             <td class="cell--number">0</td>
@@ -1555,7 +1555,7 @@
               
             
 
-            <code class="ruby">                    NilClass</code>
+            <code class="ruby">                    NilClass,</code>
           </li>
         </div>
       
@@ -1567,7 +1567,7 @@
               
             
 
-            <code class="ruby">                  ]</code>
+            <code class="ruby">                    Array</code>
           </li>
         </div>
       
@@ -1579,7 +1579,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                  ]</code>
           </li>
         </div>
       
@@ -1591,7 +1591,7 @@
               
             
 
-            <code class="ruby">                  if serialized_klass.any? { |klass| @inner.is_a?(klass) }</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1603,7 +1603,7 @@
               
             
 
-            <code class="ruby">                    @inner</code>
+            <code class="ruby">                  if serialized_klass.any? { |klass| @inner.is_a?(klass) }</code>
           </li>
         </div>
       
@@ -1615,7 +1615,7 @@
               
             
 
-            <code class="ruby">                  else</code>
+            <code class="ruby">                    @inner</code>
           </li>
         </div>
       
@@ -1627,7 +1627,7 @@
               
             
 
-            <code class="ruby">                    inner_serialization_methods.find do |method_name|</code>
+            <code class="ruby">                  else</code>
           </li>
         </div>
       
@@ -1639,7 +1639,7 @@
               
             
 
-            <code class="ruby">                      if @inner.respond_to?(method_name, true)</code>
+            <code class="ruby">                    inner_serialization_methods.find do |method_name|</code>
           </li>
         </div>
       
@@ -1651,7 +1651,7 @@
               
             
 
-            <code class="ruby">                        maybe_hash = @inner.send(method_name)</code>
+            <code class="ruby">                      if @inner.respond_to?(method_name, true)</code>
           </li>
         </div>
       
@@ -1663,7 +1663,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                        maybe_hash = @inner.send(method_name)</code>
           </li>
         </div>
       
@@ -1675,7 +1675,7 @@
               
             
 
-            <code class="ruby">                        if maybe_hash.is_a?(Hash)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1687,7 +1687,7 @@
               
             
 
-            <code class="ruby">                          break maybe_hash</code>
+            <code class="ruby">                        if maybe_hash.is_a?(Hash)</code>
           </li>
         </div>
       
@@ -1699,7 +1699,7 @@
               
             
 
-            <code class="ruby">                        end</code>
+            <code class="ruby">                          break maybe_hash</code>
           </li>
         </div>
       
@@ -1711,7 +1711,7 @@
               
             
 
-            <code class="ruby">                      end</code>
+            <code class="ruby">                        end</code>
           </li>
         </div>
       
@@ -1723,7 +1723,7 @@
               
             
 
-            <code class="ruby">                    end</code>
+            <code class="ruby">                      end</code>
           </li>
         </div>
       
@@ -1735,7 +1735,7 @@
               
             
 
-            <code class="ruby">                  end</code>
+            <code class="ruby">                    end</code>
           </li>
         </div>
       
@@ -1747,7 +1747,7 @@
               
             
 
-            <code class="ruby">                end</code>
+            <code class="ruby">                  end</code>
           </li>
         </div>
       
@@ -1759,7 +1759,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                end</code>
           </li>
         </div>
       
@@ -1771,7 +1771,7 @@
               
             
 
-            <code class="ruby">                { type: self.class.name, value: serialized_inner }</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1783,7 +1783,7 @@
               
             
 
-            <code class="ruby">              end</code>
+            <code class="ruby">                { type: self.class.name, value: serialized_inner }</code>
           </li>
         </div>
       
@@ -1795,7 +1795,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">              end</code>
           </li>
         </div>
       
@@ -1807,7 +1807,7 @@
               
             
 
-            <code class="ruby">              def ==(other)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1819,7 +1819,7 @@
               
             
 
-            <code class="ruby">                other.is_a?(self.class) &amp;&amp; other.inner == @inner</code>
+            <code class="ruby">              def ==(other)</code>
           </li>
         </div>
       
@@ -1831,7 +1831,7 @@
               
             
 
-            <code class="ruby">              end</code>
+            <code class="ruby">                other.is_a?(self.class) &amp;&amp; other.inner == @inner</code>
           </li>
         </div>
       
@@ -1843,7 +1843,7 @@
               
             
 
-            <code class="ruby">            end</code>
+            <code class="ruby">              end</code>
           </li>
         </div>
       
@@ -1855,7 +1855,7 @@
               
             
 
-            <code class="ruby">          NESTED_RUBY</code>
+            <code class="ruby">            end</code>
           </li>
         </div>
       
@@ -1867,7 +1867,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">          NESTED_RUBY</code>
           </li>
         </div>
       
@@ -1879,7 +1879,7 @@
               
             
 
-            <code class="ruby">          class_eval(code, __FILE__, __LINE__ + 1)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1891,7 +1891,7 @@
               
             
 
-            <code class="ruby">          class_eval(id.to_s, __FILE__, __LINE__ + 1)</code>
+            <code class="ruby">          class_eval(code, __FILE__, __LINE__ + 1)</code>
           </li>
         </div>
       
@@ -1903,7 +1903,7 @@
               
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">          class_eval(id.to_s, __FILE__, __LINE__ + 1)</code>
           </li>
         </div>
       
@@ -1915,7 +1915,7 @@
               
             
 
-            <code class="ruby">      RUBY</code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -1927,7 +1927,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      RUBY</code>
           </li>
         </div>
       
@@ -1939,7 +1939,7 @@
               
             
 
-            <code class="ruby">      original_const_missing = receiver.method(:const_missing)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1951,7 +1951,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      original_const_missing = receiver.method(:const_missing)</code>
           </li>
         </div>
       
@@ -1963,21 +1963,19 @@
               
             
 
-            <code class="ruby">      receiver.class_eval(outer_code, __FILE__, __LINE__ + 1)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="97">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="97">
             
 
             
               
             
 
-            <code class="ruby">      EnumVariantsScope.new(receiver).call(&amp;block)</code>
+            <code class="ruby">      receiver.class_eval(outer_code, __FILE__, __LINE__ + 1)</code>
           </li>
         </div>
       
@@ -1991,12 +1989,26 @@
               
             
 
+            <code class="ruby">      EnumVariantsScope.new(receiver).call(&amp;block)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="99">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="99">
+          <li class="never" data-hits="" data-linenumber="100">
             
 
             
@@ -2008,7 +2020,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="100">
+          <li class="covered" data-hits="1" data-linenumber="101">
             
               <span class="hits">1</span>
             
@@ -2022,18 +2034,6 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="101">
-            
-
-            
-              
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="102">
             
 
@@ -2041,7 +2041,7 @@
               
             
 
-            <code class="ruby">      variants = constants.filter_map { |variant_name|</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2053,7 +2053,7 @@
               
             
 
-            <code class="ruby">        maybe_variant = receiver.const_get(variant_name, false)</code>
+            <code class="ruby">      variants = constants.filter_map { |variant_name|</code>
           </li>
         </div>
       
@@ -2065,7 +2065,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">        maybe_variant = receiver.const_get(variant_name, false)</code>
           </li>
         </div>
       
@@ -2077,7 +2077,7 @@
               
             
 
-            <code class="ruby">        if maybe_variant.instance_variable_defined?(:@__mangrove__enum_inner_type)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2089,7 +2089,7 @@
               
             
 
-            <code class="ruby">          maybe_variant</code>
+            <code class="ruby">        if maybe_variant.instance_variable_defined?(:@__mangrove__enum_inner_type)</code>
           </li>
         </div>
       
@@ -2101,7 +2101,7 @@
               
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">          maybe_variant</code>
           </li>
         </div>
       
@@ -2113,7 +2113,7 @@
               
             
 
-            <code class="ruby">      }</code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -2125,7 +2125,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      }</code>
           </li>
         </div>
       
@@ -2137,12 +2137,24 @@
               
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="111">
+            
+
+            
+              
+            
+
             <code class="ruby">      receiver.class_eval(&lt;&lt;~RUBY, __FILE__, __LINE__ + 1)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="111">
+          <li class="covered" data-hits="1" data-linenumber="112">
             
               <span class="hits">1</span>
             
@@ -2156,18 +2168,6 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="112">
-            
-
-            
-              
-            
-
-            <code class="ruby">      RUBY</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="113">
             
 
@@ -2175,7 +2175,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      RUBY</code>
           </li>
         </div>
       
@@ -2187,7 +2187,7 @@
               
             
 
-            <code class="ruby">      # Bring back the original const_missing</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2199,7 +2199,7 @@
               
             
 
-            <code class="ruby">      receiver.define_singleton_method(:const_missing, original_const_missing)</code>
+            <code class="ruby">      # Bring back the original const_missing</code>
           </li>
         </div>
       
@@ -2211,7 +2211,7 @@
               
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      receiver.define_singleton_method(:const_missing, original_const_missing)</code>
           </li>
         </div>
       
@@ -2223,7 +2223,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -2235,7 +2235,7 @@
               
             
 
-            <code class="ruby">    sig { params(receiver: T::Class[T.anything]).void }</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2247,7 +2247,7 @@
               
             
 
-            <code class="ruby">    def self.extended(receiver)</code>
+            <code class="ruby">    sig { params(receiver: T::Class[T.anything]).void }</code>
           </li>
         </div>
       
@@ -2259,7 +2259,7 @@
               
             
 
-            <code class="ruby">      code = &lt;&lt;~RUBY</code>
+            <code class="ruby">    def self.extended(receiver)</code>
           </li>
         </div>
       
@@ -2271,7 +2271,7 @@
               
             
 
-            <code class="ruby">        extend T::Sig</code>
+            <code class="ruby">      code = &lt;&lt;~RUBY</code>
           </li>
         </div>
       
@@ -2283,7 +2283,7 @@
               
             
 
-            <code class="ruby">        extend T::Helpers</code>
+            <code class="ruby">        extend T::Sig</code>
           </li>
         </div>
       
@@ -2295,7 +2295,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">        extend T::Helpers</code>
           </li>
         </div>
       
@@ -2307,7 +2307,7 @@
               
             
 
-            <code class="ruby">        abstract!</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2319,7 +2319,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">        abstract!</code>
           </li>
         </div>
       
@@ -2331,7 +2331,7 @@
               
             
 
-            <code class="ruby">        def self.deserialize(hash)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2343,7 +2343,7 @@
               
             
 
-            <code class="ruby">          klass = const_get(hash[:type] || hash[&quot;type&quot;])</code>
+            <code class="ruby">        def self.deserialize(hash)</code>
           </li>
         </div>
       
@@ -2355,7 +2355,7 @@
               
             
 
-            <code class="ruby">          value = hash[:value] || hash[&quot;value&quot;]</code>
+            <code class="ruby">          klass = const_get(hash[:type] || hash[&quot;type&quot;])</code>
           </li>
         </div>
       
@@ -2367,7 +2367,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">          value = hash[:value] || hash[&quot;value&quot;]</code>
           </li>
         </div>
       
@@ -2379,7 +2379,7 @@
               
             
 
-            <code class="ruby">          begin</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2391,7 +2391,7 @@
               
             
 
-            <code class="ruby">            klass.new(value)</code>
+            <code class="ruby">          begin</code>
           </li>
         </div>
       
@@ -2403,7 +2403,7 @@
               
             
 
-            <code class="ruby">          rescue TypeError</code>
+            <code class="ruby">            klass.new(value)</code>
           </li>
         </div>
       
@@ -2415,7 +2415,7 @@
               
             
 
-            <code class="ruby">            klass.new(klass.deserialize(value))</code>
+            <code class="ruby">          rescue TypeError</code>
           </li>
         </div>
       
@@ -2427,7 +2427,7 @@
               
             
 
-            <code class="ruby">          end</code>
+            <code class="ruby">            klass.new(klass.deserialize(value))</code>
           </li>
         </div>
       
@@ -2439,7 +2439,7 @@
               
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">          end</code>
           </li>
         </div>
       
@@ -2451,7 +2451,7 @@
               
             
 
-            <code class="ruby">      RUBY</code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -2463,7 +2463,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      RUBY</code>
           </li>
         </div>
       
@@ -2475,7 +2475,7 @@
               
             
 
-            <code class="ruby">      receiver.class_eval(code)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2487,7 +2487,7 @@
               
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      receiver.class_eval(code)</code>
           </li>
         </div>
       
@@ -2499,12 +2499,24 @@
               
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="141">
+            
+
+            
+              
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="142">
             
 
             
