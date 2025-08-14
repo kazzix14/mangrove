@@ -68,7 +68,7 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
             def inner; end
 
             sig { params(inner_serialization_methods: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
-            def serialize(inner_serialization_methods); end
+            def serialize(inner_serialization_methods: [:serialize, :to_h]); end
 
             class << self
               sig { params(hash: T::Hash[T.any(Symbol, String), T.untyped]).returns(MyEnumForDslCompiler) }
@@ -86,7 +86,7 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
               def inner; end
 
               sig { params(inner_serialization_methods: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
-              def serialize(inner_serialization_methods); end
+              def serialize(inner_serialization_methods: [:serialize, :to_h]); end
             end
 
             class MyEnumVariant1 < ::MyEnumForDslCompiler
@@ -100,7 +100,7 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
               def inner; end
 
               sig { params(inner_serialization_methods: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
-              def serialize(inner_serialization_methods); end
+              def serialize(inner_serialization_methods: [:serialize, :to_h]); end
             end
 
             class MyEnumVariant2 < ::MyEnumForDslCompiler
@@ -114,7 +114,7 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
               def inner; end
 
               sig { params(inner_serialization_methods: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
-              def serialize(inner_serialization_methods); end
+              def serialize(inner_serialization_methods: [:serialize, :to_h]); end
             end
 
             class MyEnumVariant3 < ::MyEnumForDslCompiler
@@ -128,7 +128,7 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
               def inner; end
 
               sig { params(inner_serialization_methods: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
-              def serialize(inner_serialization_methods); end
+              def serialize(inner_serialization_methods: [:serialize, :to_h]); end
             end
 
             abstract!
@@ -165,7 +165,7 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
               def inner; end
 
               sig { params(inner_serialization_methods: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
-              def serialize(inner_serialization_methods); end
+              def serialize(inner_serialization_methods: [:serialize, :to_h]); end
 
               class << self
                 sig { params(hash: T::Hash[T.any(Symbol, String), T.untyped]).returns(MyEnumWithOneVariant) }
@@ -183,7 +183,7 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
                 def inner; end
 
                 sig { params(inner_serialization_methods: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
-                def serialize(inner_serialization_methods); end
+                def serialize(inner_serialization_methods: [:serialize, :to_h]); end
               end
 
               abstract!

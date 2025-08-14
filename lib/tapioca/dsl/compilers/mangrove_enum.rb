@@ -40,7 +40,7 @@ module Tapioca
             inner_type = runtime_type_to_type_name(variant.instance_variable_get(:@__mangrove__enum_inner_type))
             constant_type.create_class(variant.name.gsub(/.*::/, ""), superclass_name: constant_type.fully_qualified_name) { |variant_type|
               variant_type.create_method("initialize", parameters: [create_param("inner", type: inner_type)], return_type: "void")
-              variant_type.create_method("serialize", parameters: [create_param("inner_serialization_methods", type: "T.nilable(T::Array[Symbol])")], return_type: "T::Hash[Symbol, T.untyped]")
+              variant_type.create_method("serialize", parameters: [create_kw_opt_param("inner_serialization_methods", type: "T.nilable(T::Array[Symbol])", default: "[:serialize, :to_h]")], return_type: "T::Hash[Symbol, T.untyped]")
               variant_type.create_method("inner", return_type: inner_type)
               variant_type.create_method("as_super", return_type: constant.name.to_s)
               variant_type.sort_nodes!
@@ -56,7 +56,7 @@ module Tapioca
                         end
 
           constant_type.create_method("inner", return_type:)
-          constant_type.create_method("serialize", parameters: [create_param("inner_serialization_methods", type: "T.nilable(T::Array[Symbol])")], return_type: "T::Hash[Symbol, T.untyped]")
+          constant_type.create_method("serialize", parameters: [create_kw_opt_param("inner_serialization_methods", type: "T.nilable(T::Array[Symbol])", default: "[:serialize, :to_h]")], return_type: "T::Hash[Symbol, T.untyped]")
           constant_type.create_method("deserialize", parameters: [create_param("hash", type: "T::Hash[T.any(Symbol, String), T.untyped]")], return_type: constant.name, class_method: true)
           constant_type.create_method("as_super", return_type: constant.name.to_s)
           constant_type.sort_nodes!
