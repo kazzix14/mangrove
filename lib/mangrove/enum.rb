@@ -59,7 +59,8 @@ module Mangrove
                     Numeric,
                     TrueClass,
                     FalseClass,
-                    NilClass
+                    NilClass,
+                    Array
                   ]
 
                   if serialized_klass.any? { |klass| @inner.is_a?(klass) }

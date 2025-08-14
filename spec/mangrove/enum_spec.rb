@@ -13,7 +13,7 @@ class MyEnum
     extend Mangrove::Enum
 
     variants {
-      variant VariantWithShape, { name: String, age: Integer }
+      variant VariantWithComplexInner, [{ name: String, age: Integer }, String]
     }
   end
 
@@ -68,26 +68,30 @@ RSpec.describe Mangrove::Enum do
     it "serializes the enum to a hash" do
       expect(
         MyEnum::VariantWithChild.new(
-          MyEnum::ChildEnum::VariantWithShape.new({ name: "john", age: 23 })
+          MyEnum::ChildEnum::VariantWithComplexInner.new([{ name: "john", age: 23 }, "hello"])
         ).respond_to?(:serialize)
       ).to be_truthy
+
       expect(
         MyEnum::VariantWithInteger.new(2).serialize
       ).to eq({ type: "MyEnum::VariantWithInteger", value: 2 })
 
       expect(
         MyEnum::VariantWithChild.new(
-          MyEnum::ChildEnum::VariantWithShape.new({ name: "john", age: 23 })
+          MyEnum::ChildEnum::VariantWithComplexInner.new([{ name: "john", age: 23 }, "hello"])
         ).serialize
       ).to eq(
         {
           type: "MyEnum::VariantWithChild",
           value: {
-            type: "MyEnum::ChildEnum::VariantWithShape",
-            value: {
-              name: "john",
-              age: 23
-            }
+            type: "MyEnum::ChildEnum::VariantWithComplexInner",
+            value: [
+              {
+                name: "john",
+                age: 23
+              },
+              "hello"
+            ]
           }
         }
       )
@@ -102,16 +106,19 @@ RSpec.describe Mangrove::Enum do
           {
             type: "MyEnum::VariantWithChild",
             value: {
-              type: "MyEnum::ChildEnum::VariantWithShape",
-              value: {
-                name: "john",
-                age: 23
-              }
+              type: "MyEnum::ChildEnum::VariantWithComplexInner",
+              value: [
+                {
+                  name: "john",
+                  age: 23
+                },
+                "hello"
+              ]
             }
           }
         )
       ).to eq MyEnum::VariantWithChild.new(
-        MyEnum::ChildEnum::VariantWithShape.new({ name: "john", age: 23 })
+        MyEnum::ChildEnum::VariantWithComplexInner.new([{ name: "john", age: 23 }, "hello"])
       )
     end
   end
