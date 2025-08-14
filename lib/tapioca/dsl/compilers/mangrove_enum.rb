@@ -57,7 +57,7 @@ module Tapioca
 
           constant_type.create_method("inner", return_type:)
           constant_type.create_method("serialize", parameters: [create_param("inner_serialization_methods", type: "T.nilable(T::Array[Symbol])")], return_type: "T::Hash[Symbol, T.untyped]")
-          constant_type.create_method("deserialize", parameters: [create_param("hash", type: "T::Hash[T.any(Symbol, String), T.untyped]")], return_type: constant.name)
+          constant_type.create_method("deserialize", parameters: [create_param("hash", type: "T::Hash[T.any(Symbol, String), T.untyped]")], return_type: constant.name, class_method: true)
           constant_type.create_method("as_super", return_type: constant.name.to_s)
           constant_type.sort_nodes!
         }

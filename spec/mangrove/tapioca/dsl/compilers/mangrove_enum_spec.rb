@@ -64,14 +64,16 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
             sig { returns(MyEnumForDslCompiler) }
             def as_super; end
 
-            sig { params(hash: T::Hash[T.any(Symbol, String), T.untyped]).returns(MyEnumForDslCompiler) }
-            def deserialize(hash); end
-
             sig { returns(T.any(Integer, { a: ClassWithInspection, b: Integer }, String, [Integer, ClassWithInspection])) }
             def inner; end
 
             sig { params(inner_serialization_methods: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
             def serialize(inner_serialization_methods); end
+
+            class << self
+              sig { params(hash: T::Hash[T.any(Symbol, String), T.untyped]).returns(MyEnumForDslCompiler) }
+              def deserialize(hash); end
+            end
 
             class MyEnumVariant0 < ::MyEnumForDslCompiler
               sig { params(inner: Integer).void }
@@ -159,14 +161,16 @@ RSpec.describe ::Tapioca::Compilers::MangroveEnum do
               sig { returns(MyEnumWithOneVariant) }
               def as_super; end
 
-              sig { params(hash: T::Hash[T.any(Symbol, String), T.untyped]).returns(MyEnumWithOneVariant) }
-              def deserialize(hash); end
-
               sig { returns(String) }
               def inner; end
 
               sig { params(inner_serialization_methods: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
               def serialize(inner_serialization_methods); end
+
+              class << self
+                sig { params(hash: T::Hash[T.any(Symbol, String), T.untyped]).returns(MyEnumWithOneVariant) }
+                def deserialize(hash); end
+              end
 
               class MyEnumVariant1 < ::MyEnumWithOneVariant
                 sig { params(inner: String).void }
