@@ -3,4 +3,5 @@
 --ignore=tmp/
 --ignore=vendor/
 --enable-experimental-requires-ancestor
+--enable-experimental-requires-ancestor
 --disable-watchman

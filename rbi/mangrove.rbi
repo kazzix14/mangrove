@@ -18,3 +18,15 @@ module Mangrove
     end
   end
 end
+
+class TrueClass
+  sig { type_parameters(:T).params(args: T.type_parameter(:T)).returns(Mangrove::Result[T.type_parameter(:T), T.type_parameter(:T)]) }
+  sig { type_parameters(:O, :E).params(args: [T.type_parameter(:O), T.type_parameter(:E)]).returns(Mangrove::Result[T.type_parameter(:O), T.type_parameter(:E)]) }
+  def into_result(*args); end
+end
+
+class FalseClass
+  sig { type_parameters(:T).params(args: T.type_parameter(:T)).returns(Mangrove::Result[T.type_parameter(:T), T.type_parameter(:T)]) }
+  sig { type_parameters(:O, :E).params(args: [T.type_parameter(:O), T.type_parameter(:E)]).returns(Mangrove::Result[T.type_parameter(:O), T.type_parameter(:E)]) }
+  def into_result(*args); end
+end
