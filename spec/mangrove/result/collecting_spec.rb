@@ -37,6 +37,7 @@ RSpec.describe "Mangrove::Result.collecting" do
       it "short-circuits on the first Err and ignores subsequent code" do
         final = Mangrove::Result.collecting(Integer, String) { |ctx|
           ctx.try!(Mangrove::Result::Ok.new(100))
+          ctx.try!(Mangrove::Result::Ok.new("ok inner can be any type"))
           ctx.try!(Mangrove::Result::Err.new("first error"))
 
           # ここは呼ばれないはず
