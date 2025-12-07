@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-14T06:49:48+00:00">2025-08-14T06:49:48+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-12-07T19:19:07+00:00">2025-12-07T19:19:07+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -29,7 +29,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         29.98
+         29.99
        </span>
     </span> hits/line
     )
@@ -171,7 +171,7 @@
             <td class="cell--number">305</td>
             <td class="cell--number">301</td>
             <td class="cell--number">4</td>
-            <td class="cell--number">3.37</td>
+            <td class="cell--number">3.38</td>
             
               <td class="red strong cell--number t-file__branch-coverage">73.33 %</td>
               <td class="cell--number">15</td>
@@ -6484,7 +6484,7 @@
               
             
 
-            <code class="ruby">    sig { abstract.params(ctx: Result::CollectingContext[OkType, ErrType]).returns(OkType) }</code>
+            <code class="ruby">    sig { abstract.params(ctx: Result::CollectingContext[T.untyped, ErrType]).returns(OkType) }</code>
           </li>
         </div>
       
@@ -8366,7 +8366,7 @@
               
             
 
-            <code class="ruby">      sig { params(result: Mangrove::Result[O, E]).returns(O) }</code>
+            <code class="ruby">      sig { type_parameters(:T).params(result: Mangrove::Result[T.type_parameter(:T), E]).returns(T.type_parameter(:T)) }</code>
           </li>
         </div>
       
@@ -8385,9 +8385,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="192">
+          <li class="covered" data-hits="7" data-linenumber="192">
             
-              <span class="hits">6</span>
+              <span class="hits">7</span>
             
 
             
@@ -8404,8 +8404,8 @@
 
             
               
-                <span class="hits" title="when branch hit 4 times">
-                  when: 4
+                <span class="hits" title="when branch hit 5 times">
+                  when: 5
                 </span>
               
             
@@ -8415,9 +8415,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="194">
+          <li class="covered" data-hits="5" data-linenumber="194">
             
-              <span class="hits">4</span>
+              <span class="hits">5</span>
             
 
             
@@ -8697,9 +8697,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="158" data-linenumber="215">
+          <li class="covered" data-hits="159" data-linenumber="215">
             
-              <span class="hits">158</span>
+              <span class="hits">159</span>
             
 
             
@@ -8939,9 +8939,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="17" data-linenumber="233">
+          <li class="covered" data-hits="18" data-linenumber="233">
             
-              <span class="hits">17</span>
+              <span class="hits">18</span>
             
 
             
@@ -9250,7 +9250,7 @@
               
             
 
-            <code class="ruby">      sig { override.params(_ctx: Result::CollectingContext[OkType, ErrType]).returns(OkType) }</code>
+            <code class="ruby">      sig { override.params(_ctx: Result::CollectingContext[T.untyped, ErrType]).returns(OkType) }</code>
           </li>
         </div>
       
@@ -11760,7 +11760,7 @@
               
             
 
-            <code class="ruby">      sig { override.params(_ctx: Result::CollectingContext[OkType, ErrType]).returns(T.noreturn) }</code>
+            <code class="ruby">      sig { override.params(_ctx: Result::CollectingContext[T.untyped, ErrType]).returns(T.noreturn) }</code>
           </li>
         </div>
       
