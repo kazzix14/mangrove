@@ -1,3 +1,8 @@
+# typed: true
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/PerceivedComplexity
+
 class TrueClass
   extend T::Sig
 
@@ -55,3 +60,5 @@ class FalseClass
     end
   end
 end
+
+# rubocop:enable Metrics/PerceivedComplexity

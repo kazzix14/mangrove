@@ -43,7 +43,7 @@ module Mangrove
     sig { abstract.returns(OkType) }
     def unwrap_or_raise_inner!; end
 
-    sig { abstract.params(ctx: Result::CollectingContext[OkType, ErrType]).returns(OkType) }
+    sig { abstract.params(ctx: Result::CollectingContext[T.untyped, ErrType]).returns(OkType) }
     def unwrap_in(ctx); end
 
     sig { abstract.params(message: String).returns(OkType) }
@@ -187,7 +187,7 @@ module Mangrove
       O = type_member
       E = type_member
 
-      sig { params(result: Mangrove::Result[O, E]).returns(O) }
+      sig { type_parameters(:T).params(result: Mangrove::Result[T.type_parameter(:T), E]).returns(T.type_parameter(:T)) }
       def try!(result)
         case result
         when Mangrove::Result::Ok
@@ -253,7 +253,7 @@ module Mangrove
         @inner
       end
 
-      sig { override.params(_ctx: Result::CollectingContext[OkType, ErrType]).returns(OkType) }
+      sig { override.params(_ctx: Result::CollectingContext[T.untyped, ErrType]).returns(OkType) }
       def unwrap_in(_ctx)
         @inner
       end
@@ -444,7 +444,7 @@ module Mangrove
         raise T.unsafe(@inner)
       end
 
-      sig { override.params(_ctx: Result::CollectingContext[OkType, ErrType]).returns(T.noreturn) }
+      sig { override.params(_ctx: Result::CollectingContext[T.untyped, ErrType]).returns(T.noreturn) }
       def unwrap_in(_ctx)
         throw :__mangrove_result_collecting_context_return, self
       end
