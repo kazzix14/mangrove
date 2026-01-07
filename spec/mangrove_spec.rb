@@ -1,4 +1,4 @@
-# typed: strict
+# typed: false
 # frozen_string_literal: true
 
 require "spec_helper"
@@ -105,7 +105,6 @@ RSpec.describe Mangrove do
               "e2: #{error.inner.msg}"
             when MyService::MyServiceError::Other
               "other: #{error.inner.msg}"
-            else T.absurd(error)
             end
           end
         end

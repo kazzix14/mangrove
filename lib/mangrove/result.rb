@@ -3,6 +3,7 @@
 
 require_relative "result/control_signal"
 require_relative "result/ext"
+require_relative "result/collector"
 
 module Mangrove
   # Result is a type that represents either success (`Ok`) or failure (`Err`).
