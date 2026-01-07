@@ -94,7 +94,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/mangrove/result.rb<span class="defines">,<br />
-  lib/mangrove/result/ext.rb,<br /> lib/mangrove/result/control_signal.rb</span>
+  lib/mangrove/result/ext.rb,<br /> lib/mangrove/result/collector.rb,<br /> lib/mangrove/result/control_signal.rb</span>
 </dd>
   </dl>
   
@@ -125,7 +125,7 @@
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Result/CollectingContext.html" title="Mangrove::Result::CollectingContext (class)">CollectingContext</a></span>, <span class='object_link'><a href="Result/ControlSignal.html" title="Mangrove::Result::ControlSignal (class)">ControlSignal</a></span>, <span class='object_link'><a href="Result/Err.html" title="Mangrove::Result::Err (class)">Err</a></span>, <span class='object_link'><a href="Result/Ok.html" title="Mangrove::Result::Ok (class)">Ok</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Result/CollectingContext.html" title="Mangrove::Result::CollectingContext (class)">CollectingContext</a></span>, <span class='object_link'><a href="Result/Collector.html" title="Mangrove::Result::Collector (class)">Collector</a></span>, <span class='object_link'><a href="Result/ControlSignal.html" title="Mangrove::Result::ControlSignal (class)">ControlSignal</a></span>, <span class='object_link'><a href="Result/Err.html" title="Mangrove::Result::Err (class)">Err</a></span>, <span class='object_link'><a href="Result/Ok.html" title="Mangrove::Result::Ok (class)">Ok</a></span>
     
   
 </p>
@@ -969,14 +969,14 @@
       <pre class="lines">
 
 
-176
 177
 178
 179
-180</pre>
+180
+181</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 176</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 177</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collecting'>collecting</span><span class='lparen'>(</span><span class='id identifier rubyid__t_ok'>_t_ok</span><span class='comma'>,</span> <span class='id identifier rubyid__t_err'>_t_err</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_catch'>catch</span><span class='lparen'>(</span><span class='symbol'>:__mangrove_result_collecting_context_return</span><span class='rparen'>)</span> <span class='lbrace'>{</span>
@@ -1040,12 +1040,12 @@
       <pre class="lines">
 
 
-155
 156
-157</pre>
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 155</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 156</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_err'>err</span><span class='lparen'>(</span><span class='id identifier rubyid_inner'>inner</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Result/Err.html" title="Mangrove::Result::Err (class)">Err</a></span></span><span class='lbracket'>[</span><span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_type_parameter'>type_parameter</span><span class='lparen'>(</span><span class='symbol'>:ErrType</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_inner'>inner</span><span class='rparen'>)</span>
@@ -1119,12 +1119,12 @@
       <pre class="lines">
 
 
-161
 162
-163</pre>
+163
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 162</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_err_wt'>err_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_ok'>_t_ok</span><span class='comma'>,</span> <span class='id identifier rubyid_inner'>inner</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Result/Err.html" title="Mangrove::Result::Err (class)">Err</a></span></span><span class='lbracket'>[</span><span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_type_parameter'>type_parameter</span><span class='lparen'>(</span><span class='symbol'>:ErrType</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_inner'>inner</span><span class='rparen'>)</span>
@@ -1186,7 +1186,6 @@
       <pre class="lines">
 
 
-131
 132
 133
 134
@@ -1196,10 +1195,11 @@
 138
 139
 140
-141</pre>
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 132</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_from_results'>from_results</span><span class='lparen'>(</span><span class='id identifier rubyid_results'>results</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_errs'>errs</span> <span class='op'>=</span> <span class='id identifier rubyid_results'>results</span><span class='period'>.</span><span class='id identifier rubyid_filter'>filter</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:err?</span><span class='rparen'>)</span>
@@ -1269,12 +1269,12 @@
       <pre class="lines">
 
 
-144
 145
-146</pre>
+146
+147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ok'>ok</span><span class='lparen'>(</span><span class='id identifier rubyid_inner'>inner</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Result/Ok.html" title="Mangrove::Result::Ok (class)">Ok</a></span></span><span class='lbracket'>[</span><span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_type_parameter'>type_parameter</span><span class='lparen'>(</span><span class='symbol'>:OkType</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_inner'>inner</span><span class='rparen'>)</span>
@@ -1348,12 +1348,12 @@
       <pre class="lines">
 
 
-150
 151
-152</pre>
+152
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 150</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 151</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ok_wt'>ok_wt</span><span class='lparen'>(</span><span class='id identifier rubyid_inner'>inner</span><span class='comma'>,</span> <span class='id identifier rubyid__t_err'>_t_err</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="" title="Mangrove::Result (module)">Result</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Result/Ok.html" title="Mangrove::Result::Ok (class)">Ok</a></span></span><span class='lbracket'>[</span><span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_type_parameter'>type_parameter</span><span class='lparen'>(</span><span class='symbol'>:OkType</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_inner'>inner</span><span class='rparen'>)</span>
@@ -1425,10 +1425,10 @@
       <pre class="lines">
 
 
-23</pre>
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1492,10 +1492,10 @@
       <pre class="lines">
 
 
-80</pre>
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='kw'>and</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1570,10 +1570,10 @@
       <pre class="lines">
 
 
-99</pre>
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_and_err_if'>and_err_if</span><span class='lparen'>(</span><span class='id identifier rubyid_new_err_inner'>new_err_inner</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_condition'>condition</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1637,10 +1637,10 @@
       <pre class="lines">
 
 
-83</pre>
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_and_then'>and_then</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1715,10 +1715,10 @@
       <pre class="lines">
 
 
-86</pre>
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_and_then_wt'>and_then_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_new_ok'>_t_new_ok</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1770,10 +1770,10 @@
       <pre class="lines">
 
 
-32</pre>
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_err?'>err?</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1837,10 +1837,10 @@
       <pre class="lines">
 
 
-50</pre>
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expect!'>expect!</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1904,10 +1904,10 @@
       <pre class="lines">
 
 
-53</pre>
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expect_with!'>expect_with!</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1971,10 +1971,10 @@
       <pre class="lines">
 
 
-56</pre>
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2038,10 +2038,10 @@
       <pre class="lines">
 
 
-68</pre>
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_err'>map_err</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2116,10 +2116,10 @@
       <pre class="lines">
 
 
-71</pre>
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_err_wt'>map_err_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_new_err'>_t_new_err</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2183,10 +2183,10 @@
       <pre class="lines">
 
 
-62</pre>
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_ok'>map_ok</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2261,10 +2261,10 @@
       <pre class="lines">
 
 
-65</pre>
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_ok_wt'>map_ok_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_new_ok'>_t_new_ok</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2350,10 +2350,10 @@
       <pre class="lines">
 
 
-59</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_wt'>map_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_new_ok'>_t_new_ok</span><span class='comma'>,</span> <span class='id identifier rubyid__t_new_err'>_t_new_err</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2405,10 +2405,10 @@
       <pre class="lines">
 
 
-28</pre>
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ok?'>ok?</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2472,10 +2472,10 @@
       <pre class="lines">
 
 
-102</pre>
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='kw'>or</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2539,10 +2539,10 @@
       <pre class="lines">
 
 
-105</pre>
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_or_else'>or_else</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2617,10 +2617,10 @@
       <pre class="lines">
 
 
-108</pre>
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 109</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_or_else_wt'>or_else_wt</span><span class='lparen'>(</span><span class='id identifier rubyid__t_new_err'>_t_new_err</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2695,10 +2695,10 @@
       <pre class="lines">
 
 
-121</pre>
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 121</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_or_ok_if'>or_ok_if</span><span class='lparen'>(</span><span class='id identifier rubyid_new_ok_inner'>new_ok_inner</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_condition'>condition</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2762,10 +2762,10 @@
       <pre class="lines">
 
 
-77</pre>
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tap_err'>tap_err</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2829,10 +2829,10 @@
       <pre class="lines">
 
 
-74</pre>
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tap_ok'>tap_ok</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2881,10 +2881,10 @@
       <pre class="lines">
 
 
-35</pre>
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap!'>unwrap!</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -2948,10 +2948,10 @@
       <pre class="lines">
 
 
-47</pre>
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap_in'>unwrap_in</span><span class='lparen'>(</span><span class='id identifier rubyid_ctx'>ctx</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -3015,10 +3015,10 @@
       <pre class="lines">
 
 
-41</pre>
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap_or_raise!'>unwrap_or_raise!</span><span class='lparen'>(</span><span class='id identifier rubyid_exception'>exception</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -3067,10 +3067,10 @@
       <pre class="lines">
 
 
-44</pre>
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap_or_raise_inner!'>unwrap_or_raise_inner!</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -3134,10 +3134,10 @@
       <pre class="lines">
 
 
-38</pre>
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/mangrove/result.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap_or_raise_with!'>unwrap_or_raise_with!</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -3150,7 +3150,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Dec  7 19:26:14 2025 by
+  Generated on Wed Jan  7 09:26:37 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.2.2).
 </div>
