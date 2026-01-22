@@ -391,8 +391,8 @@ module Mangrove
         [@inner]
       end
 
-      sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, OkType]) }
-      def deconstruct_keys(keys)
+      sig { params(_keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, OkType]) }
+      def deconstruct_keys(_keys)
         { inner: @inner }
       end
 
@@ -589,8 +589,8 @@ module Mangrove
         [@inner]
       end
 
-      sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, ErrType]) }
-      def deconstruct_keys(keys)
+      sig { params(_keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, ErrType]) }
+      def deconstruct_keys(_keys)
         { inner: @inner }
       end
 
