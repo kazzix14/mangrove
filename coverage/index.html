@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2026-01-07T09:30:59+00:00">2026-01-07T09:30:59+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2026-01-22T08:41:54+00:00">2026-01-22T08:41:54+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,14 +22,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  96.05%
+  96.13%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         29.45
+         27.5
        </span>
     </span> hits/line
     )
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>608</b> relevant lines,
-    <span class="green"><b>584</b> lines covered</span> and
+    <b>620</b> relevant lines,
+    <span class="green"><b>596</b> lines covered</span> and
     <span class="red"><b>24</b> lines missed. </span>
     (<span class="green">
-  96.05%
+  96.13%
 </span>
 )
   </div>
@@ -166,12 +166,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#33406a10c48b6539c93f77e65b2bb862b6460f36" class="src_link" title="lib/mangrove/result.rb">lib/mangrove/result.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">98.69 %</td>
-            <td class="cell--number">583</td>
-            <td class="cell--number">306</td>
-            <td class="cell--number">302</td>
+            <td class="green strong cell--number t-file__coverage">98.74 %</td>
+            <td class="cell--number">603</td>
+            <td class="cell--number">318</td>
+            <td class="cell--number">314</td>
             <td class="cell--number">4</td>
-            <td class="cell--number">3.41</td>
+            <td class="cell--number">3.38</td>
             
               <td class="red strong cell--number t-file__branch-coverage">73.33 %</td>
               <td class="cell--number">15</td>
@@ -251,7 +251,7 @@
             <td class="cell--number">50</td>
             <td class="cell--number">41</td>
             <td class="cell--number">9</td>
-            <td class="cell--number">56.54</td>
+            <td class="cell--number">54.06</td>
             
               <td class="red strong cell--number t-file__branch-coverage">40.00 %</td>
               <td class="cell--number">10</td>
@@ -267,7 +267,7 @@
             <td class="cell--number">21</td>
             <td class="cell--number">21</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">228.90</td>
+            <td class="cell--number">216.90</td>
             
               <td class="red strong cell--number t-file__branch-coverage">50.00 %</td>
               <td class="cell--number">2</td>
@@ -283,7 +283,7 @@
             <td class="cell--number">18</td>
             <td class="cell--number">14</td>
             <td class="cell--number">4</td>
-            <td class="cell--number">490.06</td>
+            <td class="cell--number">461.83</td>
             
               <td class="red strong cell--number t-file__branch-coverage">25.00 %</td>
               <td class="cell--number">4</td>
@@ -5863,7 +5863,7 @@
     <h3>lib/mangrove/result.rb</h3>
     <h4>
       <span class="green">
-  98.69%
+  98.74%
 </span>
 
       lines covered
@@ -5880,8 +5880,8 @@
     
 
     <div class="t-line-summary">
-      <b>306</b> relevant lines.
-      <span class="green"><b>302</b> lines covered</span> and
+      <b>318</b> relevant lines.
+      <span class="green"><b>314</b> lines covered</span> and
       <span class="red"><b>4</b> lines missed.</span>
     </div>
 
@@ -8727,9 +8727,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="161" data-linenumber="216">
+          <li class="covered" data-hits="165" data-linenumber="216">
             
-              <span class="hits">161</span>
+              <span class="hits">165</span>
             
 
             
@@ -11004,7 +11004,7 @@
               
             
 
-            <code class="ruby">      sig { returns(String) }</code>
+            <code class="ruby">      sig { returns(T::Array[OkType]) }</code>
           </li>
         </div>
       
@@ -11018,21 +11018,21 @@
               
             
 
-            <code class="ruby">      def to_s</code>
+            <code class="ruby">      def deconstruct</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="391">
+          <li class="covered" data-hits="2" data-linenumber="391">
             
-              <span class="hits">1</span>
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">        &quot;#{super}: inner=`#{@inner}`&quot;</code>
+            <code class="ruby">        [@inner]</code>
           </li>
         </div>
       
@@ -11056,19 +11056,21 @@
               
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="394">
+          <li class="covered" data-hits="2" data-linenumber="394">
+            
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      sig { params(_keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, OkType]) }</code>
           </li>
         </div>
       
@@ -11082,54 +11084,38 @@
               
             
 
-            <code class="ruby">    class Err</code>
+            <code class="ruby">      def deconstruct_keys(_keys)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="396">
+          <li class="covered" data-hits="3" data-linenumber="396">
             
-              <span class="hits">1</span>
+              <span class="hits">3</span>
             
 
             
               
             
 
-            <code class="ruby">      extend T::Sig</code>
+            <code class="ruby">        { inner: @inner }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="397">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="397">
             
 
             
               
             
 
-            <code class="ruby">      extend T::Generic</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="398">
-            
-              <span class="hits">1</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">      extend T::Helpers</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="399">
+          <li class="never" data-hits="" data-linenumber="398">
             
 
             
@@ -11137,6 +11123,20 @@
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="399">
+            
+              <span class="hits">2</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      sig { returns(String) }</code>
           </li>
         </div>
       
@@ -11150,24 +11150,12 @@
               
             
 
-            <code class="ruby">      include Result</code>
+            <code class="ruby">      def to_s</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="401">
-            
-
-            
-              
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="402">
+          <li class="covered" data-hits="1" data-linenumber="401">
             
               <span class="hits">1</span>
             
@@ -11176,21 +11164,31 @@
               
             
 
-            <code class="ruby">      OkType = type_member { { fixed: T.noreturn } }</code>
+            <code class="ruby">        &quot;#{super}: inner=`#{@inner}`&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="403">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="402">
             
 
             
               
             
 
-            <code class="ruby">      ErrType = type_member</code>
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="403">
+            
+
+            
+              
+            
+
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -11207,16 +11205,16 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="405">
+          <li class="covered" data-hits="1" data-linenumber="405">
             
-              <span class="hits">2</span>
+              <span class="hits">1</span>
             
 
             
               
             
 
-            <code class="ruby">      sig { params(inner: ErrType).void }</code>
+            <code class="ruby">    class Err</code>
           </li>
         </div>
       
@@ -11230,33 +11228,35 @@
               
             
 
-            <code class="ruby">      def initialize(inner)</code>
+            <code class="ruby">      extend T::Sig</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="130" data-linenumber="407">
+          <li class="covered" data-hits="1" data-linenumber="407">
             
-              <span class="hits">130</span>
+              <span class="hits">1</span>
             
 
             
               
             
 
-            <code class="ruby">        @inner = inner</code>
+            <code class="ruby">      extend T::Generic</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="408">
+          <li class="covered" data-hits="1" data-linenumber="408">
+            
+              <span class="hits">1</span>
             
 
             
               
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">      extend T::Helpers</code>
           </li>
         </div>
       
@@ -11273,7 +11273,139 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="410">
+          <li class="covered" data-hits="1" data-linenumber="410">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      include Result</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="411">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="412">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      OkType = type_member { { fixed: T.noreturn } }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="413">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      ErrType = type_member</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="414">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="415">
+            
+              <span class="hits">2</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      sig { params(inner: ErrType).void }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="416">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      def initialize(inner)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="134" data-linenumber="417">
+            
+              <span class="hits">134</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">        @inner = inner</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="418">
+            
+
+            
+              
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="419">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="420">
             
               <span class="hits">2</span>
             
@@ -11287,7 +11419,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="411">
+          <li class="covered" data-hits="1" data-linenumber="421">
             
               <span class="hits">1</span>
             
@@ -11301,7 +11433,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="50" data-linenumber="412">
+          <li class="covered" data-hits="50" data-linenumber="422">
             
               <span class="hits">50</span>
             
@@ -11315,7 +11447,7 @@
         </div>
       
         <div>
-          <li class="missed-branch" data-hits="" data-linenumber="413">
+          <li class="missed-branch" data-hits="" data-linenumber="423">
             
 
             
@@ -11331,7 +11463,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="414">
+          <li class="missed" data-hits="0" data-linenumber="424">
             
 
             
@@ -11343,7 +11475,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="415">
+          <li class="never" data-hits="" data-linenumber="425">
             
 
             
@@ -11359,7 +11491,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="49" data-linenumber="416">
+          <li class="covered" data-hits="49" data-linenumber="426">
             
               <span class="hits">49</span>
             
@@ -11373,7 +11505,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="417">
+          <li class="never" data-hits="" data-linenumber="427">
             
 
             
@@ -11385,7 +11517,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="418">
+          <li class="never" data-hits="" data-linenumber="428">
             
 
             
@@ -11401,7 +11533,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="419">
+          <li class="covered" data-hits="1" data-linenumber="429">
             
               <span class="hits">1</span>
             
@@ -11415,7 +11547,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="420">
+          <li class="never" data-hits="" data-linenumber="430">
             
 
             
@@ -11423,138 +11555,6 @@
             
 
             <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="421">
-            
-
-            
-              
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="422">
-            
-
-            
-              
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="423">
-            
-              <span class="hits">2</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">      sig { returns(ErrType) }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="424">
-            
-              <span class="hits">1</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">      def err_inner</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="10" data-linenumber="425">
-            
-              <span class="hits">10</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">        @inner</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="426">
-            
-
-            
-              
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="427">
-            
-
-            
-              
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="428">
-            
-              <span class="hits">2</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">      sig { override.returns(OkType) }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="429">
-            
-              <span class="hits">1</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">      def unwrap!</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="430">
-            
-              <span class="hits">2</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">        raise Result::ControlSignal, @inner</code>
           </li>
         </div>
       
@@ -11592,7 +11592,7 @@
               
             
 
-            <code class="ruby">      sig { override.params(exception: Exception).returns(OkType) }</code>
+            <code class="ruby">      sig { returns(ErrType) }</code>
           </li>
         </div>
       
@@ -11606,21 +11606,21 @@
               
             
 
-            <code class="ruby">      def unwrap_or_raise!(exception)</code>
+            <code class="ruby">      def err_inner</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="435">
+          <li class="covered" data-hits="10" data-linenumber="435">
             
-              <span class="hits">1</span>
+              <span class="hits">10</span>
             
 
             
               
             
 
-            <code class="ruby">        raise exception</code>
+            <code class="ruby">        @inner</code>
           </li>
         </div>
       
@@ -11658,7 +11658,7 @@
               
             
 
-            <code class="ruby">      sig { override.params(block: T.proc.params(err: ErrType).returns(Exception)).returns(OkType) }</code>
+            <code class="ruby">      sig { override.returns(OkType) }</code>
           </li>
         </div>
       
@@ -11672,21 +11672,21 @@
               
             
 
-            <code class="ruby">      def unwrap_or_raise_with!(&amp;block)</code>
+            <code class="ruby">      def unwrap!</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="440">
+          <li class="covered" data-hits="2" data-linenumber="440">
             
-              <span class="hits">1</span>
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">        raise block.call(@inner)</code>
+            <code class="ruby">        raise Result::ControlSignal, @inner</code>
           </li>
         </div>
       
@@ -11724,7 +11724,7 @@
               
             
 
-            <code class="ruby">      sig { override.returns(OkType) }</code>
+            <code class="ruby">      sig { override.params(exception: Exception).returns(OkType) }</code>
           </li>
         </div>
       
@@ -11738,7 +11738,7 @@
               
             
 
-            <code class="ruby">      def unwrap_or_raise_inner!</code>
+            <code class="ruby">      def unwrap_or_raise!(exception)</code>
           </li>
         </div>
       
@@ -11752,7 +11752,7 @@
               
             
 
-            <code class="ruby">        raise T.unsafe(@inner)</code>
+            <code class="ruby">        raise exception</code>
           </li>
         </div>
       
@@ -11790,7 +11790,7 @@
               
             
 
-            <code class="ruby">      sig { override.params(_ctx: Result::CollectingContext[T.untyped, ErrType]).returns(T.noreturn) }</code>
+            <code class="ruby">      sig { override.params(block: T.proc.params(err: ErrType).returns(Exception)).returns(OkType) }</code>
           </li>
         </div>
       
@@ -11804,21 +11804,21 @@
               
             
 
-            <code class="ruby">      def unwrap_in(_ctx)</code>
+            <code class="ruby">      def unwrap_or_raise_with!(&amp;block)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="450">
+          <li class="covered" data-hits="1" data-linenumber="450">
             
-              <span class="hits">2</span>
+              <span class="hits">1</span>
             
 
             
               
             
 
-            <code class="ruby">        throw :__mangrove_result_collecting_context_return, self</code>
+            <code class="ruby">        raise block.call(@inner)</code>
           </li>
         </div>
       
@@ -11856,7 +11856,7 @@
               
             
 
-            <code class="ruby">      sig { override.params(message: String).returns(OkType) }</code>
+            <code class="ruby">      sig { override.returns(OkType) }</code>
           </li>
         </div>
       
@@ -11870,7 +11870,7 @@
               
             
 
-            <code class="ruby">      def expect!(message)</code>
+            <code class="ruby">      def unwrap_or_raise_inner!</code>
           </li>
         </div>
       
@@ -11884,7 +11884,7 @@
               
             
 
-            <code class="ruby">        raise Result::ControlSignal, message</code>
+            <code class="ruby">        raise T.unsafe(@inner)</code>
           </li>
         </div>
       
@@ -11922,7 +11922,7 @@
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:E).params(block: T.proc.params(err: ErrType).returns(T.type_parameter(:E))).returns(OkType) }</code>
+            <code class="ruby">      sig { override.params(_ctx: Result::CollectingContext[T.untyped, ErrType]).returns(T.noreturn) }</code>
           </li>
         </div>
       
@@ -11936,21 +11936,21 @@
               
             
 
-            <code class="ruby">      def expect_with!(&amp;block)</code>
+            <code class="ruby">      def unwrap_in(_ctx)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="460">
+          <li class="covered" data-hits="2" data-linenumber="460">
             
-              <span class="hits">1</span>
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">        raise Result::ControlSignal, block.call(@inner)</code>
+            <code class="ruby">        throw :__mangrove_result_collecting_context_return, self</code>
           </li>
         </div>
       
@@ -11979,19 +11979,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="463">
-            
-
-            
-              
-            
-
-            <code class="ruby">      # @deprecated Use #is_a?(Result::Ok) instead to enable Sorbet to define types statically.</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="464">
+          <li class="covered" data-hits="2" data-linenumber="463">
             
               <span class="hits">2</span>
             
@@ -12000,7 +11988,21 @@
               
             
 
-            <code class="ruby">      sig { override.returns(T::Boolean) }</code>
+            <code class="ruby">      sig { override.params(message: String).returns(OkType) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="464">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      def expect!(message)</code>
           </li>
         </div>
       
@@ -12014,7 +12016,7 @@
               
             
 
-            <code class="ruby">      def ok? = false</code>
+            <code class="ruby">        raise Result::ControlSignal, message</code>
           </li>
         </div>
       
@@ -12026,7 +12028,7 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -12038,7 +12040,7 @@
               
             
 
-            <code class="ruby">      # @deprecated Use #is_a?(Result::Err) instead to enable Sorbet to define types statically.</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -12052,7 +12054,7 @@
               
             
 
-            <code class="ruby">      sig { override.returns(T::Boolean) }</code>
+            <code class="ruby">      sig { override.type_parameters(:E).params(block: T.proc.params(err: ErrType).returns(T.type_parameter(:E))).returns(OkType) }</code>
           </li>
         </div>
       
@@ -12066,38 +12068,12 @@
               
             
 
-            <code class="ruby">      def err? = true</code>
+            <code class="ruby">      def expect_with!(&amp;block)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="470">
-            
-
-            
-              
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="471">
-            
-              <span class="hits">2</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="472">
+          <li class="covered" data-hits="1" data-linenumber="470">
             
               <span class="hits">1</span>
             
@@ -12106,26 +12082,12 @@
               
             
 
-            <code class="ruby">      def map(&amp;block)</code>
+            <code class="ruby">        raise Result::ControlSignal, block.call(@inner)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="473">
-            
-              <span class="hits">2</span>
-            
-
-            
-              
-            
-
-            <code class="ruby">        block.call(self)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="474">
+          <li class="never" data-hits="" data-linenumber="471">
             
 
             
@@ -12137,7 +12099,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="475">
+          <li class="never" data-hits="" data-linenumber="472">
             
 
             
@@ -12149,7 +12111,19 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="476">
+          <li class="never" data-hits="" data-linenumber="473">
+            
+
+            
+              
+            
+
+            <code class="ruby">      # @deprecated Use #is_a?(Result::Ok) instead to enable Sorbet to define types statically.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="474">
             
               <span class="hits">2</span>
             
@@ -12158,12 +12132,12 @@
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }</code>
+            <code class="ruby">      sig { override.returns(T::Boolean) }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="477">
+          <li class="covered" data-hits="1" data-linenumber="475">
             
               <span class="hits">1</span>
             
@@ -12172,7 +12146,31 @@
               
             
 
-            <code class="ruby">      def map_wt(_t_new_ok, _t_new_err, &amp;block)</code>
+            <code class="ruby">      def ok? = false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="476">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="477">
+            
+
+            
+              
+            
+
+            <code class="ruby">      # @deprecated Use #is_a?(Result::Err) instead to enable Sorbet to define types statically.</code>
           </li>
         </div>
       
@@ -12186,19 +12184,21 @@
               
             
 
-            <code class="ruby">        block.call(self)</code>
+            <code class="ruby">      sig { override.returns(T::Boolean) }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="479">
+          <li class="covered" data-hits="1" data-linenumber="479">
+            
+              <span class="hits">1</span>
             
 
             
               
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">      def err? = true</code>
           </li>
         </div>
       
@@ -12224,7 +12224,7 @@
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewOkType).params(_block: T.proc.params(this: OkType).returns(T.type_parameter(:NewOkType))).returns(Result[T.type_parameter(:NewOkType), ErrType]) }</code>
+            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }</code>
           </li>
         </div>
       
@@ -12238,21 +12238,21 @@
               
             
 
-            <code class="ruby">      def map_ok(&amp;_block)</code>
+            <code class="ruby">      def map(&amp;block)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="483">
+          <li class="covered" data-hits="2" data-linenumber="483">
             
-              <span class="hits">4</span>
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">        self</code>
+            <code class="ruby">        block.call(self)</code>
           </li>
         </div>
       
@@ -12290,7 +12290,7 @@
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewOkType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _block: T.proc.params(this: OkType).returns(T.type_parameter(:NewOkType))).returns(Result[T.type_parameter(:NewOkType), ErrType]) }</code>
+            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: Result[OkType, ErrType]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }</code>
           </li>
         </div>
       
@@ -12304,7 +12304,7 @@
               
             
 
-            <code class="ruby">      def map_ok_wt(_t_new_ok, &amp;_block)</code>
+            <code class="ruby">      def map_wt(_t_new_ok, _t_new_err, &amp;block)</code>
           </li>
         </div>
       
@@ -12318,7 +12318,7 @@
               
             
 
-            <code class="ruby">        self</code>
+            <code class="ruby">        block.call(self)</code>
           </li>
         </div>
       
@@ -12356,7 +12356,7 @@
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewErrType).params(block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }</code>
+            <code class="ruby">      sig { override.type_parameters(:NewOkType).params(_block: T.proc.params(this: OkType).returns(T.type_parameter(:NewOkType))).returns(Result[T.type_parameter(:NewOkType), ErrType]) }</code>
           </li>
         </div>
       
@@ -12370,21 +12370,21 @@
               
             
 
-            <code class="ruby">      def map_err(&amp;block)</code>
+            <code class="ruby">      def map_ok(&amp;_block)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="493">
+          <li class="covered" data-hits="4" data-linenumber="493">
             
-              <span class="hits">2</span>
+              <span class="hits">4</span>
             
 
             
               
             
 
-            <code class="ruby">        Result::Err[T.type_parameter(:NewErrType)].new(block.call(@inner))</code>
+            <code class="ruby">        self</code>
           </li>
         </div>
       
@@ -12422,7 +12422,7 @@
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }</code>
+            <code class="ruby">      sig { override.type_parameters(:NewOkType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _block: T.proc.params(this: OkType).returns(T.type_parameter(:NewOkType))).returns(Result[T.type_parameter(:NewOkType), ErrType]) }</code>
           </li>
         </div>
       
@@ -12436,21 +12436,21 @@
               
             
 
-            <code class="ruby">      def map_err_wt(_t_new_err, &amp;block)</code>
+            <code class="ruby">      def map_ok_wt(_t_new_ok, &amp;_block)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="498">
+          <li class="covered" data-hits="2" data-linenumber="498">
             
-              <span class="hits">4</span>
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">        Result::Err[T.type_parameter(:NewErrType)].new(block.call(@inner))</code>
+            <code class="ruby">        self</code>
           </li>
         </div>
       
@@ -12488,7 +12488,7 @@
               
             
 
-            <code class="ruby">      sig { override.params(_block: T.proc.params(this: OkType).void).returns(Result[OkType, ErrType]) }</code>
+            <code class="ruby">      sig { override.type_parameters(:NewErrType).params(block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }</code>
           </li>
         </div>
       
@@ -12502,7 +12502,7 @@
               
             
 
-            <code class="ruby">      def tap_ok(&amp;_block)</code>
+            <code class="ruby">      def map_err(&amp;block)</code>
           </li>
         </div>
       
@@ -12516,7 +12516,7 @@
               
             
 
-            <code class="ruby">        self</code>
+            <code class="ruby">        Result::Err[T.type_parameter(:NewErrType)].new(block.call(@inner))</code>
           </li>
         </div>
       
@@ -12554,7 +12554,7 @@
               
             
 
-            <code class="ruby">      sig { override.params(block: T.proc.params(this: ErrType).void).returns(Result[OkType, ErrType]) }</code>
+            <code class="ruby">      sig { override.type_parameters(:NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(T.type_parameter(:NewErrType))).returns(Result[OkType, T.type_parameter(:NewErrType)]) }</code>
           </li>
         </div>
       
@@ -12568,35 +12568,33 @@
               
             
 
-            <code class="ruby">      def tap_err(&amp;block)</code>
+            <code class="ruby">      def map_err_wt(_t_new_err, &amp;block)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="508">
+          <li class="covered" data-hits="4" data-linenumber="508">
             
-              <span class="hits">2</span>
+              <span class="hits">4</span>
             
 
             
               
             
 
-            <code class="ruby">        block.call(@inner)</code>
+            <code class="ruby">        Result::Err[T.type_parameter(:NewErrType)].new(block.call(@inner))</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="509">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="509">
             
 
             
               
             
 
-            <code class="ruby">        self</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -12608,24 +12606,12 @@
               
             
 
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="511">
-            
-
-            
-              
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="512">
+          <li class="covered" data-hits="2" data-linenumber="511">
             
               <span class="hits">2</span>
             
@@ -12634,12 +12620,12 @@
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(_other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(Result[T.type_parameter(:NewOkType), ErrType]) }</code>
+            <code class="ruby">      sig { override.params(_block: T.proc.params(this: OkType).void).returns(Result[OkType, ErrType]) }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="513">
+          <li class="covered" data-hits="1" data-linenumber="512">
             
               <span class="hits">1</span>
             
@@ -12648,14 +12634,14 @@
               
             
 
-            <code class="ruby">      def and(_other)</code>
+            <code class="ruby">      def tap_ok(&amp;_block)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="514">
+          <li class="covered" data-hits="2" data-linenumber="513">
             
-              <span class="hits">1</span>
+              <span class="hits">2</span>
             
 
             
@@ -12667,7 +12653,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="515">
+          <li class="never" data-hits="" data-linenumber="514">
             
 
             
@@ -12679,7 +12665,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="516">
+          <li class="never" data-hits="" data-linenumber="515">
             
 
             
@@ -12691,7 +12677,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="517">
+          <li class="covered" data-hits="2" data-linenumber="516">
             
               <span class="hits">2</span>
             
@@ -12700,12 +12686,12 @@
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(_block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }</code>
+            <code class="ruby">      sig { override.params(block: T.proc.params(this: ErrType).void).returns(Result[OkType, ErrType]) }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="518">
+          <li class="covered" data-hits="1" data-linenumber="517">
             
               <span class="hits">1</span>
             
@@ -12714,7 +12700,21 @@
               
             
 
-            <code class="ruby">      def and_then(&amp;_block)</code>
+            <code class="ruby">      def tap_err(&amp;block)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="518">
+            
+              <span class="hits">2</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">        block.call(@inner)</code>
           </li>
         </div>
       
@@ -12757,19 +12757,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="522">
-            
-
-            
-              
-            
-
-            <code class="ruby">      # @deprecated</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="523">
+          <li class="covered" data-hits="2" data-linenumber="522">
             
               <span class="hits">2</span>
             
@@ -12778,7 +12766,21 @@
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }</code>
+            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(_other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(Result[T.type_parameter(:NewOkType), ErrType]) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="523">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      def and(_other)</code>
           </li>
         </div>
       
@@ -12792,26 +12794,12 @@
               
             
 
-            <code class="ruby">      def and_then_wt(_t_new_ok, &amp;_block)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="525">
-            
-              <span class="hits">3</span>
-            
-
-            
-              
-            
-
             <code class="ruby">        self</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="526">
+          <li class="never" data-hits="" data-linenumber="525">
             
 
             
@@ -12823,7 +12811,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="527">
+          <li class="never" data-hits="" data-linenumber="526">
             
 
             
@@ -12831,6 +12819,20 @@
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="527">
+            
+              <span class="hits">2</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(_block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }</code>
           </li>
         </div>
       
@@ -12844,21 +12846,21 @@
               
             
 
-            <code class="ruby">      sig {</code>
+            <code class="ruby">      def and_then(&amp;_block)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="529">
+          <li class="covered" data-hits="2" data-linenumber="529">
             
-              <span class="hits">1</span>
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">        override</code>
+            <code class="ruby">        self</code>
           </li>
         </div>
       
@@ -12870,7 +12872,7 @@
               
             
 
-            <code class="ruby">          .type_parameters(:NewErrType)</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -12882,7 +12884,7 @@
               
             
 
-            <code class="ruby">          .params(</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -12894,43 +12896,49 @@
               
             
 
-            <code class="ruby">            _new_err_inner: T.type_parameter(:NewErrType),</code>
+            <code class="ruby">      # @deprecated</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="533">
+          <li class="covered" data-hits="2" data-linenumber="533">
+            
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">            _condition: T.proc.params(inner: OkType).returns(T::Boolean)</code>
+            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_ok: T::Class[T.type_parameter(:NewOkType)], _block: T.proc.params(this: OkType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), ErrType]) }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="534">
+          <li class="covered" data-hits="1" data-linenumber="534">
+            
+              <span class="hits">1</span>
             
 
             
               
             
 
-            <code class="ruby">          )</code>
+            <code class="ruby">      def and_then_wt(_t_new_ok, &amp;_block)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="535">
+          <li class="covered" data-hits="3" data-linenumber="535">
+            
+              <span class="hits">3</span>
             
 
             
               
             
 
-            <code class="ruby">          .returns(</code>
+            <code class="ruby">        self</code>
           </li>
         </div>
       
@@ -12942,7 +12950,7 @@
               
             
 
-            <code class="ruby">            Result[OkType, ErrType]</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -12954,19 +12962,21 @@
               
             
 
-            <code class="ruby">          )</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="538">
+          <li class="covered" data-hits="1" data-linenumber="538">
+            
+              <span class="hits">1</span>
             
 
             
               
             
 
-            <code class="ruby">      }</code>
+            <code class="ruby">      sig {</code>
           </li>
         </div>
       
@@ -12980,21 +12990,19 @@
               
             
 
-            <code class="ruby">      def and_err_if(_new_err_inner, &amp;_condition)</code>
+            <code class="ruby">        override</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="540">
-            
-              <span class="hits">4</span>
+          <li class="never" data-hits="" data-linenumber="540">
             
 
             
               
             
 
-            <code class="ruby">        self</code>
+            <code class="ruby">          .type_parameters(:NewErrType)</code>
           </li>
         </div>
       
@@ -13006,7 +13014,7 @@
               
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">          .params(</code>
           </li>
         </div>
       
@@ -13018,49 +13026,43 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">            _new_err_inner: T.type_parameter(:NewErrType),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="543">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="543">
             
 
             
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }</code>
+            <code class="ruby">            _condition: T.proc.params(inner: OkType).returns(T::Boolean)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="544">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="544">
             
 
             
               
             
 
-            <code class="ruby">      def or(other)</code>
+            <code class="ruby">          )</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="545">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="545">
             
 
             
               
             
 
-            <code class="ruby">        other</code>
+            <code class="ruby">          .returns(</code>
           </li>
         </div>
       
@@ -13072,7 +13074,7 @@
               
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">            Result[OkType, ErrType]</code>
           </li>
         </div>
       
@@ -13084,21 +13086,19 @@
               
             
 
-            <code class="ruby"></code>
+            <code class="ruby">          )</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="548">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="548">
             
 
             
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: ErrType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }</code>
+            <code class="ruby">      }</code>
           </li>
         </div>
       
@@ -13112,21 +13112,21 @@
               
             
 
-            <code class="ruby">      def or_else(&amp;block)</code>
+            <code class="ruby">      def and_err_if(_new_err_inner, &amp;_condition)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="550">
+          <li class="covered" data-hits="4" data-linenumber="550">
             
-              <span class="hits">2</span>
+              <span class="hits">4</span>
             
 
             
               
             
 
-            <code class="ruby">        block.call(@inner)</code>
+            <code class="ruby">        self</code>
           </li>
         </div>
       
@@ -13164,7 +13164,7 @@
               
             
 
-            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }</code>
+            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(other: Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }</code>
           </li>
         </div>
       
@@ -13178,7 +13178,7 @@
               
             
 
-            <code class="ruby">      def or_else_wt(_t_new_err, &amp;block)</code>
+            <code class="ruby">      def or(other)</code>
           </li>
         </div>
       
@@ -13192,7 +13192,7 @@
               
             
 
-            <code class="ruby">        block.call(@inner)</code>
+            <code class="ruby">        other</code>
           </li>
         </div>
       
@@ -13221,16 +13221,16 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="558">
+          <li class="covered" data-hits="2" data-linenumber="558">
             
-              <span class="hits">1</span>
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">      sig {</code>
+            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(block: T.proc.params(this: ErrType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }</code>
           </li>
         </div>
       
@@ -13244,19 +13244,21 @@
               
             
 
-            <code class="ruby">        override</code>
+            <code class="ruby">      def or_else(&amp;block)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="560">
+          <li class="covered" data-hits="2" data-linenumber="560">
+            
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">          .type_parameters(:NewOkType)</code>
+            <code class="ruby">        block.call(@inner)</code>
           </li>
         </div>
       
@@ -13268,7 +13270,7 @@
               
             
 
-            <code class="ruby">          .params(</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -13280,43 +13282,49 @@
               
             
 
-            <code class="ruby">            new_ok_inner: T.type_parameter(:NewOkType),</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="563">
+          <li class="covered" data-hits="2" data-linenumber="563">
+            
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">            condition: T.proc.params(inner: ErrType).returns(T::Boolean)</code>
+            <code class="ruby">      sig { override.type_parameters(:NewOkType, :NewErrType).params(_t_new_err: T::Class[T.type_parameter(:NewErrType)], block: T.proc.params(this: ErrType).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)])).returns(Result[T.type_parameter(:NewOkType), T.type_parameter(:NewErrType)]) }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="564">
+          <li class="covered" data-hits="1" data-linenumber="564">
+            
+              <span class="hits">1</span>
             
 
             
               
             
 
-            <code class="ruby">          )</code>
+            <code class="ruby">      def or_else_wt(_t_new_err, &amp;block)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="565">
+          <li class="covered" data-hits="2" data-linenumber="565">
+            
+              <span class="hits">2</span>
             
 
             
               
             
 
-            <code class="ruby">          .returns(</code>
+            <code class="ruby">        block.call(@inner)</code>
           </li>
         </div>
       
@@ -13328,7 +13336,7 @@
               
             
 
-            <code class="ruby">            Result[T.type_parameter(:NewOkType), ErrType]</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -13340,19 +13348,21 @@
               
             
 
-            <code class="ruby">          )</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="568">
+          <li class="covered" data-hits="1" data-linenumber="568">
+            
+              <span class="hits">1</span>
             
 
             
               
             
 
-            <code class="ruby">      }</code>
+            <code class="ruby">      sig {</code>
           </li>
         </div>
       
@@ -13366,12 +13376,134 @@
               
             
 
+            <code class="ruby">        override</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="570">
+            
+
+            
+              
+            
+
+            <code class="ruby">          .type_parameters(:NewOkType)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="571">
+            
+
+            
+              
+            
+
+            <code class="ruby">          .params(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="572">
+            
+
+            
+              
+            
+
+            <code class="ruby">            new_ok_inner: T.type_parameter(:NewOkType),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="573">
+            
+
+            
+              
+            
+
+            <code class="ruby">            condition: T.proc.params(inner: ErrType).returns(T::Boolean)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="574">
+            
+
+            
+              
+            
+
+            <code class="ruby">          )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="575">
+            
+
+            
+              
+            
+
+            <code class="ruby">          .returns(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="576">
+            
+
+            
+              
+            
+
+            <code class="ruby">            Result[T.type_parameter(:NewOkType), ErrType]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="577">
+            
+
+            
+              
+            
+
+            <code class="ruby">          )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="578">
+            
+
+            
+              
+            
+
+            <code class="ruby">      }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="579">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
             <code class="ruby">      def or_ok_if(new_ok_inner, &amp;condition)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="570">
+          <li class="covered" data-hits="4" data-linenumber="580">
             
               <span class="hits">4</span>
             
@@ -13389,7 +13521,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="571">
+          <li class="covered" data-hits="2" data-linenumber="581">
             
               <span class="hits">2</span>
             
@@ -13403,7 +13535,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="572">
+          <li class="never" data-hits="" data-linenumber="582">
             
 
             
@@ -13419,7 +13551,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="573">
+          <li class="covered" data-hits="2" data-linenumber="583">
             
               <span class="hits">2</span>
             
@@ -13433,7 +13565,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="574">
+          <li class="never" data-hits="" data-linenumber="584">
             
 
             
@@ -13445,7 +13577,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="575">
+          <li class="never" data-hits="" data-linenumber="585">
             
 
             
@@ -13457,7 +13589,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="576">
+          <li class="never" data-hits="" data-linenumber="586">
             
 
             
@@ -13469,7 +13601,139 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="577">
+          <li class="covered" data-hits="2" data-linenumber="587">
+            
+              <span class="hits">2</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      sig { returns(T::Array[ErrType]) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="588">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      def deconstruct</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="589">
+            
+              <span class="hits">2</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">        [@inner]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="590">
+            
+
+            
+              
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="591">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="592">
+            
+              <span class="hits">2</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      sig { params(_keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, ErrType]) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="593">
+            
+              <span class="hits">1</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">      def deconstruct_keys(_keys)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="594">
+            
+              <span class="hits">3</span>
+            
+
+            
+              
+            
+
+            <code class="ruby">        { inner: @inner }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="595">
+            
+
+            
+              
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="596">
+            
+
+            
+              
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="597">
             
               <span class="hits">2</span>
             
@@ -13483,7 +13747,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="578">
+          <li class="covered" data-hits="1" data-linenumber="598">
             
               <span class="hits">1</span>
             
@@ -13497,7 +13761,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="579">
+          <li class="covered" data-hits="1" data-linenumber="599">
             
               <span class="hits">1</span>
             
@@ -13511,7 +13775,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="580">
+          <li class="never" data-hits="" data-linenumber="600">
             
 
             
@@ -13523,7 +13787,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="581">
+          <li class="never" data-hits="" data-linenumber="601">
             
 
             
@@ -13535,7 +13799,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="582">
+          <li class="never" data-hits="" data-linenumber="602">
             
 
             
@@ -13547,7 +13811,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="583">
+          <li class="never" data-hits="" data-linenumber="603">
             
 
             
@@ -15486,9 +15750,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2784" data-linenumber="17">
+          <li class="covered" data-hits="2660" data-linenumber="17">
             
-              <span class="hits">2784</span>
+              <span class="hits">2660</span>
             
 
             
@@ -16759,9 +17023,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4779" data-linenumber="17">
+          <li class="covered" data-hits="4527" data-linenumber="17">
             
-              <span class="hits">4779</span>
+              <span class="hits">4527</span>
             
 
             
@@ -17334,9 +17598,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8806" data-linenumber="17">
+          <li class="covered" data-hits="8298" data-linenumber="17">
             
-              <span class="hits">8806</span>
+              <span class="hits">8298</span>
             
 
             
