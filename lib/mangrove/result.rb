@@ -386,6 +386,16 @@ module Mangrove
         self
       end
 
+      sig { returns(T::Array[OkType]) }
+      def deconstruct
+        [@inner]
+      end
+
+      sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, OkType]) }
+      def deconstruct_keys(keys)
+        { inner: @inner }
+      end
+
       sig { returns(String) }
       def to_s
         "#{super}: inner=`#{@inner}`"
@@ -572,6 +582,16 @@ module Mangrove
         else
           self
         end
+      end
+
+      sig { returns(T::Array[ErrType]) }
+      def deconstruct
+        [@inner]
+      end
+
+      sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, ErrType]) }
+      def deconstruct_keys(keys)
+        { inner: @inner }
       end
 
       sig { returns(String) }

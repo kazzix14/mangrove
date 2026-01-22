@@ -213,4 +213,41 @@ RSpec.describe Mangrove::Result::Ok do
       expect(Mangrove::Result::Ok.new("my inner").to_s).to include ": inner=`my inner`"
     end
   end
+
+  describe "#deconstruct" do
+    it "returns array containing inner value for array pattern matching" do
+      ok = Mangrove::Result::Ok.new(42)
+      expect(ok.deconstruct).to eq([42])
+    end
+
+    it "works with case/in array pattern" do
+      ok = Mangrove::Result::Ok.new(42)
+      result = case ok
+               in Mangrove::Result::Ok(inner)
+                 inner
+               else
+                 nil
+               end
+      expect(result).to eq(42)
+    end
+  end
+
+  describe "#deconstruct_keys" do
+    it "returns hash containing inner value for hash pattern matching" do
+      ok = Mangrove::Result::Ok.new(42)
+      expect(ok.deconstruct_keys(nil)).to eq({ inner: 42 })
+      expect(ok.deconstruct_keys([:inner])).to eq({ inner: 42 })
+    end
+
+    it "works with case/in hash pattern" do
+      ok = Mangrove::Result::Ok.new(42)
+      result = case ok
+               in Mangrove::Result::Ok(inner:)
+                 inner
+               else
+                 nil
+               end
+      expect(result).to eq(42)
+    end
+  end
 end
